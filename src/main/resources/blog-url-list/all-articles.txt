@@ -2781,7 +2781,6 @@
 /thymeleaf-lists-utility
 /java-hello-world
 /spring-data-r2dbc
-/spring-resttemplate-post-json-test
 /cs/stable-sorting-algorithms
 /java-xor-operator
 /linux/generating-ssh-keys-in-linux
