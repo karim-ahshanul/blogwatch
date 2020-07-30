@@ -106,3 +106,7 @@ ignoreMissingReadmeEndingWith:
   - /quarkus-app
   - /quarkus-liquibase
   - /original
+  - /netflix-modules
+  - /shipping-service
+  - /order-service
+  - /inventory-service
