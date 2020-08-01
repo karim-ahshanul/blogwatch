@@ -91,6 +91,7 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
   - /find-java-home
   - /java-application-remote-debugging  
   - /java-cannot-find-symbol-error
+  - /spring-boot-interview-questions
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
   - /spring-reloading-properties/
