@@ -3356,7 +3356,6 @@
 /lock-free-programming
 /thymeleaf-generate-pdf
 /aws-appsync-spring
-/spring-data-elasticsearch-test-2
 /spring-vs-jta-transactional
 /log4j2-plugins
 /java-foreign-memory-access
