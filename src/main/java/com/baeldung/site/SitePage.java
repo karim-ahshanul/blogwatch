@@ -459,7 +459,7 @@ public class SitePage extends BlogBaseDriver {
 
     public List<String> findInvalidTitles() {
         List<String> invalidTitles = new ArrayList<>();
-        List<WebElement> webElements = this.getWebDriver().findElements(By.xpath("(//section//h2[not(ancestor::div[contains(@class,'fr-header')] )]) | (//section//h3[not(ancestor::div[contains(@class,'after-post-widgets')] )])"));                
+        List<WebElement> webElements = this.getWebDriver().findElements(By.xpath("(//section//h2[not(ancestor::section[contains(@class,'further-reading-posts')] )]) | (//section//h3[not(ancestor::div[contains(@class,'after-post-widgets')] )])"));                
         webElements.parallelStream().forEach(webElement -> {
             String title = webElement.getText();
             List<String> tokens = Utils.titleTokenizer(title);
