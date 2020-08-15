@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringMicroservicesGuidePage extends BlogBaseDriver {
 
-    public void clickAccessTheGuideButton() {
-        this.getWebDriver().findElement(By.xpath("//a[contains(., 'ACCESS THE GUIDE')]")).click();
+    public void clickAccessTheGuideButton() {        
+        this.getWebDriver().findElement(By.xpath("//a//span[contains(text(), 'ACCESS THIS GUIDE')]")).click();        
     }
 
     public List<WebElement> findImages() {

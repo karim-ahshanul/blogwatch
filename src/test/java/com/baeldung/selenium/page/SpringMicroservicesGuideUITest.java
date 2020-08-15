@@ -6,15 +6,18 @@ import java.util.List;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.baeldung.common.GlobalConstants;
+import com.baeldung.common.TestMetricsExtension;
 import com.baeldung.selenium.common.BaseUISeleniumTest;
 import com.baeldung.site.SpringMicroservicesGuidePage;
 
 import io.restassured.RestAssured;
 
+@ExtendWith(TestMetricsExtension.class)
 public final class SpringMicroservicesGuideUITest extends BaseUISeleniumTest {
 
     @Autowired
