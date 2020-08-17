@@ -113,5 +113,15 @@ public abstract class BlogBaseDriver {
     public String getRelativeUrl() {
         return this.getUrl().toString().substring(this.getBaseURL().toString().length());
     }
+    
+    public void acceptCookie() {
+        try {
+            JavascriptExecutor js = ((JavascriptExecutor) this.getWebDriver());
+            js.executeScript("document.getElementById('cn-accept-cookie').click();");
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
