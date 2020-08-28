@@ -110,3 +110,6 @@ ignoreMissingReadmeEndingWith:
   - /shipping-service
   - /order-service
   - /inventory-service
+  - /optional-dependencies/
+  - /version-collision/
+  - /maven-plugins/
