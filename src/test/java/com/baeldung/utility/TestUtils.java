@@ -71,7 +71,7 @@ public class TestUtils {
 
     public static Boolean inspectURLHttpStatusCode(RestAssuredConfig restAssuredConfig, String fullURL, Multimap<String, Integer> badURLs) {
         try {
-            int httpStatusCode = RestAssured.given().config(restAssuredConfig).head(fullURL).getStatusCode();
+            int httpStatusCode = RestAssured.given().config(restAssuredConfig).get(fullURL).getStatusCode();
 
             if (HttpStatus.SC_OK == httpStatusCode) {
                 if (!badURLs.get(fullURL).isEmpty()) {
@@ -101,7 +101,7 @@ public class TestUtils {
 
     public static Boolean inspectURLHttpStatusCode(RestAssuredConfig restAssuredConfig, String fullURL) {
         try {
-            int httpStatusCode = RestAssured.given().config(restAssuredConfig).head(fullURL).getStatusCode();
+            int httpStatusCode = RestAssured.given().header("cache-control","no-cach").config(restAssuredConfig).head(fullURL).getStatusCode();
 
             if (HttpStatus.SC_OK == httpStatusCode) {
                 return true;
