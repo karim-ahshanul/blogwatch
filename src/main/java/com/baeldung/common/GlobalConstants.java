@@ -105,7 +105,7 @@ public class GlobalConstants {
     public static final String BAELDUNG_HOME_PAGE_URL_WITH_WWW_PREFIX = "https://www.baeldung.com";
 
     public static final String BAELDUNG_FEED_URL = "https://www.baeldung.com/feed/";
-    public static final String BAELDUNG_FEED_FEEDBURNER_URL = "feeds.feedburner.com/baeldung";
+    public static final String BAELDUNG_FEED_FEEDFLITZ_URL = "feeds.feedblitz.com/baeldung";
     public static final String BAELDUNG_RSS_FEED_URL = "https://www.baeldung.com/rss/";
 
     public static final String GOOGLE_ANALYTICS_CODE_SEARCH_STRING = "https://www.google-analytics.com/analytics.js";

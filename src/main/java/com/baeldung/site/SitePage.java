@@ -7,7 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -392,26 +391,16 @@ public class SitePage extends BlogBaseDriver {
     }
 
     public String getTheFirstBaeldungURL() {
-        String pageSource = this.getWebDriver().getPageSource();
-        int indexOfAtomTag = pageSource.indexOf("<atom");
-        String linkStartTag = "<link>";
-        String linkClosingtTag = "</link>";
-        // take the link which appears after <atom tag
-        String firstBaeldungPageURL = pageSource.substring(pageSource.indexOf(linkStartTag, indexOfAtomTag) + linkStartTag.length(), pageSource.indexOf(linkClosingtTag, indexOfAtomTag));
+        String firstBaeldungPageURL = this.getWebDriver().findElement(By.xpath("//h3/A")).getAttribute("href");
+
         logger.info("Baeldung URL from RSS feed: " + firstBaeldungPageURL);
         return firstBaeldungPageURL;
     }
 
     public int getAgeOfTheFirstPostIntheFeed() {
-        String pageSource = this.getWebDriver().getPageSource();
-        int indexOfAtomTag = pageSource.indexOf("<atom");
-        String pubStartTag = "<pubDate>";
-        String pubClosingtTag = "</pubDate>";
+        String publishDate = StringUtils.strip(this.getWebDriver().findElement(By.xpath("//h3/span")).getText(), " UTC by baeldung");
 
-        String publishDate = pageSource.substring(pageSource.indexOf(pubStartTag, indexOfAtomTag) + pubStartTag.length(), pageSource.indexOf(pubClosingtTag, indexOfAtomTag));
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, d MMM yyyy H:m:s Z", Locale.ENGLISH);
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime postPublishDatTime = LocalDateTime.parse(publishDate, formatter);
         logger.info("Published Date of the first post: {}", publishDate);
         int postAge = Period.between(LocalDate.now(), postPublishDatTime.toLocalDate()).getDays();
@@ -459,7 +448,7 @@ public class SitePage extends BlogBaseDriver {
 
     public List<String> findInvalidTitles() {
         List<String> invalidTitles = new ArrayList<>();
-        List<WebElement> webElements = this.getWebDriver().findElements(By.xpath("(//section//h2[not(ancestor::section[contains(@class,'further-reading-posts')] )]) | (//section//h3[not(ancestor::div[contains(@class,'after-post-widgets')] )])"));                
+        List<WebElement> webElements = this.getWebDriver().findElements(By.xpath("(//section//h2[not(ancestor::section[contains(@class,'further-reading-posts')] )]) | (//section//h3[not(ancestor::div[contains(@class,'after-post-widgets')] )])"));
         webElements.parallelStream().forEach(webElement -> {
             String title = webElement.getText();
             List<String> tokens = Utils.titleTokenizer(title);
@@ -558,13 +547,13 @@ public class SitePage extends BlogBaseDriver {
         return false;
 
     }
-    
+
     public boolean anchorAndAnchorLinkAvailable(PurchaseLink link) {
-        
+
         List<WebElement> elements = null;
-        
+
         elements = this.getWebDriver().findElements(By.xpath("//a[contains(@href,'" + link.getAnchorLink() + "')]"));
-        
+
         for (WebElement element : elements) {
             if (link.getAnchorText().equalsIgnoreCase(element.getText()))
                 return true;

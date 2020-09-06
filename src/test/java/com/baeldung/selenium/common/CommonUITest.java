@@ -159,8 +159,8 @@ public class CommonUITest extends BaseUISeleniumTest {
         Response response = RestAssured.given().redirects().follow(false).get(GlobalConstants.BAELDUNG_FEED_URL);
 
         assertTrue(response.getStatusCode() == 301 || response.getStatusCode() == 302, "HTTP staus code is not 301 or 302. Returned status code is: " + response.getStatusCode());
-        assertTrue(response.getHeader("Location").replaceAll("/$", "").trim().toLowerCase().contains(GlobalConstants.BAELDUNG_FEED_FEEDBURNER_URL),
-                "Location header doesn't contain feeds.feedburner.com/baeldung. Returned Location header is: " + response.getHeader("Location").replaceAll("/$", "").toLowerCase());
+        assertTrue(response.getHeader("Location").replaceAll("/$", "").trim().toLowerCase().contains(GlobalConstants.BAELDUNG_FEED_FEEDFLITZ_URL),
+                "Location header doesn't contain eeds.feedblitz.com/baeldung. Returned Location header is: " + response.getHeader("Location").replaceAll("/$", "").toLowerCase());
     }
 
     @Test
@@ -314,15 +314,10 @@ public class CommonUITest extends BaseUISeleniumTest {
         page.setUrl(page.getTheFirstBaeldungURL());
         page.loadUrl();
 
-        // RequestSpecification requestSpecification = RestAssured.given().redirects().follow(false);
-        // String feedURL = requestSpecification.get(page.getTheFirstBaeldungURL()).getHeader("Location");
-        // requestSpecification = RestAssured.given().redirects().follow(true);
-        // Response response = requestSpecification.get(feedURL);
-
         logger.info("Currently loaded page URL: " + page.getWebDriver().getCurrentUrl());
         logger.info("Currently loaded page title: " + page.getWebDriver().getTitle());
         logger.info("Currently set feed url: " + page.getUrl());
-        // assertTrue("The page linked in the RSS feed couldn't be loaded properly", page.getWebDriver().getTitle().toLowerCase().contains("baeldung)"));
+
         assertTrue(page.rssFeedURLPointsTotheBaeldungSite(page.getWebDriver().getCurrentUrl()), "The RSS Feed URL doesn't point to  https://baeldung.com");
     }
 
@@ -403,7 +398,7 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Tag(GlobalConstants.TAG_DAILY)
     public final void givenTheListOfRedirectedUrls_whenAUrlLoads_thenItRedirectsSuccesfully(String url, String redirectedTo) {
         String fullUrl = url;
-        if(!url.contains("http://")) {
+        if (!url.contains("http://")) {
             fullUrl = page.getBaseURL() + url;
         }
         Response response = RestAssured.given().redirects().follow(false).get(fullUrl);
@@ -473,8 +468,8 @@ public class CommonUITest extends BaseUISeleniumTest {
 
     @ParameterizedTest(name = " {displayName} - verify purchase links on {0}")
     @MethodSource("com.baeldung.utility.TestUtils#pagesPurchaseLinksTestDataProvider()")
-    //@Tag(GlobalConstants.TAG_SITE_SMOKE_TEST)
-    //@Tag(GlobalConstants.TAG_DAILY)
+    // @Tag(GlobalConstants.TAG_SITE_SMOKE_TEST)
+    // @Tag(GlobalConstants.TAG_DAILY)
     public final void givenOnTheCoursePage_whenAnaysingThePage_thenThePurchaseLinksAreSetupCorrectly(String courseUrl, List<PurchaseLink> purchaseLinks) throws JsonProcessingException, IOException {
 
         String fullURL = page.getBaseURL() + courseUrl;
@@ -484,10 +479,10 @@ public class CommonUITest extends BaseUISeleniumTest {
         page.loadUrl();
 
         RestAssuredConfig restAssuredConfig = TestUtils.getRestAssuredCustomConfig(5000);
-        
+
         for (PurchaseLink link : purchaseLinks) {
 
-            assertTrue(page.anchorAndAnchorLinkAvailable(link), String.format("Countn't find Purchse link with anchor Text:%s and anchor Link: %s, on %s", link.getAnchorText(), link.getAnchorLink(), fullURL));            
+            assertTrue(page.anchorAndAnchorLinkAvailable(link), String.format("Countn't find Purchse link with anchor Text:%s and anchor Link: %s, on %s", link.getAnchorText(), link.getAnchorLink(), fullURL));
             assertTrue(TestUtils.veirfyRedirect(restAssuredConfig, link.getAnchorLink(), link.getRedirectedTo()), link.getAnchorText() + " (" + link.getAnchorLink() + ") on " + fullURL + " doesn't redirec to " + link.getRedirectedTo());
         }
 
