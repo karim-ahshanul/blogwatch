@@ -1345,7 +1345,6 @@
 /spring-security-digest-authentication
 /no-bean-named-springsecurityfilterchain-is-defined
 /spring-nosuchbeandefinitionexception
-/spring-security-expressions-basic
 /spring-security-session
 /spring-security-authentication-provider
 /spring-security-basic-authentication
@@ -3838,11 +3837,6 @@
 /spring-keycloak-custom-themes
 /jdbc-database-metadata
 /jpa-entity-equality
-/spring-security-async-principal-propagation/
-/spring-model-parameters-with-handler-interceptor/
-/swagger-2-documentation-for-spring-rest-api/
-/exception-handling-for-rest-with-spring/
-/spring-security-expressions-basic/
 /linux/free-tcp-port
 /linux/heredoc-herestring
 /linux/partitioning-disks
