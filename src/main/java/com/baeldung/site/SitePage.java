@@ -398,7 +398,7 @@ public class SitePage extends BlogBaseDriver {
     }
 
     public int getAgeOfTheFirstPostIntheFeed() {
-        String publishDate = StringUtils.strip(this.getWebDriver().findElement(By.xpath("//h3/span")).getText(), " UTC by baeldung");
+        String publishDate = this.getWebDriver().findElement(By.xpath("//h3/span")).getText().substring(0,16);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime postPublishDatTime = LocalDateTime.parse(publishDate, formatter);
