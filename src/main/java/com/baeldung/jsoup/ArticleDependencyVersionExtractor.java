@@ -49,7 +49,7 @@ public class ArticleDependencyVersionExtractor {
     }
 
     private boolean isXmlCode(Element element) {
-        return element.attr("class").contains("language-xml");
+        return element.attr("class").contains("language-xml") && element.childNodeSize() > 0;
     }
 
     private String xmlContent(Element element) {
