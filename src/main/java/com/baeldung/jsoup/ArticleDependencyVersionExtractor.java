@@ -33,7 +33,7 @@ public class ArticleDependencyVersionExtractor {
     public List<DependencyVersionDto> extractDependencyVersion(DependencyDto searchedDependency, URL article) {
         try {
             return Jsoup.parse(article, 10000)
-              .getElementsByTag("pre")
+              .getElementsByTag("code")
               .stream()
               .filter(this::isXmlCode)
               .map(this::xmlContent)
@@ -49,7 +49,7 @@ public class ArticleDependencyVersionExtractor {
     }
 
     private boolean isXmlCode(Element element) {
-        return element.attr("class").contains("brush: xml");
+        return element.attr("class").contains("language-xml");
     }
 
     private String xmlContent(Element element) {

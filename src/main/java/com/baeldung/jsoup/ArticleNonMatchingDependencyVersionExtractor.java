@@ -18,7 +18,7 @@ public class ArticleNonMatchingDependencyVersionExtractor {
     public List<DependencyVersionDto> extractNonMatchingDependencyVersions(DependencyVersionDto searchedDependencyVersion, URL article) {
         return articleDependencyVersionExtractor.extractDependencyVersion(searchedDependencyVersion.getDependency(), article)
           .stream()
-          .filter(dependencyVersion -> !dependencyVersion.getVersion().equals(searchedDependencyVersion.getVersion()))
+          .filter(dependencyVersion -> !searchedDependencyVersion.getVersion().equals(dependencyVersion.getVersion()))
           .collect(Collectors.toList());
     }
 }
