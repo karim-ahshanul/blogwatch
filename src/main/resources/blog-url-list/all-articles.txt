@@ -1056,7 +1056,6 @@
 /2015-week-review-47
 /rest-api-search-querydsl-web-in-spring-data-jpa
 /2015-week-review-46
-/rest-with-spring-intermediate-class-is-out
 /2015-week-review-45
 /reddit-web-app-improvements-6
 /2015-week-review-44
@@ -1183,7 +1182,6 @@
 /2014-week-review-48
 /registration-verify-user-by-email
 /httpasyncclient-tutorial
-/spring-blogs
 /java-blogs
 /2014-week-review-47
 /2014-week-review-46
@@ -1356,7 +1354,6 @@
 /spring-maven-repository
 /spring-dataIntegrityviolationexception
 /spring-requestmapping
-/hibernate-4-spring
 /spring-beandefinitionstoreexception
 /maven-release-nexus
 /hibernate3-spring
@@ -3585,7 +3582,6 @@
 /scala/string-interpolation
 /scala/futures-promises
 /cs/tree-structures-differences
-/cs/the-quicksort-algorithm
 /cs/kruskals-vs-prims-algorithm
 /cs/call-by-reference-vs-call-by-value
 /cs/cook-levin-theorem-3sat
@@ -3941,7 +3937,6 @@
 /openapi-dates
 /maven-guide
 /guava-guide
-/spring-security-expressions-basic/
 /linux/scripting-yes-during-install
 /linux/record-terminal
 /linux/exec-command-in-shell-script
