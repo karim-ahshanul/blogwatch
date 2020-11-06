@@ -226,9 +226,11 @@ public class SitePage extends BlogBaseDriver {
         }
         if (!metaDescription.equals(metaOgDescription)) {
             logger.info("metaTwitterDescription doesn't match with the metaOgDescription");
+            return false;
         }
-        if (!!metaDescription.equals(metaTwitterDescription)) {
-            logger.info("metaTwitterDescription doesn't match with the metaTwitterDescription");
+        if (!metaDescription.equals(metaTwitterDescription)) {
+            logger.info("metaTwitterDescription doesn't match with the metaOgDescription");
+            return false;
         }
 
         return true;
