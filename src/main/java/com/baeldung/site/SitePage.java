@@ -163,6 +163,77 @@ public class SitePage extends BlogBaseDriver {
         }
     }
 
+    public String getMetaDescriptionTag() {
+        try {
+            return this.getWebDriver().findElement(By.xpath("//meta[@name = 'description']")).getText();
+        } catch (NoSuchElementException e) {
+            return null;
+        }
+    }
+
+    public String getMetaOgDescriptionTag() {
+        try {
+            return this.getWebDriver().findElement(By.xpath("//meta[@name = 'og:description']")).getText();
+        } catch (NoSuchElementException e) {
+            return null;
+        }
+    }
+
+    public String getMetaTwitterDescriptionTag() {
+        try {
+            return this.getWebDriver().findElement(By.xpath("//meta[@name = 'twitter:description']")).getText();
+        } catch (NoSuchElementException e) {
+            return null;
+        }
+    }
+
+    public boolean metaDescriptionTagsAvailable() {
+
+        List<WebElement> metaElements = this.getWebDriver().findElements(By.xpath("//meta[@name = 'description' or @property = 'og:description' or @name = 'twitter:description']"));
+
+        String metaDescription = null;
+        String metaOgDescription = null;
+        String metaTwitterDescription = null;
+
+        for (WebElement element : metaElements) {
+            String tag = element.getAttribute("name");
+            if (StringUtils.isBlank(tag)) {
+                tag = element.getAttribute("property");
+            }
+
+            if (tag.equals("description")) {
+                metaDescription = element.getAttribute("content");
+            } else if (tag.equals("og:description")) {
+                metaOgDescription = element.getAttribute("content");
+            } else if (tag.equals("twitter:description")) {
+                metaTwitterDescription = element.getAttribute("content");
+            }
+        }
+
+        if (StringUtils.isBlank(metaDescription)) {
+            logger.info("metaDescription is blank");
+            return false;
+        }
+
+        if (StringUtils.isBlank(metaOgDescription)) {
+            logger.info("metaOgDescription is blank");
+            return false;
+        }
+
+        if (StringUtils.isBlank(metaTwitterDescription)) {
+            logger.info("metaTwitterDescription is blank");
+            return false;
+        }
+        if (!metaDescription.equals(metaOgDescription)) {
+            logger.info("metaTwitterDescription doesn't match with the metaOgDescription");
+        }
+        if (!!metaDescription.equals(metaTwitterDescription)) {
+            logger.info("metaTwitterDescription doesn't match with the metaTwitterDescription");
+        }
+
+        return true;
+    }
+
     public List<String> gitHubModulesLinkedOnTheArticle() {
         List<String> gitHubModuleLinks = new ArrayList<String>();
         try {
@@ -398,7 +469,7 @@ public class SitePage extends BlogBaseDriver {
     }
 
     public int getAgeOfTheFirstPostIntheFeed() {
-        String publishDate = this.getWebDriver().findElement(By.xpath("//h3/span")).getText().substring(0,16);
+        String publishDate = this.getWebDriver().findElement(By.xpath("//h3/span")).getText().substring(0, 16);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime postPublishDatTime = LocalDateTime.parse(publishDate, formatter);

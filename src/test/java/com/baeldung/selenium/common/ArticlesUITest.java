@@ -167,12 +167,11 @@ public class ArticlesUITest extends BaseUISeleniumTest {
         log(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenTheMetaDescriptionExists);
 
         do {
-
             if (shouldSkipUrl(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenTheMetaDescriptionExists)) {
                 continue;
             }
 
-            if (!page.findMetaDescriptionTag()) {
+            if (!page.metaDescriptionTagsAvailable()) {
                 recordMetrics(1, TestMetricTypes.FAILED);
                 badURLs.put(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenTheMetaDescriptionExists, page.getUrlWithNewLineFeed());
             }
