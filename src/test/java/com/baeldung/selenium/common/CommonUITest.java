@@ -59,8 +59,11 @@ import io.restassured.response.Response;
 @ExtendWith(TestMetricsExtension.class)
 public class CommonUITest extends BaseUISeleniumTest {
 
-    @Value("${document-readme-having-articles-more-than}")
-    private int documentReadmeHavingArticlesMoreThan;
+    @Value("${limit-for.readme-having-articles}")
+    private int limitForReadmeHavingArticles;
+
+    @Value("${limit-for.spring-realted.readme-having-articles}")
+    private int limitForSpringRelatedReadmeHavingArticles;
 
     @Value("${time-out.for.200OK-test}")
     private int timeOutFor200OKTest;
@@ -267,7 +270,12 @@ public class CommonUITest extends BaseUISeleniumTest {
                 List<LinkVO> urlsInReadmeFile = page.getLinksToTheBaeldungSite(); // get all the articles linked in this README
 
                 // for documenting no of links per README
-                if (urlsInReadmeFile.size() > documentReadmeHavingArticlesMoreThan) {
+                if (readmeURL.toLowerCase().contains("spring")) {
+                    if (urlsInReadmeFile.size() > limitForSpringRelatedReadmeHavingArticles) {
+                        articleCountByReadme.put(readmeURL, urlsInReadmeFile.size());
+                    }
+
+                } else if (urlsInReadmeFile.size() > limitForReadmeHavingArticles) {
                     articleCountByReadme.put(readmeURL, urlsInReadmeFile.size());
                 }
 
@@ -278,18 +286,18 @@ public class CommonUITest extends BaseUISeleniumTest {
                     if (!page.getWebDriver().getPageSource().toLowerCase().contains(reamdmeParentURL.toLowerCase())) {
                         badURLs.put(readmeURL, link);
                     }
-
                 });
             } catch (Exception e) {
                 logger.debug("Error while processing " + readmeURL + " \nError message" + e.getMessage());
             }
         });
 
-        if (badURLs.size() > 0) {
+        if (badURLs.size() > 0 || articleCountByReadme.size() > 0) {
             recordMetrics(badURLs.size(), TestMetricTypes.FAILED);
-            Utils.logResults(articleCountByReadme, "Article count by READMEs");
+            recordMetrics(articleCountByReadme.size(), TestMetricTypes.FAILED);            
 
-            failTestWithLoggingTotalNoOfFailures("\nwe found issues with following READMEs" + Utils.getErrorMessageForInvalidLinksInReadmeFiles(badURLs));
+            failTestWithLoggingTotalNoOfFailures("\nwe found issues with following READMEs" + Utils.getErrorMessageForInvalidLinksInReadmeFiles(badURLs)
+                    + Utils.compileReadmeCountResults(articleCountByReadme, GlobalConstants.GivenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles));
 
         }
     }

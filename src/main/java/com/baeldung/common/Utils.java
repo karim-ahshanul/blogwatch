@@ -278,7 +278,7 @@ public class Utils {
         return pageURL.substring(0, pageURL.indexOf(":") + 3);
     }
 
-    public static void logResults(Map<String, Integer> restResults, String testName) {
+    public static String compileReadmeCountResults(Map<String, Integer> restResults, String testName) {
         StringBuilder formatResult = new StringBuilder();
 
         restResults.forEach((readmeLink, articleCount) -> {
@@ -295,7 +295,7 @@ public class Utils {
                         + "\n------------------------------------------------------------------------------------\n\n\n";
      // @formatter:on
 
-        logger.info(resutls);
+      return resutls;
 
     }
 
