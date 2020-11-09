@@ -245,11 +245,15 @@ public class Utils {
     public static String getErrorMessageForInvalidLinksInReadmeFiles(Multimap<String, LinkVO> badURLs) {
         StringBuilder testsResult = new StringBuilder();
         if (badURLs.size() > 0) {
-            testsResult.append("\n\n");
-            for (Map.Entry<String, Collection<LinkVO>> entry : badURLs.asMap().entrySet()) {
-                testsResult.append(entry.getKey() + " \n" + entry.getValue().toString() + "\n\n");
-            }
+            testsResult.append("\n\n------------------------------------------------------------------------------------\n");
+            testsResult.append(GlobalConstants.givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch);
+            testsResult.append("\n-------------------------------------------------------------------------------------\n");
+            if (badURLs.size() > 0) {
+                for (Map.Entry<String, Collection<LinkVO>> entry : badURLs.asMap().entrySet()) {
+                    testsResult.append(entry.getKey() + " \n" + entry.getValue().toString() + "\n\n");
+                }
 
+            }
         }
         return testsResult.toString();
     }
@@ -280,22 +284,25 @@ public class Utils {
 
     public static String compileReadmeCountResults(Map<String, Integer> restResults, String testName) {
         StringBuilder formatResult = new StringBuilder();
+        String resutls = null;
+        if (restResults.size() > 0) {
 
-        restResults.forEach((readmeLink, articleCount) -> {
-            formatResult.append(readmeLink + " = " + articleCount);
-            formatResult.append("\n");
-        });
+            restResults.forEach((readmeLink, articleCount) -> {
+                formatResult.append(readmeLink + " = " + articleCount);
+                formatResult.append("\n");
+            });
 
-        // @formatter:off
+            // @formatter:off
+                 
+             resutls = "\n\n------------------------------------------------------------------------------------\n" 
+                            + testName
+                            + "\n-------------------------------------------------------------------------------------\n" 
+                            + formatResult.toString() 
+                            + "\n------------------------------------------------------------------------------------\n\n\n";
+            // @formatter:on
+        }
 
-        String resutls = "\n\n------------------------------------------------------------------------------------\n" 
-                        + testName
-                        + "\n-------------------------------------------------------------------------------------\n" 
-                        + formatResult.toString() 
-                        + "\n------------------------------------------------------------------------------------\n\n\n";
-     // @formatter:on
-
-      return resutls;
+        return resutls;
 
     }
 

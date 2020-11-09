@@ -252,6 +252,7 @@ public class CommonUITest extends BaseUISeleniumTest {
 
     @Test
     @Tag(GlobalConstants.TAG_GITHUB_RELATED)
+    @Tag(GlobalConstants.TAG_SKIP_METRICS)
     public final void givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch() throws IOException {
 
         tutorialsRepoCrawlerController.startCrawlingWithAFreshController(CrawlerForFindingReadmeURLs.class, Runtime.getRuntime().availableProcessors());
@@ -294,8 +295,8 @@ public class CommonUITest extends BaseUISeleniumTest {
 
         if (badURLs.size() > 0 || articleCountByReadme.size() > 0) {
             recordMetrics(badURLs.size(), TestMetricTypes.FAILED);
-            recordMetrics(articleCountByReadme.size(), TestMetricTypes.FAILED);            
-
+            recordMetrics(articleCountByReadme.size(), TestMetricTypes.FAILED);
+            getMetrics(TestMetricTypes.FAILED);
             failTestWithLoggingTotalNoOfFailures("\nwe found issues with following READMEs" + Utils.getErrorMessageForInvalidLinksInReadmeFiles(badURLs)
                     + Utils.compileReadmeCountResults(articleCountByReadme, GlobalConstants.GivenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles));
 
