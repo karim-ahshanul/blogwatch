@@ -202,11 +202,11 @@ public class SitePage extends BlogBaseDriver {
             }
 
             if (tag.equals("description")) {
-                metaDescription = element.getAttribute("content");
+                metaDescription = StringUtils.trim(element.getAttribute("content"));
             } else if (tag.equals("og:description")) {
-                metaOgDescription = element.getAttribute("content");
+                metaOgDescription = StringUtils.trim(element.getAttribute("content"));
             } else if (tag.equals("twitter:description")) {
-                metaTwitterDescription = element.getAttribute("content");
+                metaTwitterDescription = StringUtils.trim(element.getAttribute("content"));
             }
         }
 
@@ -232,7 +232,7 @@ public class SitePage extends BlogBaseDriver {
             logger.info("metaTwitterDescription doesn't match with the metaOgDescription");
             return false;
         }
-
+        
         return true;
     }
 
