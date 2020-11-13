@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -25,8 +24,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
@@ -221,13 +218,14 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Test
     @Tag("screenShotTest")
     public final void screenShotTest() throws IOException {
-        page.setUrl(page.getBaseURL() + GlobalConstants.ARTICLE_FOR_STICKY_SIDEBAR_TEST);
+        page.setUrl(page.getBaseURL() + "/registration-with-spring-mvc-and-spring-security");
+        
+        TestUtils.sleep(15000);
 
         page.loadUrl();
 
-        File srcFile = ((TakesScreenshot) page.getWebDriver()).getScreenshotAs(OutputType.FILE);
-        System.out.println("File:" + srcFile);
-        System.out.println(srcFile.getAbsolutePath());
+        TestUtils.takeScreenShot(page.getWebDriver());
+       
     }
 
     @Test
