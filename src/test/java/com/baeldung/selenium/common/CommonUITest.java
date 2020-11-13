@@ -220,7 +220,7 @@ public class CommonUITest extends BaseUISeleniumTest {
     public final void screenShotTest() throws IOException {
         page.setUrl(page.getBaseURL() + "/registration-with-spring-mvc-and-spring-security");
         
-        TestUtils.sleep(15000);
+        TestUtils.sleep(30000);
 
         page.loadUrl();
 
