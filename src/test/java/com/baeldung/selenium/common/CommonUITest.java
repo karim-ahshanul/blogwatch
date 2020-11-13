@@ -218,7 +218,7 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Test
     @Tag("screenShotTest")
     public final void screenShotTest() throws IOException {
-        page.setUrl(page.getBaseURL() + "/registration-with-spring-mvc-and-spring-security");
+        page.setUrl(page.getBaseURL() + "/jackson");
         
         TestUtils.sleep(30000);
 
