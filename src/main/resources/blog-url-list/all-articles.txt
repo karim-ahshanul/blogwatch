@@ -3612,7 +3612,6 @@
 /java-interface-segregation
 /java-weekly-342
 /java-array-top-elements
-/devops/docker-list-containers
 /java-reactive-systems
 /java-isinstance-isassignablefrom
 /java-comparing-versions
@@ -3742,7 +3741,6 @@
 /java-transactions
 /spring-boot-xml-beans
 /java-file-directory-exists
-/devops/docker-removing-images
 /gradle-skip-tests
 /java-cnn-deeplearning4j
 /java-static-variables-initialization
@@ -3782,7 +3780,6 @@
 /maven-optional-dependency
 /spring-security-disable-logout-redirects
 /java-reporting-tools-comparison
-/devops/docker-engine-api-container-info
 /java-file-options
 /spring-data-jdbc-intro
 /java-set-private-field-value
@@ -3886,9 +3883,7 @@
 /java-weekly-349
 /spring-swagger-hiding-endpoints
 /spring-thymeleaf-hidden-inputs
-/devops/efficient-docker-images
 /spring-dynamicpropertysource
-/devops/listing-kafka-consumers
 /spring-conditionalonproperty
 /java-assert-lists-equality-ignore-order
 /java-arraystoreexception
@@ -3896,7 +3891,6 @@
 /java-quarkus-testing
 /java-illegalargumentexception-or-nullpointerexception
 /java-largest-power-of-2-less-than-number
-/devops/kafka-list-topics
 /linux/run-function-in-script
 /linux/limit-resource-consumption
 /linux/remove-line-endings-from-file
@@ -3930,7 +3924,6 @@
 /java-weekly-350
 /keycloak-user-registration
 /java-dao-vs-repository
-/devops/docker-network-information
 /java-mockito-when-vs-do
 /java-ssh-connection
 /flyway-roll-back
@@ -3992,7 +3985,6 @@
 /java-hashset-removeall-performance
 /java-constants-good-practices
 /hibernate-session-object-states
-/devops/jenkins-parameterized-builds
 /java-spark-dataframe-dataset-rdd
 /jdbc-get-url-from-connection
 /java-free-port
@@ -4026,15 +4018,12 @@
 /java-list-cipher-algorithms
 /spring-boot-characterencodingfilter
 /java-hashmap-get-first-entry
-/devops/dockerfile-run-cmd-entrypoint
 /java-method-signature-return-type
 /java-check-method-is-static
 /json-reduce-data-size
 /java-system-rules-junit
 /spring-boot-no-web-server
 /spring-mvc-send-json-parameters
-/spring-blogs
-/spring-security-expressions-basic/
 /linux/read-source-code-shell-commands
 /linux/send-emails-from-terminal
 /linux/anonymous-named-pipes
