@@ -57,6 +57,7 @@ ignoreMissingReadmeContaining:
   - /decoupling-pattern2/
   - /quarkus-liquibase/
   - /aws-lambda/
+  - /docker/
 ignoreMissingReadmeEndingWith:
   - /first-url/
   - /2ndurl/  
