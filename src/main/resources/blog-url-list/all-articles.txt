@@ -4159,3 +4159,10 @@
 /cs/heap-insertion-complexity
 /cs/maze-generation
 /cs/check-if-linked-list-is-circular
+/java-foreach-counter
+/java-15-new
+/linux/find-exec-command
+/linux/ifs-shell-variable
+/kotlin/arraylist-vs-mutablelistof
+/cs/backtracking-algorithms
+/cs/osi-model
