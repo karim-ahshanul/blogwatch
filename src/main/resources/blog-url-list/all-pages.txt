@@ -43,9 +43,9 @@
 /guides
 /learn-spring
 /full_archive
-/blogs-I-read
+/blogs-i-read
 /http-client-ebook
-/do-JSON-with-Jackson-ebook
+/do-json-with-jackson-ebook
 /oauth-deep-dive
 /api-discoverability-webinar
 /learn-spring-security-for-teams
