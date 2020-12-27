@@ -11,8 +11,6 @@
 /rest-with-spring-course
 /course-upgrade
 /start-here
-/course-upgrade-certification
-/course-upgrade-certification-thank-you
 /rest-api-spring-guide
 /course-upgrade-thank-you
 /spring-microservices-guide
@@ -28,8 +26,6 @@
 /almost-done
 /java-web-weekly
 /affiliates
-/2014-spring-development-report
-/java-conferences-europe
 /follow
 /advertise
 /spring-tutorial
@@ -60,7 +56,6 @@
 /webinar-idiomatic-functional-programming-thank-you
 /webinar-api-discoverability-with-spring-thank-you
 /webinar-idiomatic-functional-programming-in-java
-/java-conferences-august2018
 /rest-with-spring-faq
 /learn-spring-security-faq
 /lss-why
