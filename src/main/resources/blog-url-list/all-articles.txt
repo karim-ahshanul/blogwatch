@@ -1039,7 +1039,6 @@
 /2015-week-review-52
 /whats-new-in-guava-18
 /spring-data-cassandratemplate-cqltemplate
-/rest-with-spring-is-live
 /2015-week-review-51
 /spring-aop-advice-tutorial
 /spring-aop-pointcut-tutorial
