@@ -80,3 +80,11 @@
 /all-courses
 /job-contact
 /baeldung-ebooks
+/learn-spring-security-oauth-faq
+/learn-spring-security-core-faq
+/do-json-with-jackson-ebook
+/ls-why
+/lsso-why
+/lssc-why
+/java-weekly-sponsorship
+
