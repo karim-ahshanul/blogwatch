@@ -9,7 +9,6 @@
 /hibernate-search
 /java-hashset
 /spring-cloud-heroku
-/kotlin-extension-methods
 /mule-esb
 /java-weekly-206
 /spring-security-acl
@@ -97,7 +96,6 @@
 /spring-aop
 /spring-boot-admin
 /hibernate-date-time
-/junit-5-kotlin
 /activiti-spring-security
 /tomcat-utf-8
 /no-hibernate-session-bound-to-thread-exception
@@ -133,7 +131,6 @@
 /streamex
 /java-profilers
 /java-weekly-198
-/java-to-kotlin
 /activiti-process-engine
 /spring-cloud-gateway
 /jira-rest-api
@@ -155,7 +152,6 @@
 /apache-cayenne-orm
 /rxjava-schedulers
 /n1ql-couchbase
-/kotlin-jvm-field-annotation
 /rxjava-tutorial
 /rxjava-jdbc
 /spring-security-granted-authority-vs-role
@@ -186,7 +182,6 @@
 /jcache
 /java-linked-list-cyclicity
 /java-number-of-digits-in-int
-/kotlin-allopen-spring
 /trampoline
 /vertx-rx-java
 /mbassador
@@ -197,7 +192,6 @@
 /java-weekly-193
 /jdeferred
 /vavr-collections
-/spring-mvc-kotlin
 /java-gc-overhead-limit-exceeded
 /java-sneaky-throws
 /java-delete-directory
@@ -231,7 +225,6 @@
 /jboss-undertow
 /spring-data-ldap
 /java-volatile
-/java-8-stream-vs-kotlin
 /java-weekly-190
 /java-broadcast-multicast
 /spring-boot-dependency-management-custom-parent
@@ -239,7 +232,6 @@
 /spring-batch-partitioner
 /java-9-objects-new
 /eclipse-collections
-/kotlin-tail-recursion
 /no-exception
 /spring-enable-annotations
 /junit-5-parameters
@@ -249,11 +241,9 @@
 /rome-rss
 /bootique
 /java-ee-spring-security
-/kotlin-sealed-classes
 /java-stream-immutable-collection
 /java-weekly-188
 /java-hashcode
-/kotlin-delegated-properties
 /apache-commons-chain
 /rxjava-custom-operators
 /hoverfly
@@ -264,13 +254,11 @@
 /mockserver
 /spring-stream-utils
 /kryo
-/kotlin-visibility-modifiers
 /spring-boot-migration
 /spring-http-logging
 /commons-circular-fifo-queue
 /jooby
 /asciidoctor-book
-/kotlin-destructuring-declarations
 /ratpack-spring-boot
 /spring-cloud-bus
 /java-weekly-187
@@ -288,17 +276,14 @@
 /java-atomic-variables
 /cassandra-data-modeling
 /java-weekly-186
-/kotlin-mockito
 /java-hyperloglog
 /junit-5-migration
 /awaitlity-testing
 /java-chronicle-queue
 /spring-vavr
 /java-weekly-185
-/kotlin-lazy-initialization
 /drools-spring-integration
 /junit-5-extensions
-/kotlin-collections-api
 /vavr-either
 /java-minimax-algorithm
 /apache-commons-collection-utils
@@ -311,8 +296,6 @@
 /commons-collections-bidi-map
 /guava-rate-limiter
 /java-serial-version-uid
-/kotlin-list-to-map
-/kotlin-data-classes
 /pact-junit-consumer-driven-contracts
 /java-weekly-184
 /java-type-erasure
@@ -323,7 +306,6 @@
 /apache-commons-beanutils
 /java-bigdecimal-biginteger
 /java-apache-commons-text
-/kotlin-coroutines
 /java-weekly-183
 /apache-commons-ordered-map
 /spring-cloud-gateway-pattern
@@ -368,7 +350,6 @@
 /inject-properties-value-non-spring-class
 /java-merge-streams
 /akka-streams
-/spring-boot-kotlin
 /java-round-decimal-number
 /java-9-reactive-streams
 /structurizr
@@ -400,7 +381,6 @@
 /java-web-weekly-177
 /drools
 /java-synchronized
-/kotlin-equality-operators
 /java-remove-last-character-of-string
 /guava-math
 /java-serialization
@@ -436,7 +416,6 @@
 /java-concurrent-skip-list-map
 /jvm-parameters
 /java-hashset-vs-treeset
-/kotlin-java-interoperability
 /serenity-bdd
 /jax-ws
 /spring-dispatcherservlet
@@ -455,7 +434,6 @@
 /javaee-web-annotations
 /java-web-weekly-173
 /groovy-language
-/kotlin-generics
 /spring-boot-custom-starter
 /mybatis
 /jvm-garbage-collectors
@@ -499,7 +477,6 @@
 /spring-boot-testresttemplate
 /spring-data-gemfire
 /java-web-weekly-170
-/kotlin-null-safety
 /java-8-comparator-comparing
 /spring-5-functional-web
 /java-web-start
@@ -557,7 +534,6 @@
 /java-primitive-conversions
 /hbase
 /jasypt
-/kotlin-when
 /angularjs-crud-with-spring-data-rest
 /mockito-2-java-8
 /guava-reflection
@@ -858,7 +834,6 @@
 /cdi-interceptor-vs-spring-aspectj
 /java-completablefuture
 /hibernate-second-level-cache
-/spring-mvc-handlerinterceptor
 /jsf-expression-language-el-3
 /jackson-vs-gson
 /spring-security-registration-captcha
@@ -1442,10 +1417,8 @@
 /spring-security-5-oauth2-login
 /java-weekly-212
 /jenkins-custom-plugin
-/kotlin-try-with-resources
 /spring-ejb
 /java-log-json-output
-/kotlin-khttp
 /javadoc
 /java-redis-lettuce
 /elasticsearch-geo-spatial
@@ -1480,7 +1453,6 @@
 /java-weekly-217
 /java-shuffle-collection
 /spring-batch-tasklet-chunk
-/kotlin-infix-functions
 /spring-response-status-exception
 /jrecreate
 /async-http-client-websockets
@@ -1497,7 +1469,6 @@
 /java-palindrome
 /activeweb
 /jgroups
-/kotlin-regular-expressions
 /spring-jinq
 /jpa-attribute-converters
 /assertj-conditions
@@ -1526,7 +1497,6 @@
 /mongodb-tagging
 /rx-relay
 /grails-mvc-application
-/kotlin-jpa
 /spring-lazy-annotation
 /hamcrest-bean-matchers
 /flips-spring
@@ -1552,7 +1522,6 @@
 /unirest
 /maven-dependency-scopes
 /junit-assertions
-/kotlin-jvm-synthetic
 /jdbi
 /apache-tika
 /groovy-json
@@ -1564,7 +1533,6 @@
 /jpa-tagging-advanced
 /ec2-java
 /java-weekly-219
-/kotlin-kodein-dependency-injection
 /java-org-json
 /gradle-custom-task
 /rxjava-string
@@ -1585,7 +1553,6 @@
 /java-weekly-224
 /jstl
 /spring-boot-cli
-/kotlin-read-file
 /spring-boot-gradle-plugin
 /java-inheritance-composition
 /sql-logging-spring-boot
@@ -1593,7 +1560,6 @@
 /spring-security-thymeleaf
 /java-classloaders
 /hamcrest-custom-matchers
-/kotlin-objects
 /rxjava-filtering
 /easymock
 /spring-security-5-password-storage
@@ -1642,12 +1608,10 @@
 /maven-surefire-plugin
 /maven-compiler-plugin
 /maven-resources-plugin
-/kotlin-filter-collection
 /java-email
 /thymeleaf-iteration
 /jsf-primefaces
 /find-list-element-java
-/kotlin-mongodb-spring-webflux
 /java-in-2018
 /spring-boot-servlet-initializer
 /java-concurrency-jc-tools
@@ -1669,7 +1633,6 @@
 /java-measure-elapsed-time
 /maven-ant-task
 /spring-cache-custom-keygenerator
-/kotlin-write-file
 /java-string
 /java-io
 /java-concurrency
@@ -1702,7 +1665,6 @@
 /java-10-performance-improvements
 /java-10-local-variable-type-inference
 /spring-boot-favicon
-/kotlin-spek
 /java-xerces-dom-parsing
 /spring-boot-exit-codes
 /javalin-rest-microservices
@@ -1711,7 +1673,6 @@
 /spring-mvc-custom-property-editor
 /java-composite-pattern
 /spring-deferred-result
-/kotlin-lambda-expressions
 /tomcat-bind-exception
 /java-weekly-228
 /web3j
@@ -1733,7 +1694,6 @@
 /spring-data-rest-events
 /gson-exclude-fields-serialization
 /spring-data-annotations
-/kotlin-javascript
 /java-hash-table
 /spring-boot-azure
 /dagger-2
@@ -1752,7 +1712,6 @@
 /kotlin-overview
 /java-main-method
 /java-10-overview
-/kotlin-json-klaxson
 /spring-data-key-value
 /spring-scheduling-annotations
 /spring-mvc-annotations
@@ -1782,7 +1741,6 @@
 /java-util-arrays
 /apache-commons-frequency
 /java-ee-8-security
-/kotlin-enum
 /thymeleaf-list
 /spring-boot
 /spring-boot-sql-import-files
@@ -1797,7 +1755,6 @@
 /java-dao-pattern
 /java-jar-executable-manifest-main-class
 /maven-archetype
-/kotlin-string-template
 /mockito-callbacks
 /java-date-without-time
 /java-antlr
@@ -1832,7 +1789,6 @@
 /rxjava-multiple-subscribers-observable
 /java-stack-heap
 /java-gregorian-calendar
-/kotlin-maven-java-project
 /context-servlet-initialization-param
 /java-base64-image-string
 /java-global-exception-handler
@@ -1842,9 +1798,7 @@
 /spring-response-header
 /resilience4j
 /java-cipher-input-output-stream
-/kotlin-reflection
 /spring-boot-embedded-mongodb
-/kotlin-ktor
 /java-metrics
 /aws-serverless
 /java-size-of-object
@@ -1864,7 +1818,6 @@
 /maven-ignore-test-results
 /curl-rest
 /jmapper
-/kotlin-logging
 /spring-rest-template-multipart-upload
 /java-weekly-238
 /spring-rest-hal
@@ -1881,7 +1834,6 @@
 /java-increment-date
 /java-add-hours-date
 /intellij-auto-import-class
-/kotlin-random-number
 /spring-session-jdbc
 /java-remove-first-element-from-list
 /spring-boot-vue-js
@@ -1900,7 +1852,6 @@
 /spring-batch-start-stop-job
 /java-initialize-hashset
 /java-apache-avro
-/spring-webflux-kotlin
 /spring-webflux-cors
 /spring-boot-vaadin
 /java-mqtt-client
@@ -1916,7 +1867,6 @@
 /java-add-items-array-list
 /java-final-finally-finalize
 /java-hashset-arraylist-contains-performance
-/kotlin-inner-classes
 /maven-junit-parallel-tests
 /maven-project-multiple-src-directories
 /java-file-to-arraylist
@@ -1924,8 +1874,6 @@
 /wildfly-increase-heap
 /java-initialize-hashmap
 /junit-test-abstract-class
-/kotlin-builder-pattern
-/kotlin-constructors
 /java-state-design-pattern
 /java-collections-emptylist-new-list
 /hazelcast-jet
@@ -1945,12 +1893,10 @@
 /java-util-date-sql-date
 /java-null-safe-streams-from-collections
 /java-weekly-246
-/kotlin-fuel
 /java-map-key-from-value
 /opta-planner
 /ratpack-http-client
 /spring-security-whitelist-ip-range
-/kotlin-kovenant
 /lombok-getter-boolean
 /spring-security-oauth2-enable-resource-server-vs-enable-oauth2-sso
 /lombok-builder-inheritance
@@ -1988,7 +1934,6 @@
 /jboss-start-stop
 /spring-data-criteria-queries
 /spring-delegating-filter-proxy
-/kotlin-exposed-persistence
 /java-optional-throw-exception
 /spring-context-events
 /mule-esb-flows
@@ -2028,13 +1973,11 @@
 /java-hashmap-sort
 /java-password-hashing
 /spring-boot-access-h2-database-multiple-apps
-/kotlin-concatenate-strings
 /java-zone-offset
 /java-assert-string-not-empty
 /java-separate-double-into-integer-decimal-parts
 /java-weekly-247
 /spring-security-registered-filters
-/kotlin-json-convert-data-class
 /java-heap-dump-capture
 /hibernate-naming-strategy
 /spring-test-property-source
@@ -2062,7 +2005,6 @@
 /java-nth-root
 /java-merge-maps
 /spring-cloud-data-flow-etl
-/kotlin-return-break-continue
 /java-weekly-249
 /hibernate-proxy-load-method
 /rxjava-completable
@@ -2101,7 +2043,6 @@
 /java-outputstream
 /spring-boot-evict-cache
 /gradle-build-settings-properties
-/kotlin-threads-coroutines
 /java-weekly-252
 /apache-storm
 /spring-date-parameters
@@ -2116,7 +2057,6 @@
 /suanshu
 /hibernate-custom-types
 /spring-session-reactive
-/kotlin-interfaces
 /jib-dockerizing
 /java-weekly-251
 /java-heap-sort
@@ -2128,7 +2068,6 @@
 /modulo-java
 /junit-5-gradle
 /maven-java-home-jdk-jre
-/kotlin-binary-tree
 /spring-data-redis-reactive
 /jersey-test
 /maven-multi-module
@@ -2140,12 +2079,8 @@
 /java-merging-properties
 /lombok-builder-custom-setter
 /java-arrays-guide
-/kotlin-sort
 /microservices-oracle-helidon
-/kotlin-dependency-injection-with-injekt
-/kotlin-data-objects
 /java-jsonarray-get-value-by-key
-/kotlin-initialize-array
 /scala-intro
 /java-csv-file-array
 /gson-json-to-map
@@ -2154,7 +2089,6 @@
 /java-weekly-254
 /java-replace-if-statements
 /graal-java-jit-compiler
-/kotlin-dates
 /ubuntu-install-jdk
 /java-generate-secure-password
 /java-convert-latitude-longitude
@@ -2171,7 +2105,6 @@
 /hibernate-field-naming-spring-boot
 /java-enum-map
 /java-weekly-253
-/kotlin-arrow
 /intellij-basics
 /java-remove-replace-string-part
 /java-lang-math
@@ -2188,7 +2121,6 @@
 /spring-data-rest-customize-http-endpoints
 /spring-request-param
 /kafka-connectors-guide
-/kotlin-random-alphanumeric-string
 /spring-boot-deploy-openshift
 /java-string-to-byte-array
 /jpa-many-to-many
@@ -2216,8 +2148,6 @@
 /spring-security-custom-oauth-requests
 /java-char-encoding
 /hibernate-select-all
-/kotlin-operator-overloading
-/kotlin-contracts
 /spring-boot-mongodb-auto-generated-field
 /java-iterate-list
 /java-weekly-257
@@ -2239,7 +2169,6 @@
 /spring-debugging-reactive-streams
 /hibernate-named-query
 /jpa-one-to-one
-/kotlin-inline-functions
 /java-longest-substring-without-repeated-characters
 /java-compound-operators
 /java-immutable-maps
@@ -2250,7 +2179,6 @@
 /jhipster-uaa-secured-micro-service
 /reactive-streams-step-verifier-test-publisher
 /spring-boot-kubernetes-self-healing-apps
-/kotlin-java-static-final
 /bufferedreader-vs-console-vs-scanner-in-java
 /java-ee-7-batch-processing
 /java-weekly-260
@@ -2262,7 +2190,6 @@
 /intellij-debugging-tricks
 /java-packages
 /java-11-string-api
-/kotlin-inline-classes
 /spinnaker
 /java-calculate-factorial
 /java-palindrome-substrings
@@ -2280,7 +2207,6 @@
 /java-leap-year
 /parameterized-tests-junit-5
 /java-weekly-265
-/kotlin-nested-foreach
 /java-variable-scope
 /java-stream-filter-count
 /java-enum-simple-state-machine
@@ -2315,7 +2241,6 @@
 /spring-boot-interview-questions
 /java-interfaces
 /java-array-permutations
-/kotlin-kovert
 /java-flight-recorder-monitoring
 /java-weekly-263
 /java-string-pangram
@@ -2356,9 +2281,7 @@
 /spring-debugging
 /spring-testing-scheduled-annotation
 /problem-spring-web
-/kotlin-void-type
 /spring-security-zuul-oauth-jwt
-/kotlin-dsl
 /java-char-stack
 /spring-security-role-filter-json
 /groovy-file-read
@@ -2389,7 +2312,6 @@
 /blade
 /spring-boot-configure-data-source-programmatic
 /xmpp-smack-chat-client
-/kotlin-string-comparison
 /maven-eclipse-jdk-configuration
 /native-memory-tracking-in-jvm
 /spring-webflux-static-content
@@ -2403,7 +2325,6 @@
 /spring-data-jpa-modifying-annotation
 /jhipster-new-roles
 /java-adapter-pattern
-/kotlin-ranges
 /sql-injection
 /postman-testing-collections
 /jsonobject-iteration
@@ -2416,11 +2337,9 @@
 /groovy-map-iterating
 /spring-boot-formatting-json-dates
 /leiningen-clojure
-/kotlin-const-var-and-val-keywords
 /ahead-of-time-compilation
 /groovy-strings
 /spring-boot-testcontainers-integration-test
-/kotlin-static-methods
 /java-multi-release-jar
 /java-custom-annotation
 /spring-security-enumeration-attacks
@@ -2433,7 +2352,6 @@
 /hibernate-aggregate-functions
 /spring-boot-soap-web-service
 /jdbc-resultset
-/kotlin-delegation-pattern
 /spring-cloud-openfeign
 /intellij-copyright-license-header
 /java-filter-collection-by-list
@@ -2454,7 +2372,6 @@
 /java-currying
 /spring-properties-file-outside-jar
 /json-multiple-fields-single-java-field
-/kotlin-split-list-into-parts
 /flux-sequences-reactor
 /java-lang-processbuilder-api
 /spring-boot-failed-to-configure-data-source
@@ -2466,9 +2383,7 @@
 /lombok-builder-singular
 /jpa-transaction-required-exception
 /spring-boot-reactor-netty
-/kotlin-annotations
 /spring-boot-json
-/kotlin-scope-functions
 /java-weekly-273
 /java-project-amber
 /java-lang-unsupportedclassversion
@@ -2476,13 +2391,10 @@
 /spring-boot-hibernate
 /tensorflow-java
 /java-web-app-without-web-xml
-/kotlin-custom-range-iterator
 /rxjava-hooks
 /jvm-method-inlining
 /spring-autowired-abstract-class
 /spring-webflux-404
-/kotlin-mockk
-/kotlin-immutable-collections
 /java-map-primitives
 /java-weekly-274
 /spring-data-jpa-deleteby
@@ -2492,7 +2404,6 @@
 /jlink
 /java-localdate-to-xmlgregoriancalendar
 /flowable
-/kotlin-inputstream-to-string
 /jpa-join-types
 /spock-extensions
 /spring-security-kerberos-integration
@@ -2541,7 +2452,6 @@
 /jpa-embedded-embeddable
 /java-weekly-277
 /groovy-maps
-/kotlin-console-io
 /groovy-pattern-matching
 /jackson-yaml
 /spring-exceptions-json
@@ -2557,7 +2467,6 @@
 /maven-profiles
 /java-array-add-element-at-the-end
 /spring-data-jpa-named-entity-graphs
-/jackson-kotlin
 /java-weekly-279
 /webflux-webclient-parameters
 /java-string-contains-substring
@@ -2578,7 +2487,6 @@
 /jpa-basic-annotation
 /java-weekly-280
 /jpa-default-column-values
-/kotlin-jvm-annotations
 /java-localization-messages-formatting
 /spring-security-oauth-cognito
 /junit-src-test-resources-directory-path
@@ -2586,7 +2494,6 @@
 /junit-filtering-tests
 /java12-string-api
 /java-keystore-truststore-difference
-/rxkotlin
 /java-string-initialization
 /java-weekly-281
 /java-stream-to-array
@@ -2614,7 +2521,6 @@
 /java-weekly-283
 /ddd-double-dispatch
 /crawler4j
-/kotlin-quasar
 /springjunit4classrunner-parameterized
 /java-collectors-tomap
 /docker-compose
@@ -2676,7 +2582,6 @@
 /spring-cloud-stream-kafka-avro-confluent
 /java-easy-random
 /jackson-compare-two-json-objects
-/kotlin-convert-to-java
 /eclipse-copyright-header
 /java-weekly-289
 /spring-data-disable-auto-config
@@ -2695,7 +2600,6 @@
 /java-weekly-288
 /spring-thymeleaf-template-directory
 /java-shell-sort
-/java-ee-kotlin-app
 /intellij-idea-java-builders
 /spring-thymeleaf-request-parameters
 /java-string-convert-case
@@ -2713,14 +2617,11 @@
 /java-current-directory
 /easymock-mocking-void-method
 /mongodb-morphia
-/kotlin-quasar-advanced
 /junit-testwatcher
 /java-proxy-pattern
 /r2dbc
 /java-weekly-290
 /java-lossy-conversion
-/mockmvc-kotlin-dsl
-/spring-boot-kotlin-coroutines
 /javax-bigdecimal-validation
 /java-weekly-293
 /java-builder-pattern-freebuilder
@@ -2875,7 +2776,6 @@
 /hibernate-wherejointable
 /java-io-file
 /java-security-manager
-/kotlin-finding-element-in-list
 /linux/wget-parallel-downloading
 /spring-dirtiescontext
 /spring-enum-request-param
@@ -3048,7 +2948,6 @@
 /java-greedy-algorithms
 /java-cucumber-hooks
 /apache-poi-read-cell-value-formula
-/kotlin-ternary-operator
 /java-do-while-loop
 /java-while-loop
 /java-for-loop
@@ -3061,7 +2960,6 @@
 /java-finally-keyword
 /java-weekly-314
 /java-arrays-sort-vs-parallelsort
-/java-kotlin-var-difference
 /java-branch-prediction
 /java-lang-reflect-invocationtargetexception
 /java-13-new-features
@@ -3080,7 +2978,6 @@
 /redis-list-available-keys
 /java-jsoniter
 /java-weekly-317
-/kotlin-intro
 /gradle-6-features
 /java-open-liberty
 /openshift-health-checks
@@ -3224,7 +3121,6 @@
 /linux/date-command
 /spring-beanfactory-vs-applicationcontext
 /java-get-day-of-week
-/spring-boot-kotlin-reactive-microservice
 /spring-security-oauth-jwt-legacy
 /java-compare-long-values
 /linux/transfer-files-ssh
@@ -3253,7 +3149,6 @@
 /java-weekly-328
 /guava-mapmaker
 /spring-batch-conditional-flow
-/kotlin-collection-transformations
 /guava-throwables
 /java-14-nullpointerexception
 /java-quasar-coroutines
