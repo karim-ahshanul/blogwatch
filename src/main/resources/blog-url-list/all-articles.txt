@@ -4140,7 +4140,6 @@
 /scala/path-dependent-types
 /cs/minimum-cut-graphs
 /cs/process-lifecycle
-/cs/testtest
 /cs/list-polygon-points-clockwise
 /cs/epoch-neural-networks
 /cs/distributed-systems-guide

@@ -29,12 +29,11 @@
 /follow
 /advertise
 /spring-tutorial
-/about/
+/about
 /thank-you-jw
 /baeldung-company-info
 /contact
 /thank-you
-/thank-you-javarevisited
 /java-spring-training
 /rest-course-thank-you
 /best-of
@@ -81,5 +80,3 @@
 /ls-why
 /lsso-why
 /lssc-why
-/java-weekly-sponsorship
-
