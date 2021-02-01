@@ -80,3 +80,5 @@
 /ls-why
 /lsso-why
 /lssc-why
+/all-bulk-courses
+/coaching-call/
