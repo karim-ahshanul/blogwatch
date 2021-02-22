@@ -2920,7 +2920,6 @@
 /java-illegal-start-of-expression
 /job/java-engineer-with-spring-security-experience-remote-part-time/
 /jenkins-run-gatling-tests
-/kotlin-supervised-learning
 /cucumber-data-tables
 /akka-play-websockets
 /java-common-concurrency-pitfalls
@@ -4077,7 +4076,6 @@
 /java-filename-without-extension
 /java-hibernate-multiplebagfetchexception
 /spring-boot-spring-batch
-/java-kotlin-lightweight-concurrency
 /java-weekly-362
 /spring-boot-postgresql-docker
 /java-servlets-containers-intro
@@ -4172,7 +4170,6 @@
 /linux/sed-with-string
 /kotlin/getters-setters
 /kotlin/vs-java
-/kotlin/light-weight-concurrency-in-java-and-kotlin
 /kotlin/intro
 /kotlin/when
 /kotlin/null-safety
@@ -4312,8 +4309,6 @@
 /java-map-entry
 /java-weekly-370
 /jvm-constant-pool
-/kotlin-lazy-initialization
-/kotlin-random-number
 /linux/run-script-on-startup
 /linux/sed-substitution-variables
 /linux/mapping-hostnames-ports
