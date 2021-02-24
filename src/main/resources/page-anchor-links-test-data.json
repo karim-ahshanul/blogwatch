@@ -34,11 +34,7 @@
       {
         "anchorText": "HTTP Client-Side",
         "anchorLink": "/category/http"
-      },
-      {
-        "anchorText": "Kotlin",
-        "anchorLink": "/category/kotlin"
-      },
+      },      
       {
         "anchorText": "Java “Back to Basics” Tutorial",
         "anchorLink": "/java-tutorial"
