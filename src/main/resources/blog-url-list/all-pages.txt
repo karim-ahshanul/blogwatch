@@ -35,7 +35,6 @@
 /contact
 /thank-you
 /java-spring-training
-/rest-course-thank-you
 /best-of
 /terms-of-service
 /privacy-policy
