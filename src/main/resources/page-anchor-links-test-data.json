@@ -162,7 +162,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/rest-with-spring-faq"
       },
       {
         "anchorText": "XML AND JSON SUPPORT IN SPRING API",
@@ -202,7 +202,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/rest-with-spring-faq"
       },
       {
         "anchorText": "XML AND JSON SUPPORT IN SPRING API",
@@ -242,7 +242,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/learn-spring-faq"
       },
       {
         "anchorText": "THE SPRING TESTING FRAMEWORK",
@@ -274,7 +274,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/learn-spring-faq"
       },
       {
         "anchorText": "XML AND JSON SUPPORT IN SPRING API",
@@ -314,7 +314,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/learn-spring-security-faq"
       },
       {
         "anchorText": "URL AUTHORIZATION",
@@ -354,7 +354,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/learn-spring-security-faq"
       },
       {
         "anchorText": "XML AND JSON SUPPORT IN SPRING API",
@@ -390,7 +390,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/learn-spring-security-oauth-faq"
       },
       {
         "anchorText": "XML AND JSON SUPPORT IN SPRING API",
@@ -426,7 +426,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/learn-spring-security-oauth-faq"
       },
       {
         "anchorText": "XML AND JSON SUPPORT IN SPRING API",
@@ -462,7 +462,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/learn-spring-security-core-faq"
       },
       {
         "anchorText": "XML AND JSON SUPPORT IN SPRING API",
@@ -498,7 +498,7 @@
       },
       {
         "anchorText": "FAQ",
-        "anchorLink": "#faq"
+        "anchorLink": "/learn-spring-security-core-faq"
       },
       {
         "anchorText": "XML AND JSON SUPPORT IN SPRING API",
