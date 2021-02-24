@@ -202,19 +202,23 @@
       },
       {
         "anchorText": "XML AND JSON SUPPORT IN SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=6yF0GpjAhwk"
+        "anchorLink": "https://courses.baeldung.com/courses/rest-with-spring-the-master-class/lectures/5958210"
+      },
+      {
+        "anchorText": "THE LIFECYCLE OF A REQUEST",
+        "anchorLink": "https://courses.baeldung.com/courses/rest-with-spring-the-master-class/lectures/5958212"
       },
       {
         "anchorText": "TOKENS, OAUTH2 AND JWT IN A SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=b_QdSemDKoU"
+        "anchorLink": "https://courses.baeldung.com/courses/rest-with-spring-the-master-class/lectures/5958077"
       },
       {
         "anchorText": "DOCUMENT THE API WITH SWAGGER",
-        "anchorLink": "https://www.youtube.com/watch?v=KX0o1UFyclw&list=PLjXUjSTUHs0QaXI9xrioHpvsJ9Hs_r0_0"
+        "anchorLink": "https://courses.baeldung.com/courses/rest-with-spring-the-master-class/lectures/541655"
       },
       {
         "anchorText": "FUNDAMENTALS OF MONITORING WITH SPRING BOOT",
-        "anchorLink": "https://www.youtube.com/watch?v=71UFLAVXgq0"
+        "anchorLink": "https://courses.baeldung.com/courses/rest-with-spring-the-master-class/lectures/541667"
       }
     ]
   },
@@ -273,20 +277,16 @@
         "anchorLink": "/learn-spring-faq"
       },
       {
-        "anchorText": "XML AND JSON SUPPORT IN SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=6yF0GpjAhwk"
+        "anchorText": "THE SPRING TESTING FRAMEWORK",
+        "anchorLink": "https://courses.baeldung.com/courses/ls-master-class/lectures/9894060"
       },
       {
-        "anchorText": "TOKENS, OAUTH2 AND JWT IN A SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=b_QdSemDKoU"
+        "anchorText": "ACTUATORS IN BOOT 2",
+        "anchorLink": "https://courses.baeldung.com/courses/ls-master-class/lectures/10289258"
       },
       {
-        "anchorText": "DOCUMENT THE API WITH SWAGGER",
-        "anchorLink": "https://www.youtube.com/watch?v=KX0o1UFyclw&list=PLjXUjSTUHs0QaXI9xrioHpvsJ9Hs_r0_0"
-      },
-      {
-        "anchorText": "FUNDAMENTALS OF MONITORING WITH SPRING BOOT",
-        "anchorLink": "https://www.youtube.com/watch?v=71UFLAVXgq0"
+        "anchorText": "EXPANDING OUR FIRST CONTROLLER",
+        "anchorLink": "https://courses.baeldung.com/courses/ls-master-class/lectures/10132704"
       }
     ]
   },
@@ -353,20 +353,24 @@
         "anchorLink": "/learn-spring-security-faq"
       },
       {
-        "anchorText": "XML AND JSON SUPPORT IN SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=6yF0GpjAhwk"
+        "anchorText": "URL AUTHORIZATION",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985891"
       },
       {
-        "anchorText": "TOKENS, OAUTH2 AND JWT IN A SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=b_QdSemDKoU"
+        "anchorText": "A SIMPLE REMEMBER ME FLOW",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985951"
       },
       {
-        "anchorText": "DOCUMENT THE API WITH SWAGGER",
-        "anchorLink": "https://www.youtube.com/watch?v=KX0o1UFyclw&list=PLjXUjSTUHs0QaXI9xrioHpvsJ9Hs_r0_0"
+        "anchorText": "REMEMBER ME WITH PERSISTENCE",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985953"
       },
       {
-        "anchorText": "FUNDAMENTALS OF MONITORING WITH SPRING BOOT",
-        "anchorLink": "https://www.youtube.com/watch?v=71UFLAVXgq0"
+        "anchorText": "A CUSTOM AccessDecisionVoter",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985906"
+      },
+      {
+        "anchorText": "A SIMPLE TWO-FACTOR IMPLEMENTATION WITH A SOFT TOKEN",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985946"
       }
     ]
   },
@@ -425,20 +429,24 @@
         "anchorLink": "/learn-spring-security-oauth-faq"
       },
       {
-        "anchorText": "XML AND JSON SUPPORT IN SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=6yF0GpjAhwk"
+        "anchorText": "URL AUTHORIZATION",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985891"
       },
       {
-        "anchorText": "TOKENS, OAUTH2 AND JWT IN A SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=b_QdSemDKoU"
+        "anchorText": "A SIMPLE REMEMBER ME FLOW",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985951"
       },
       {
-        "anchorText": "DOCUMENT THE API WITH SWAGGER",
-        "anchorLink": "https://www.youtube.com/watch?v=KX0o1UFyclw&list=PLjXUjSTUHs0QaXI9xrioHpvsJ9Hs_r0_0"
+        "anchorText": "REMEMBER ME WITH PERSISTENCE",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985953"
       },
       {
-        "anchorText": "FUNDAMENTALS OF MONITORING WITH SPRING BOOT",
-        "anchorLink": "https://www.youtube.com/watch?v=71UFLAVXgq0"
+        "anchorText": "A CUSTOM AccessDecisionVoter",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985906"
+      },
+      {
+        "anchorText": "A SIMPLE TWO-FACTOR IMPLEMENTATION WITH A SOFT TOKEN",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985946"
       }
     ]
   },
@@ -497,20 +505,24 @@
         "anchorLink": "/learn-spring-security-core-faq"
       },
       {
-        "anchorText": "XML AND JSON SUPPORT IN SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=6yF0GpjAhwk"
+        "anchorText": "URL AUTHORIZATION",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985891"
       },
       {
-        "anchorText": "TOKENS, OAUTH2 AND JWT IN A SPRING API",
-        "anchorLink": "https://www.youtube.com/watch?v=b_QdSemDKoU"
+        "anchorText": "A SIMPLE REMEMBER ME FLOW",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985951"
       },
       {
-        "anchorText": "DOCUMENT THE API WITH SWAGGER",
-        "anchorLink": "https://www.youtube.com/watch?v=KX0o1UFyclw&list=PLjXUjSTUHs0QaXI9xrioHpvsJ9Hs_r0_0"
+        "anchorText": "REMEMBER ME WITH PERSISTENCE",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985953"
       },
       {
-        "anchorText": "FUNDAMENTALS OF MONITORING WITH SPRING BOOT",
-        "anchorLink": "https://www.youtube.com/watch?v=71UFLAVXgq0"
+        "anchorText": "A CUSTOM AccessDecisionVoter",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985906"
+      },
+      {
+        "anchorText": "A SIMPLE TWO-FACTOR IMPLEMENTATION WITH A SOFT TOKEN",
+        "anchorLink": "https://courses.baeldung.com/courses/learn-spring-security-core-the-master-class/lectures/11985946"
       }
     ]
   }
