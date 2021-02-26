@@ -52,7 +52,20 @@ public interface ITitleAnalyzerStrategy {
                         if (!expetedToken.equals(token)) {
                             return false;
                         }
-                    } else {
+                    }
+                    else if (token.contains("#")) {
+                        String expetedToken = WordUtils.capitalize(Arrays.asList(token.split("#")).stream().map(WordUtils::uncapitalize).collect(Collectors.joining("#")));
+                        if (!expetedToken.equals(token)) {
+                            return false;
+                        }
+                    }
+                    else if (token.contains("::")) {
+                        String expetedToken = WordUtils.capitalize(Arrays.asList(token.split("::")).stream().map(WordUtils::uncapitalize).collect(Collectors.joining("::")));
+                        if (!expetedToken.equals(token)) {
+                            return false;
+                        }
+                    }                    
+                    else {
                         if (!WordUtils.uncapitalize(token, '$').equals(token)) {
                             return false;
                         }
