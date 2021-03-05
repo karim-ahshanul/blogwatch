@@ -189,7 +189,7 @@ public class SitePage extends BlogBaseDriver {
 
     public boolean metaDescriptionTagsAvailable() {
 
-        List<WebElement> metaElements = this.getWebDriver().findElements(By.xpath("//meta[@name = 'description' or @property = 'og:description' or @name = 'twitter:description']"));
+        List<WebElement> metaElements = this.getWebDriver().findElements(By.xpath("//meta[@name = 'description' or @property = 'og:description' or @property = 'twitter:description']"));
 
         String metaDescription = null;
         String metaOgDescription = null;
