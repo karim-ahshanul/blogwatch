@@ -636,7 +636,11 @@ public class SitePage extends BlogBaseDriver {
     }
 
 	public String getDisplayNameOfLoggedInUser() {
+		try {
 		return this.getWebDriver().findElement(By.xpath("//span[contains(@class, 'display-name')]")).getText();
+		} catch (NoSuchElementException e) {
+            return "Couldn't Login to Draft Site";
+        }
 	}
 
 }
