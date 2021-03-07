@@ -217,5 +217,10 @@ public class TestUtils {
         
         return true;
     }
+    
+    public static Stream<Arguments> gaCodeTestDataProviderForDraftSite() {
+        return YAMLProperties.multiSiteTargetUrls.get(GlobalConstants.givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode).stream().map(entry -> Arguments.of(entry));
+    }
+    
 
 }

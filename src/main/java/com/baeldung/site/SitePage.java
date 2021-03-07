@@ -635,4 +635,8 @@ public class SitePage extends BlogBaseDriver {
 
     }
 
+	public String getDisplayNameOfLoggedInUser() {
+		return this.getWebDriver().findElement(By.xpath("//span[contains(@class, 'display-name')]")).getText();
+	}
+
 }

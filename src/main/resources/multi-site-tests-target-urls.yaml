@@ -15,3 +15,6 @@ givenAGoogleAnalyticsEnabledPage_whenAnalysingThePageSource_thenItHasTrackingCod
   - /linux/fzf-command
   - /kotlin/spring-security-dsl
   - /linux/xz-compression 
+  
+givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode:
+  - https://drafts.baeldung.com/spring-email-ga-test

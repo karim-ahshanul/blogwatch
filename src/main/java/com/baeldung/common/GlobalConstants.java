@@ -242,5 +242,5 @@ public class GlobalConstants {
 
     public static final String givenAGoogleAnalyticsEnabledPage_whenAnalysingThePageSource_thenItHasTrackingCode = "givenAGoogleAnalyticsEnabledPage_whenAnalysingThePageSource_thenItHasTrackingCode";
     public static final Object givenAPage_whenThePageLoads_thenNoSevereMessagesInTheBrowserConsoleLog = "givenAPage_whenThePageLoads_thenNoSevereMessagesInTheBrowserConsoleLog";
-
+    public static final String givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode = "givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode";
 }
