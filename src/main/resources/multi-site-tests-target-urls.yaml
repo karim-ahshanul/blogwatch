@@ -18,3 +18,7 @@ givenAGoogleAnalyticsEnabledPage_whenAnalysingThePageSource_thenItHasTrackingCod
   
 givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode:
   - https://drafts.baeldung.com/spring-email-ga-test
+  - https://drafts.baeldung.com/linux/spring-email-ga-test
+  - https://drafts.baeldung.com/kotlin/spring-email-ga-test
+  - https://drafts.baeldung.com/scala/spring-email-ga-test
+  - https://drafts.baeldung.com/cs/spring-email-ga-test
