@@ -614,11 +614,10 @@ public class SitePage extends BlogBaseDriver {
             elements = this.getWebDriver().findElements(By.xpath("//a[contains(@href,'" + link.getAnchorLink() + "')]"));
         }
         for (WebElement element : elements) {
-            if (link.getAnchorText().equalsIgnoreCase(element.getText()))
+            if (link.getAnchorText().equalsIgnoreCase(element.getText()) || link.getAnchorText().equalsIgnoreCase(element.getAttribute("innerHTML")))
                 return true;
         }
         return false;
-
     }
 
     public boolean anchorAndAnchorLinkAvailable(PurchaseLink link) {
