@@ -99,7 +99,7 @@ public class CommonUITest extends BaseUISeleniumTest {
         logger.info("Configured retires: {}", retriesFor200OKTest);
         logger.info("configure timeout for REST Assured: {}", timeOutFor200OKTest);
         logger.info("Input files:{}", pageStausCheckUrlFileNames);
-        logger.info("Mode", modeFor200OKTest);
+        logger.info("Mode: {}", modeFor200OKTest);
 
         Multimap<String, Integer> badURLs = ArrayListMultimap.create();
         RestAssuredConfig restAssuredConfig = TestUtils.getRestAssuredCustomConfig(timeOutFor200OKTest);
