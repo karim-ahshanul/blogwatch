@@ -566,7 +566,12 @@ public class Utils {
     }
 
     public static Retryer<Boolean> getGuavaRetryer(int retries) {
-        return RetryerBuilder.<Boolean> newBuilder().retryIfResult(Predicates.<Boolean> isNull()).retryIfExceptionOfType(IOException.class).retryIfRuntimeException().withStopStrategy(StopStrategies.stopAfterAttempt(retries)).build();
+        return RetryerBuilder.<Boolean>newBuilder()
+                .retryIfResult(Predicates.<Boolean>isNull())
+                .retryIfExceptionOfType(IOException.class)
+                .retryIfRuntimeException()
+                .withStopStrategy(StopStrategies.stopAfterAttempt(retries))
+                .build();
     }
 
     public static StringBuilder formatRetries(String key, Collection<Integer> httpStatuses) {

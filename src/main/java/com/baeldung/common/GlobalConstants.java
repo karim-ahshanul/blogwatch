@@ -204,10 +204,14 @@ public class GlobalConstants {
 
     public static enum TestMetricTypes {
         FAILED;
-    }
+    }    
 
     // contact us form
     public static final String CONTACT_US_FORM_URL = "/contact";
+    
+    // 200OK test modes
+    public static final String MODE_STRICT="STRICT";
+    public static final String MODE_RELAXED="RELAXED";
 
     // test names for
     public static final String givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv = "givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv";

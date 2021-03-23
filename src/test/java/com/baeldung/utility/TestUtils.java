@@ -69,13 +69,17 @@ public class TestUtils {
      // @formatter:on
     }
 
-    public static Boolean inspectURLHttpStatusCode(RestAssuredConfig restAssuredConfig, String fullURL, Multimap<String, Integer> badURLs) {
+    public static Boolean inspectURLHttpStatusCode(RestAssuredConfig restAssuredConfig, String fullURL, Multimap<String, Integer> badURLs, String modeFor200OKTest) {
         try {
             int httpStatusCode = RestAssured.given().config(restAssuredConfig).get(fullURL).getStatusCode();
 
             if (HttpStatus.SC_OK == httpStatusCode) {
                 if (!badURLs.get(fullURL).isEmpty()) {
-                    badURLs.put(fullURL, httpStatusCode);
+                    if (GlobalConstants.MODE_RELAXED.equalsIgnoreCase(modeFor200OKTest)) {
+                        badURLs.removeAll(fullURL);
+                    } else {
+                        badURLs.put(fullURL, httpStatusCode);
+                    }
                 }
                 return true;
             } else if (HttpStatus.SC_FORBIDDEN == httpStatusCode) {
@@ -92,16 +96,16 @@ public class TestUtils {
             logger.error("Got error while retrieving HTTP status code for:" + fullURL);
             logger.error("Error Message: " + e.getMessage());
             badURLs.put(fullURL, -1);
-            /*if (logger.isDebugEnabled()) {
-                e.printStackTrace();
-            }*/
+            /*
+             * if (logger.isDebugEnabled()) { e.printStackTrace(); }
+             */
             return null;
         }
     }
 
     public static Boolean inspectURLHttpStatusCode(RestAssuredConfig restAssuredConfig, String fullURL) {
         try {
-            int httpStatusCode = RestAssured.given().header("cache-control","no-cache").config(restAssuredConfig).head(fullURL).getStatusCode();
+            int httpStatusCode = RestAssured.given().header("cache-control", "no-cache").config(restAssuredConfig).head(fullURL).getStatusCode();
 
             if (HttpStatus.SC_OK == httpStatusCode) {
                 return true;
@@ -137,9 +141,9 @@ public class TestUtils {
 
     }
 
-    public static void hitURLUsingGuavaRetryer(RestAssuredConfig restAssuredConfig, String fullURL, Multimap<String, Integer> badURLs, Retryer<Boolean> retryer) {
+    public static void hitURLUsingGuavaRetryer(RestAssuredConfig restAssuredConfig, String fullURL, Multimap<String, Integer> badURLs, Retryer<Boolean> retryer, String modeFor200OKTest) {
         try {
-            retryer.call(() -> TestUtils.inspectURLHttpStatusCode(restAssuredConfig, fullURL, badURLs));
+            retryer.call(() -> TestUtils.inspectURLHttpStatusCode(restAssuredConfig, fullURL, badURLs, modeFor200OKTest));
         } catch (RetryException e) {
             logger.error("Finished {} retries for {}", e.getNumberOfFailedAttempts(), fullURL);
         } catch (ExecutionException e) {
@@ -214,13 +218,12 @@ public class TestUtils {
         } catch (Exception e) {
             logger.error("Error while verifying redirect. Error Message: {}", e.getMessage());
         }
-        
+
         return true;
     }
-    
+
     public static Stream<Arguments> gaCodeTestDataProviderForDraftSite() {
         return YAMLProperties.multiSiteTargetUrls.get(GlobalConstants.givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode).stream().map(entry -> Arguments.of(entry));
     }
-    
 
 }

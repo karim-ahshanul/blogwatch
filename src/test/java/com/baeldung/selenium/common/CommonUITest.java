@@ -67,6 +67,9 @@ public class CommonUITest extends BaseUISeleniumTest {
 
     @Value("${retries.for.200OK-test}")
     private int retriesFor200OKTest;
+    
+    @Value("${mode.for.200OK-test}")
+    private String modeFor200OKTest;
 
     @Value("${rss.feed.compare.days}")
     private int rssFeedShouldNotbeOlderThanDays;
@@ -107,7 +110,7 @@ public class CommonUITest extends BaseUISeleniumTest {
                 String fullURL = page.getBaseURL() + URL;
                 logger.info("Verifying 200OK on: {}", fullURL);
 
-                TestUtils.hitURLUsingGuavaRetryer(restAssuredConfig, fullURL, badURLs, retryer);
+                TestUtils.hitURLUsingGuavaRetryer(restAssuredConfig, fullURL, badURLs, retryer, modeFor200OKTest);
 
             });
         }
