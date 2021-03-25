@@ -434,7 +434,7 @@ public class CommonUITest extends BaseUISeleniumTest {
         page.getWebDriver().findElement(By.xpath("//input[contains(@value, 'Send your message')]")).click();
 
         // verify
-        WebDriverWait wait = new WebDriverWait(page.getWebDriver(), 30);
+        WebDriverWait wait = new WebDriverWait(page.getWebDriver(), 60);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Thank you for your message. It has been sent') or contains(text(), 'The form was sent successfully.')]")));
         logger.info("message sent successfully");
 
