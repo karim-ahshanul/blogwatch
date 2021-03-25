@@ -598,7 +598,7 @@ public class SitePage extends BlogBaseDriver {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("cn-accept-cookie"))).click();
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("cn-accept-cookie")));
         } catch (Exception e) {
-            logger.error("Error while acceptCookie (may be the cookie message is not available on the page)");
+            logger.warn("Error while acceptCookie (may be the cookie message is not available on the page)");
         }
 
     }
