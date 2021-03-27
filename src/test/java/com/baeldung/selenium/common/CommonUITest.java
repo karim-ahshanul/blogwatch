@@ -426,16 +426,17 @@ public class CommonUITest extends BaseUISeleniumTest {
 
         page.acceptCookie();
 
-        // fill and submit form
-        page.getWebDriver().findElement(By.name("your-name")).sendKeys("Selenium Test on " + LocalDate.now());
-        page.getWebDriver().findElement(By.name("your-email")).sendKeys("support@baeldung.com");
-        page.getWebDriver().findElement(By.name("your-message")).sendKeys("Test message from Selenium");
+        // fill and submit form       
+        page.getWebDriver().findElement(By.xpath("//input[@name='form_fields[name]' or @name='your-name']")).sendKeys("Selenium Test on " + LocalDate.now());
+        page.getWebDriver().findElement(By.xpath("//input[@name='form_fields[email]' or @name='your-email']")).sendKeys("support@baeldung.com");
+        
+        page.getWebDriver().findElement(By.xpath("//textarea[@name='form_fields[message]' or @name='your-message']")).sendKeys("Test message from Selenium");        
         // page.acceptCookie();
-        page.getWebDriver().findElement(By.xpath("//input[contains(@value, 'Send your message')]")).click();
+        page.getWebDriver().findElement(By.xpath("//input[contains(@value, 'Send your message')] | //button//*[contains(text(), 'Send')]")).click();
 
         // verify
         WebDriverWait wait = new WebDriverWait(page.getWebDriver(), 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Thank you for your message. It has been sent')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Thank you for your message. It has been sent') or contains(text(), 'The form was sent successfully.')]")));
         logger.info("message sent successfully");
 
     }
