@@ -653,13 +653,12 @@ public class SitePage extends BlogBaseDriver {
         List<WebElement> elements = this.getWebDriver()
                 .findElements(By.xpath("//a[contains(@href,'docs.oracle.com/javase/')]"));
 
-        Pattern p = Pattern.compile(".*docs.oracle.com\\/javase\\/(.*)\\/docs/.*");        
-        
+        Pattern p = Pattern.compile(".*docs.oracle.com\\/javase\\/(.*)\\/docs/.*");
         return elements.stream()
                 .filter(element -> {
                     return Optional.of(p.matcher(element.getAttribute("href")))
                             .map(matcher -> matcher.find() ? getJavaVersion(matcher.group(1))
-                                    .compareTo(minJavDocsAcceptedVersion) >= 0 : false)
+                                    .compareTo(minJavDocsAcceptedVersion) < 0 : false)
                             .orElse(false);
                 })
                 .collect(toList());
