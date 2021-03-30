@@ -36,6 +36,9 @@ public class ArticlesUITest extends BaseUISeleniumTest {
     @Value("${ignore.urls.newer.than.weeks}")
     private int ignoreUrlsNewerThanWeeks;
 
+    @Value("${min.java.docs.accepted.version:9}")
+    private int minJavDocsAcceptedVersion;
+
     private ListIterator<String> allArticlesList;
     Multimap<String, String> badURLs = ArrayListMultimap.create();
     Multimap<Integer, String> resultsForGitHubHttpStatusTest = ArrayListMultimap.create();
@@ -348,7 +351,8 @@ public class ArticlesUITest extends BaseUISeleniumTest {
             }
 
             if (page.hasUnnecessaryLabels()) {
-                // logger.info("URL found with Spring and other more specific label:" + page.getUrlWithNewLineFeed());
+                // logger.info("URL found with Spring and other more specific label:" +
+                // page.getUrlWithNewLineFeed());
                 recordMetrics(1, TestMetricTypes.FAILED);
                 badURLs.put(GlobalConstants.givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory, page.getUrlWithNewLineFeed());
             }
@@ -405,6 +409,31 @@ public class ArticlesUITest extends BaseUISeleniumTest {
     }
 
     @Test
+    public final void givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs() {
+
+        log(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs);
+
+        do {
+
+            if (shouldSkipUrl(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs)) {
+                continue;
+            }
+
+            List<WebElement> webElementsLinkingToOldJavaDocs = page.findElementsLinkingToOldJavaDocs(minJavDocsAcceptedVersion);
+
+            if (webElementsLinkingToOldJavaDocs.size() > 0) {
+                recordMetrics(1, TestMetricTypes.FAILED);
+                badURLs.put(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs,Utils.formatResultsForOldJavaDocs(badURLs,webElementsLinkingToOldJavaDocs, page.getUrl() ));
+
+            }
+        } while (loadNextURL());
+
+        if (!allTestsFlag && badURLs.size() > 0) {
+            triggerTestFailure(badURLs);
+        }
+    }
+
+    @Test
     @Tag(GlobalConstants.TAG_EDITORIAL)
     public final void givenAllEditorialTests_whenHittingAllArticles_thenOK() throws IOException {
         allTestsFlag = true;
@@ -416,6 +445,7 @@ public class ArticlesUITest extends BaseUISeleniumTest {
                 givenAllArticles_whenAnArticleLoads_thenTheArticleDoesNotCotainWrongQuotations();
                 givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization();
                 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory();
+                givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs();
             } catch (Exception e) {
                 logger.error("Error occurened while processing:" + page.getUrl() + " error message:" + StringUtils.substring(e.getMessage(), 0, 100));
             }

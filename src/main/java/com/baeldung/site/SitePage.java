@@ -1,5 +1,7 @@
 package com.baeldung.site;
 
+import static java.util.stream.Collectors.toList;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -7,6 +9,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -232,15 +236,16 @@ public class SitePage extends BlogBaseDriver {
             logger.info("metaTwitterDescription doesn't match with the metaOgDescription");
             return false;
         }
-        
+
         return true;
     }
 
     public List<String> gitHubModulesLinkedOnTheArticle() {
         List<String> gitHubModuleLinks = new ArrayList<String>();
         try {
-            List<WebElement> webElements = this.getWebDriver().findElements(By.xpath("//section//a[(contains(translate(@href, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + GlobalConstants.GITHUB_REPO_BAELDUNG
-                    + "') or contains(translate(@href, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + GlobalConstants.GITHUB_REPO_EUGENP + "') and not(ancestor::div[contains(@class,'syntaxhighlighter')] ))]"));
+            List<WebElement> webElements = this.getWebDriver()
+                    .findElements(By.xpath("//section//a[(contains(translate(@href, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + GlobalConstants.GITHUB_REPO_BAELDUNG
+                            + "') or contains(translate(@href, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + GlobalConstants.GITHUB_REPO_EUGENP + "') and not(ancestor::div[contains(@class,'syntaxhighlighter')] ))]"));
             if (CollectionUtils.isEmpty(webElements)) {
                 return gitHubModuleLinks;
             }
@@ -605,7 +610,9 @@ public class SitePage extends BlogBaseDriver {
 
     public boolean anchorAndAnchorLinkAvailable(String tag, FooterLinksDataVO.link link) {
 
-        // WebElement element = this.getWebDriver().findElement(By.xpath("//a[contains(@href,'" + link.getAnchorLink() + "') and (text() = '" + link.getAnchorText() + "')]"));
+        // WebElement element =
+        // this.getWebDriver().findElement(By.xpath("//a[contains(@href,'" +
+        // link.getAnchorLink() + "') and (text() = '" + link.getAnchorText() + "')]"));
         List<WebElement> elements = null;
 
         if (StringUtils.isNotBlank(tag)) {
@@ -634,12 +641,23 @@ public class SitePage extends BlogBaseDriver {
 
     }
 
-	public String getDisplayNameOfLoggedInUser() {
-		try {
-		return this.getWebDriver().findElement(By.xpath("//span[contains(@class, 'display-name')]")).getText();
-		} catch (NoSuchElementException e) {
+    public String getDisplayNameOfLoggedInUser() {
+        try {
+            return this.getWebDriver().findElement(By.xpath("//span[contains(@class, 'display-name')]")).getText();
+        } catch (NoSuchElementException e) {
             return "Couldn't Login to Draft Site";
         }
-	}
+    }
+
+    public List<WebElement> findElementsLinkingToOldJavaDocs(int minJavDocsAcceptedVersion) {
+        List<WebElement> elements = this.getWebDriver().findElements(By.xpath("//a[contains(@href,'docs.oracle.com/javase/')]"));
+
+        Pattern p = Pattern.compile(".*docs.oracle.com\\/javase\\/(.*)\\/docs/.*");
+
+        return elements.stream().filter(element -> {
+            return Optional.of(p.matcher(element.getAttribute("href"))).map(matcher -> matcher.find() ? Integer.valueOf(matcher.group(1)) < minJavDocsAcceptedVersion : false).orElse(false);
+        }).collect(toList());
+
+    }
 
 }

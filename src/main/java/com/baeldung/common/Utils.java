@@ -30,6 +30,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -566,12 +567,14 @@ public class Utils {
     }
 
     public static Retryer<Boolean> getGuavaRetryer(int retries) {
+        // @formatter:off
         return RetryerBuilder.<Boolean>newBuilder()
                 .retryIfResult(Predicates.<Boolean>isNull())
                 .retryIfExceptionOfType(IOException.class)
                 .retryIfRuntimeException()
                 .withStopStrategy(StopStrategies.stopAfterAttempt(retries))
                 .build();
+     // @formatter:on
     }
 
     public static StringBuilder formatRetries(String key, Collection<Integer> httpStatuses) {
@@ -580,7 +583,7 @@ public class Utils {
         int iteration = 1;
         for (Integer status : httpStatuses) {
             resultBuilder.append(" try " + iteration + " - " + status);
-            resultBuilder.append(",");
+            resultBuilder.append(",");O
             iteration++;
         }
         resultBuilder.deleteCharAt(resultBuilder.length() - 1);
@@ -732,5 +735,22 @@ public class Utils {
         System.out.println(title);
         System.out.println("--------------------------------------------------------------------");
         items.forEach(item -> System.out.println(formatter.apply(item)));
+    }
+
+    public static String formatResultsForOldJavaDocs(Multimap<String, String> badURLs, List<WebElement> webElementsLinkingToOldJavaDocs, String url) {
+        StringBuilder resultBuilder = new StringBuilder();
+        resultBuilder.append(System.lineSeparator());
+        resultBuilder.append("--------");
+        resultBuilder.append(System.lineSeparator());
+        resultBuilder.append(url);
+        resultBuilder.append(System.lineSeparator());
+        resultBuilder.append("--------");
+        resultBuilder.append(System.lineSeparator());
+        resultBuilder.append(webElementsLinkingToOldJavaDocs.stream()
+                .map(element -> element.getAttribute("href") + " (" + element.getText() + ")")
+                .collect(Collectors.joining(System.lineSeparator())));
+        resultBuilder.append(System.lineSeparator());
+        return resultBuilder.toString();
+
     }
 }
