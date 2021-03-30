@@ -574,7 +574,7 @@ public class Utils {
                 .retryIfRuntimeException()
                 .withStopStrategy(StopStrategies.stopAfterAttempt(retries))
                 .build();
-     // @formatter:on
+        // @formatter:on
     }
 
     public static StringBuilder formatRetries(String key, Collection<Integer> httpStatuses) {
@@ -583,7 +583,7 @@ public class Utils {
         int iteration = 1;
         for (Integer status : httpStatuses) {
             resultBuilder.append(" try " + iteration + " - " + status);
-            resultBuilder.append(",");O
+            resultBuilder.append(",");
             iteration++;
         }
         resultBuilder.deleteCharAt(resultBuilder.length() - 1);
@@ -746,9 +746,7 @@ public class Utils {
         resultBuilder.append(System.lineSeparator());
         resultBuilder.append("--------");
         resultBuilder.append(System.lineSeparator());
-        resultBuilder.append(webElementsLinkingToOldJavaDocs.stream()
-                .map(element -> element.getAttribute("href") + " (" + element.getText() + ")")
-                .collect(Collectors.joining(System.lineSeparator())));
+        resultBuilder.append(webElementsLinkingToOldJavaDocs.stream().map(element -> element.getAttribute("href") + " (" + element.getText() + ")").collect(Collectors.joining(System.lineSeparator())));
         resultBuilder.append(System.lineSeparator());
         return resultBuilder.toString();
 
