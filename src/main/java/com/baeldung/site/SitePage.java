@@ -649,15 +649,24 @@ public class SitePage extends BlogBaseDriver {
         }
     }
 
-    public List<WebElement> findElementsLinkingToOldJavaDocs(int minJavDocsAcceptedVersion) {
-        List<WebElement> elements = this.getWebDriver().findElements(By.xpath("//a[contains(@href,'docs.oracle.com/javase/')]"));
+    public List<WebElement> findElementsLinkingToOldJavaDocs(Double minJavDocsAcceptedVersion) {
+        List<WebElement> elements = this.getWebDriver()
+                .findElements(By.xpath("//a[contains(@href,'docs.oracle.com/javase/')]"));
 
-        Pattern p = Pattern.compile(".*docs.oracle.com\\/javase\\/(.*)\\/docs/.*");
-
-        return elements.stream().filter(element -> {
-            return Optional.of(p.matcher(element.getAttribute("href"))).map(matcher -> matcher.find() ? Integer.valueOf(matcher.group(1)) < minJavDocsAcceptedVersion : false).orElse(false);
-        }).collect(toList());
-
+        Pattern p = Pattern.compile(".*docs.oracle.com\\/javase\\/(.*)\\/docs/.*");        
+        
+        return elements.stream()
+                .filter(element -> {
+                    return Optional.of(p.matcher(element.getAttribute("href")))
+                            .map(matcher -> matcher.find() ? getJavaVersion(matcher.group(1))
+                                    .compareTo(minJavDocsAcceptedVersion) >= 0 : false)
+                            .orElse(false);
+                })
+                .collect(toList());
     }
 
+    private Double getJavaVersion(String javaVersionInString) {
+
+        return StringUtils.countMatches(javaVersionInString, '.') >= 2 ? Double.valueOf(javaVersionInString.substring(0, 3)) : Double.valueOf(javaVersionInString);
+    }
 }

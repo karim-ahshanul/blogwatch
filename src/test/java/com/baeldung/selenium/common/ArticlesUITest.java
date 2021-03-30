@@ -37,7 +37,7 @@ public class ArticlesUITest extends BaseUISeleniumTest {
     private int ignoreUrlsNewerThanWeeks;
 
     @Value("${min.java.docs.accepted.version:9}")
-    private int minJavDocsAcceptedVersion;
+    private String minJavDocsAcceptedVersion;
 
     private ListIterator<String> allArticlesList;
     Multimap<String, String> badURLs = ArrayListMultimap.create();
@@ -419,7 +419,7 @@ public class ArticlesUITest extends BaseUISeleniumTest {
                 continue;
             }
 
-            List<WebElement> webElementsLinkingToOldJavaDocs = page.findElementsLinkingToOldJavaDocs(minJavDocsAcceptedVersion);
+            List<WebElement> webElementsLinkingToOldJavaDocs = page.findElementsLinkingToOldJavaDocs(Double.valueOf(minJavDocsAcceptedVersion));
 
             if (webElementsLinkingToOldJavaDocs.size() > 0) {
                 recordMetrics(1, TestMetricTypes.FAILED);
