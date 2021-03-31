@@ -131,6 +131,14 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
   - /cs/cors-preflight-requests
   - /cs/rest-vs-http
   - /java-unchecked-conversion
+  - /spring-boot-heap-size
+  - /java-hashmap-load-factor
+  - /java-call-private-method
+  - /java-convert-properties-to-hashmap
+  - /zerocode-intro
+  - /java-security-egd
+  - /java-warning-unchecked-cast
+  - /grep-exclude-ps-results
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
   - /spring-reloading-properties/
