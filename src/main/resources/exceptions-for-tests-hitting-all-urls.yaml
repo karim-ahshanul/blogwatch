@@ -131,6 +131,9 @@ givenAllPages_whenAPageLoads_thenItDoesNotContainerOverlappingText:
 
 givenAllArticles_whenAnArticleLoads_thenItDoesNotContainOverlappingText:
 
+givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs:
+ 
+
 
 
   
