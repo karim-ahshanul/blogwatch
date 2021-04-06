@@ -92,6 +92,53 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
   - /java-application-remote-debugging  
   - /java-cannot-find-symbol-error
   - /spring-boot-interview-questions
+  - /java-date-difference
+  - /java-mongodb-aggregations
+  - /cs/logarithmic-time-complexity
+  - /linux/shutdown-reboot-from-terminal
+  - /scala/partial-functions
+  - /cs/fibonacci-computational-complexity
+  - /cs/ml-linear-activation-functions
+  - /java-generics-vs-extends-object
+  - /java-libphonenumber
+  - /linux/cd-with-dash
+  - /linux/files-display-compare
+  - /ops/docker-memory-limit
+  - /kotlin/loops
+  - /kotlin/arraylist-vs-mutablelistof
+  - /spring-resttemplate-json-list
+  - /java-filename-without-extension
+  - /java-hibernate-multiplebagfetchexception
+  - /import-cer-file-into-truststore
+  - /java-system-stubs
+  - /linux/find-tar-files
+  - /cs/haversine-formula
+  - /cs/graph-number-of-shortest-paths
+  - /java-12-new-features
+  - /spring-boot-repackage-vs-mvn-package
+  - /java-14-new-features
+  - /linux/netcat-command
+  - /jackson-linkedhashmap-cannot-be-cast
+  - /scala/monads
+  - /java-analyze-thread-dumps
+  - /hibernate-proxy-to-real-entity-object
+  - /java-evaluate-math-expression-string
+  - /linux/evaluate-xpath
+  - /kotlin/when
+  - /kotlin/spek
+  - /kotlin/logging
+  - /kotlin/withcontext-vs-async-await
+  - /cs/cors-preflight-requests
+  - /cs/rest-vs-http
+  - /java-unchecked-conversion
+  - /spring-boot-heap-size
+  - /java-hashmap-load-factor
+  - /java-call-private-method
+  - /java-convert-properties-to-hashmap
+  - /zerocode-intro
+  - /java-security-egd
+  - /java-warning-unchecked-cast
+  - /grep-exclude-ps-results
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
   - /spring-reloading-properties/
