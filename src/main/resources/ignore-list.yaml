@@ -58,6 +58,7 @@ ignoreMissingReadmeContaining:
   - /quarkus-liquibase/
   - /aws-lambda/
   - /docker/
+  - /version-overriding-plugins/
 ignoreMissingReadmeEndingWith:
   - /first-url/
   - /2ndurl/  
@@ -115,3 +116,5 @@ ignoreMissingReadmeEndingWith:
   - /optional-dependencies/
   - /version-collision/
   - /maven-plugins/
+  - /kubernetes
+  - /spring-web-modules
