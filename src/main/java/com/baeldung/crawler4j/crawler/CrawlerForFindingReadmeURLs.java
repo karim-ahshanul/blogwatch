@@ -21,7 +21,7 @@ public class CrawlerForFindingReadmeURLs extends BaseCrawler {
         String referringPageURL = referringPage.getWebURL().getURL();
         // @formatter:off
         return super.commonPredicate(href, referringPageURL)
-                && !referringPageURL.contains(GlobalConstants.README_FILE_NAME_LOWERCASE)
+                && !referringPageURL.toLowerCase().contains(GlobalConstants.README_FILE_NAME_LOWERCASE)
                 && !FILTER_ADDITIONAL_FILE_EXTENTIONS.matcher(href).matches()
                 && !FILTERS_ADDITIONAL_DIRECTORIES.matcher(href).matches();
         // @formatter:on
