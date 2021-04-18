@@ -614,11 +614,20 @@ public class SitePage extends BlogBaseDriver {
         // this.getWebDriver().findElement(By.xpath("//a[contains(@href,'" +
         // link.getAnchorLink() + "') and (text() = '" + link.getAnchorText() + "')]"));
         List<WebElement> elements = null;
+        List<WebElement> spanElements = null;
 
         if (StringUtils.isNotBlank(tag)) {
             elements = this.getWebDriver().findElements(By.xpath("//" + tag + "//a[contains(@href,'" + link.getAnchorLink() + "')]"));
+            spanElements =  this.getWebDriver().findElements(By.xpath("//" + tag + "//a[contains(@href,'" + link.getAnchorLink() + "')]//span"));
+            if (CollectionUtils.isNotEmpty(spanElements)) {
+                elements.addAll(spanElements);
+            }  
         } else {
             elements = this.getWebDriver().findElements(By.xpath("//a[contains(@href,'" + link.getAnchorLink() + "')]"));
+            spanElements =  this.getWebDriver().findElements(By.xpath("//a[contains(@href,'" + link.getAnchorLink() + "')]//span"));
+            if (CollectionUtils.isNotEmpty(spanElements)) {
+                elements.addAll(spanElements);
+            }            
         }
         for (WebElement element : elements) {
             if (link.getAnchorText().equalsIgnoreCase(element.getText()) || link.getAnchorText().equalsIgnoreCase(element.getAttribute("innerHTML")))
