@@ -492,7 +492,7 @@ public class SitePage extends BlogBaseDriver {
 
     public boolean tableAnchorIsVisibleOnThePage() {
         try {
-            return this.getWebDriver().findElement(By.xpath("//*[contains(@href, '#table') and contains(text(), 'PRICING')]")).isDisplayed();
+            return this.getWebDriver().findElement(By.xpath("//*[contains(@href, '#table') and contains(text(), 'PRICING')]")).isEnabled();
         } catch (NoSuchElementException e) {
             return false;
         }
@@ -500,7 +500,7 @@ public class SitePage extends BlogBaseDriver {
 
     public boolean masterclassAnchorIsVisibleOnThePage() {
         try {
-            return this.getWebDriver().findElement(By.xpath("//*[contains(@href, '#master-class') and contains(text(), 'MASTER CLASS')]")).isDisplayed();
+            return this.getWebDriver().findElement(By.xpath("//*[contains(@href, '#master-class') and contains(text(), 'MASTER CLASS')]")).isEnabled();
         } catch (NoSuchElementException e) {
             return false;
         }
@@ -508,7 +508,7 @@ public class SitePage extends BlogBaseDriver {
 
     public boolean certificationclassAnchorIsVisibleOnThePage() {
         try {
-            return this.getWebDriver().findElement(By.xpath("//*[contains(@href, '#certification-class') and contains(text(), 'CERTIFICATION CLASS')]")).isDisplayed();
+            return this.getWebDriver().findElement(By.xpath("//*[contains(@href, '#certification-class') and contains(text(), 'CERTIFICATION CLASS')]")).isEnabled();
         } catch (NoSuchElementException e) {
             return false;
         }
