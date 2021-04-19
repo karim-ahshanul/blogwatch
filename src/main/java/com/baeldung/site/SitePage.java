@@ -608,7 +608,7 @@ public class SitePage extends BlogBaseDriver {
 
     }
 
-    public boolean anchorAndAnchorLinkAvailable(String tag, FooterLinksDataVO.link link) {
+    public boolean anchorAndAnchorLinkAvailable(String tag, FooterLinksDataVO.Link link) {
 
         // WebElement element =
         // this.getWebDriver().findElement(By.xpath("//a[contains(@href,'" +

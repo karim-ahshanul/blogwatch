@@ -77,7 +77,8 @@
       },
       {
         "anchorText": "Write for Baeldung",
-        "anchorLink": "/contribution-guidelines"
+        "anchorLink": "/contribution-guidelines",
+        "linkCategory": "WRITE_FOR_BAELDUNG"
       },
       {
         "anchorText": "Editors",

@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.stream.Stream;
 
@@ -40,11 +41,13 @@ import com.baeldung.common.vo.AnchorLinksTestDataVO;
 import com.baeldung.common.vo.CourseBuyLinksVO.PurchaseLink;
 import com.baeldung.common.vo.EventTrackingVO;
 import com.baeldung.common.vo.FooterLinksDataVO;
+import com.baeldung.common.vo.FooterLinksDataVO.FooterLinkCategory;
 import com.baeldung.common.vo.LinkVO;
 import com.baeldung.crawler4j.crawler.CrawlerForFindingReadmeURLs;
 import com.baeldung.utility.TestUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javaparser.utils.Log;
 import com.github.rholder.retry.Retryer;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -76,6 +79,9 @@ public class CommonUITest extends BaseUISeleniumTest {
 
     @Value("#{'${site.status.check.url.file.names:course-pages.txt}'.split(',')}")
     private List<String> pageStausCheckUrlFileNames;
+    
+    @Value("${verify.write-for-baeldung.footer.link}")
+    private boolean verifyWriteForBaeldungFooterLink;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -445,7 +451,7 @@ public class CommonUITest extends BaseUISeleniumTest {
     @MethodSource("com.baeldung.utility.TestUtils#pagesAnchorLinksTestDataProvider()")
     @Tag(GlobalConstants.TAG_SITE_SMOKE_TEST)
     @Tag(GlobalConstants.TAG_DAILY)
-    public final void givenURLsWithFooterLinks_whenAnaysingFooterLinks_thenAnchorTextAndAnchorLinksExist(String url, String footerTag, List<FooterLinksDataVO.link> footerLinks) throws JsonProcessingException, IOException {
+    public final void givenURLsWithFooterLinks_whenAnaysingFooterLinks_thenAnchorTextAndAnchorLinksExist(String url, String footerTag, List<FooterLinksDataVO.Link> footerLinks) throws JsonProcessingException, IOException {
 
         page.setUrl(page.getBaseURL() + url);
 
@@ -453,11 +459,21 @@ public class CommonUITest extends BaseUISeleniumTest {
 
         logger.info("Inspection footer links on {}", page.getBaseURL() + url);
 
-        for (FooterLinksDataVO.link link : footerLinks) {
-
+        for (FooterLinksDataVO.Link link : footerLinks) {
+            if (shouldSkipLink(link.getLinkCategory())) {
+                logger.info("Skipping {}",link.getAnchorLink());
+                continue;
+            }
             assertTrue(page.anchorAndAnchorLinkAvailable(footerTag, link), String.format("Countn't find Anchor Text:%s and Anchor Link: %s, on %s", link.getAnchorText(), link.getAnchorLink(), url));
         }
 
+    }
+
+    private boolean shouldSkipLink(FooterLinkCategory linkCategory) {
+        return Optional.ofNullable(linkCategory)
+                .filter(category -> category.equals(FooterLinkCategory.WRITE_FOR_BAELDUNG))
+                .map(category -> !verifyWriteForBaeldungFooterLink)
+                .orElse(false);
     }
 
     @ParameterizedTest(name = " {displayName} - on {0}")
