@@ -82,3 +82,4 @@
 /all-bulk-courses
 /coaching-call/
 /learn-spring-data-jpa-faq
+/learn-spring-data-jpa-for-teams
