@@ -156,11 +156,13 @@ public class CommonUITest extends BaseUISeleniumTest {
     @MethodSource("com.baeldung.utility.TestUtils#gaCodeTestDataProvider")
     @Tag(GlobalConstants.TAG_DAILY)
     public final void givenAGoogleAnalyticsEnabledPage_whenAnalysingThePageSource_thenItHasTrackingCode(String url) {
-        page.setUrl(page.getBaseURL() + url);
+        String  fullUrl = page.getBaseURL() + url;
+        
+        page.setUrl(fullUrl);
 
         page.loadUrl();
 
-        assertTrue(page.getAnalyticsScriptCount() == 1, "GA script count is not equal to 1");
+        assertTrue(page.getAnalyticsScriptCount() == 1, "GA script count is not equal to 1 on " + fullUrl);
     }
 
     @Test

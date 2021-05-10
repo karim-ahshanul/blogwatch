@@ -100,7 +100,7 @@ public class SitePage extends BlogBaseDriver {
     }
 
     public int getAnalyticsScriptCount() {
-        return this.getWebDriver().findElements(By.xpath("//script[contains(text(), 'https://www.google-analytics.com/analytics.js') or @src='https://www.googletagmanager.com/gtag/js?id=UA-26064837-1']")).size();
+        return this.getWebDriver().findElements(By.xpath("//script[@src='https://www.googletagmanager.com/gtag/js?id=UA-26064837-1']")).size();
     }
 
     public List<WebElement> findShortCodesAtTheEndOfThePage() {
