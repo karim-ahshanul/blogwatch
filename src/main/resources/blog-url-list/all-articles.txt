@@ -4537,3 +4537,14 @@
 /cs/saga-pattern-microservices
 /cs/ml-generative-vs-discriminative
 /cs/semantic-similarity-of-two-phrases
+/logout-get-vs-post
+/java-weekly-384
+/linux/display-columns-from-file
+/linux/remove-last-character-from-line
+/linux/compare-two-directories
+/linux/argument-list-too-long-error
+/linux/parameter-expansion-vs-command-substitution
+/scala/creating-singletons
+/cs/transformer-text-embeddings
+/cs/applications-of-binary-trees
+/cs/os-kernel
