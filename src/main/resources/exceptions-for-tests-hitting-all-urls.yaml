@@ -139,6 +139,13 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
   - /java-security-egd
   - /java-warning-unchecked-cast
   - /grep-exclude-ps-results
+  - /liquibase-refactor-schema-of-java-app
+  - /jvm-max-threads
+  - /cs/program-to-interface
+  - /linux/iterate-files-with-spaces-in-names
+  - /spring-tls-setup
+  - /spring-not-eligible-for-auto-proxying
+  - /jooq-count-query
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
   - /spring-reloading-properties/
