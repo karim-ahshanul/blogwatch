@@ -30,6 +30,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -751,4 +753,12 @@ public class Utils {
         return resultBuilder.toString();
 
     }
+    
+    public static boolean matchTextInElement(WebElement element, String textToMatch) {
+        return textToMatch.equals(element.getText()) || textToMatch.equals(element.getAttribute("innerHTML"));
+    }
+
+    public static WebElement findAnchorContainingText(WebDriver webDriver, String textToMatchInTheLink) {
+        return webDriver.findElement(By.xpath("//*[contains(@href, '" + textToMatchInTheLink + "')]"));
+    }   
 }

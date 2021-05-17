@@ -492,7 +492,9 @@ public class SitePage extends BlogBaseDriver {
 
     public boolean tableAnchorIsVisibleOnThePage() {
         try {
-            return this.getWebDriver().findElement(By.xpath("//*[contains(@href, '#table') and contains(text(), 'PRICING')]")).isEnabled();
+            WebElement element = Utils.findAnchorContainingText(this.getWebDriver(), "#table");                              
+            return Utils.matchTextInElement(element, "PRICING");
+            
         } catch (NoSuchElementException e) {
             return false;
         }
@@ -500,7 +502,8 @@ public class SitePage extends BlogBaseDriver {
 
     public boolean masterclassAnchorIsVisibleOnThePage() {
         try {
-            return this.getWebDriver().findElement(By.xpath("//*[contains(@href, '#master-class') and contains(text(), 'MASTER CLASS')]")).isEnabled();
+            WebElement element = Utils.findAnchorContainingText(this.getWebDriver(), "#master-class");                              
+            return Utils.matchTextInElement(element, "MASTER CLASS");            
         } catch (NoSuchElementException e) {
             return false;
         }
@@ -508,7 +511,8 @@ public class SitePage extends BlogBaseDriver {
 
     public boolean certificationclassAnchorIsVisibleOnThePage() {
         try {
-            return this.getWebDriver().findElement(By.xpath("//*[contains(@href, '#certification-class') and contains(text(), 'CERTIFICATION CLASS')]")).isEnabled();
+            WebElement element = Utils.findAnchorContainingText(this.getWebDriver(), "#certification-class");                              
+            return Utils.matchTextInElement(element, "CERTIFICATION CLASS");            
         } catch (NoSuchElementException e) {
             return false;
         }
