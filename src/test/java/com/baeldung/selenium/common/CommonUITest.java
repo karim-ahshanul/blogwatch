@@ -47,7 +47,6 @@ import com.baeldung.crawler4j.crawler.CrawlerForFindingReadmeURLs;
 import com.baeldung.utility.TestUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.javaparser.utils.Log;
 import com.github.rholder.retry.Retryer;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -429,7 +428,9 @@ public class CommonUITest extends BaseUISeleniumTest {
     public final void givenTheContactForm_whenAMessageIsSubmitted_thenItIsSentSuccessfully() throws InterruptedException {
 
         // load contact form
-        page.setUrl(page.getBaseURL() + GlobalConstants.CONTACT_US_FORM_URL);
+        String fullUrl = page.getBaseURL() + GlobalConstants.CONTACT_US_FORM_URL;
+        logger.info(modeFor200OKTest);
+        page.setUrl(fullUrl);
         page.loadUrl();
 
         page.acceptCookie();
@@ -444,8 +445,13 @@ public class CommonUITest extends BaseUISeleniumTest {
 
         // verify
         WebDriverWait wait = new WebDriverWait(page.getWebDriver(), 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Thank you for your message. It has been sent') or contains(text(), 'The form was sent successfully.')]")));
-        logger.info("message sent successfully");
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Thank you for your message. It has been sent') or contains(text(), 'The form was sent successfully.')]")));
+        } catch (Exception e) {
+            recordMetrics(1, FAILED);
+            fail("Contact form not working. Contact Form url: " + fullUrl);
+        }
+        logger.info("message sent successfully from {}", fullUrl);
 
     }
 
