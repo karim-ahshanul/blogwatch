@@ -530,7 +530,7 @@ public class CommonUITest extends BaseUISeleniumTest {
     @ParameterizedTest(name = " {displayName} - on {0}")
     @MethodSource("com.baeldung.utility.TestUtils#popupTestDataProvider")
     @Tag(GlobalConstants.TAG_DAILY)
-    public final void givenAPage_whenThePageLoads_thenNoPopAppearsOnThePage(String url) {
+    public final void givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage(String url) {
         String fullUrl = page.getBaseURL() + url;
         logger.info("Processing " + fullUrl);
         logger.info("Sleep time configured as:" + timeToWaitForPopup);

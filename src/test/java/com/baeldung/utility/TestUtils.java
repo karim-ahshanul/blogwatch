@@ -227,7 +227,7 @@ public class TestUtils {
     }
     
     public static Stream<Arguments> popupTestDataProvider() {
-        return YAMLProperties.multiSiteTargetUrls.get(GlobalConstants.givenAPage_whenThePageLoads_thenNoPopAppearsOnThePage).stream().map(entry -> Arguments.of(entry));
+        return YAMLProperties.multiSiteTargetUrls.get(GlobalConstants.givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage).stream().map(entry -> Arguments.of(entry));
     }
 
 }

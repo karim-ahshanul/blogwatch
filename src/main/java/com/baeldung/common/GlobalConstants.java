@@ -248,5 +248,5 @@ public class GlobalConstants {
     public static final String givenAPage_whenThePageLoads_thenNoSevereMessagesInTheBrowserConsoleLog = "givenAPage_whenThePageLoads_thenNoSevereMessagesInTheBrowserConsoleLog";
     public static final String givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode = "givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode";
     public static final String givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs = "givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs";
-    public static final String givenAPage_whenThePageLoads_thenNoPopAppearsOnThePage = "givenAPage_whenThePageLoads_thenNoPopAppearsOnThePage";
+    public static final String givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage = "givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage";
 }
