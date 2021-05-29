@@ -22,3 +22,8 @@ givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenIt
   - https://drafts.baeldung.com/kotlin/spring-email-ga-test
   - https://drafts.baeldung.com/scala/spring-email-ga-test
   - https://drafts.baeldung.com/cs/spring-email-ga-test
+  
+givenAPage_whenThePageLoads_thenNoPopAppearsOnThePage:
+  - /
+  - /cs/merge-sort-linked-list
+  - /maven-print-message-during-execution

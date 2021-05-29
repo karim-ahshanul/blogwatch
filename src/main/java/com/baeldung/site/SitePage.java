@@ -681,4 +681,13 @@ public class SitePage extends BlogBaseDriver {
 
         return StringUtils.countMatches(javaVersionInString, '.') >= 2 ? Double.valueOf(javaVersionInString.substring(0, 3)) : Double.valueOf(javaVersionInString);
     }
+
+    public Optional<WebElement> findElentWithHref(String href) {
+        try {
+            return Optional.of(this.getWebDriver()
+                    .findElement(By.xpath("//a[contains(@href,'" + href + "')]")));
+        } catch (NoSuchElementException e) {
+            return Optional.empty();
+        }
+    }
 }

@@ -81,6 +81,9 @@ public class CommonUITest extends BaseUISeleniumTest {
     
     @Value("${verify.write-for-baeldung.footer.link}")
     private boolean verifyWriteForBaeldungFooterLink;
+    
+    @Value("${time.to.wait.for.popup}")
+    private int timeToWaitForPopup;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -522,6 +525,25 @@ public class CommonUITest extends BaseUISeleniumTest {
             assertTrue(TestUtils.veirfyRedirect(restAssuredConfig, link.getAnchorLink(), link.getRedirectedTo()), link.getAnchorText() + " (" + link.getAnchorLink() + ") on " + fullURL + " doesn't redirec to " + link.getRedirectedTo());
         }
 
+    }
+    
+    @ParameterizedTest(name = " {displayName} - on {0}")
+    @MethodSource("com.baeldung.utility.TestUtils#popupTestDataProvider")
+    @Tag(GlobalConstants.TAG_DAILY)
+    public final void givenAPage_whenThePageLoads_thenNoPopAppearsOnThePage(String url) {
+        String fullUrl = page.getBaseURL() + url;
+        logger.info("Processing " + fullUrl);
+        logger.info("Sleep time configured as:" + timeToWaitForPopup);
+        
+        
+        page.setUrl(fullUrl);
+
+        page.loadUrl();
+        
+        TestUtils.sleep(timeToWaitForPopup);
+
+        page.findElentWithHref("privacy-policy")
+                .ifPresent(element -> element.click());
     }
 
 }

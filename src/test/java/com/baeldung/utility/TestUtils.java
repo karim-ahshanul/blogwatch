@@ -225,5 +225,9 @@ public class TestUtils {
     public static Stream<Arguments> gaCodeTestDataProviderForDraftSite() {
         return YAMLProperties.multiSiteTargetUrls.get(GlobalConstants.givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode).stream().map(entry -> Arguments.of(entry));
     }
+    
+    public static Stream<Arguments> popupTestDataProvider() {
+        return YAMLProperties.multiSiteTargetUrls.get(GlobalConstants.givenAPage_whenThePageLoads_thenNoPopAppearsOnThePage).stream().map(entry -> Arguments.of(entry));
+    }
 
 }
