@@ -1,0 +1,6 @@
+givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage:
+  time.to.wait.for.popup: 10000  
+givenAListOfUrls_whenAUrlLoads_thenItReturns200OK:
+  time-out.for.200OK-test: 60000
+  retries.for.200OK-test: 3
+  

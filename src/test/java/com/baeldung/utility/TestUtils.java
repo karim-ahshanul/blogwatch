@@ -2,12 +2,14 @@ package com.baeldung.utility;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
 
@@ -230,4 +232,8 @@ public class TestUtils {
         return YAMLProperties.multiSiteTargetUrls.get(GlobalConstants.givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage).stream().map(entry -> Arguments.of(entry));
     }
 
+    public static String getMehodName(Optional<Method> testMethod) {
+        return testMethod.map(method -> method.getName()).orElse(null);
+        
+    }   
 }

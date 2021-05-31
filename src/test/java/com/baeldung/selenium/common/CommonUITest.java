@@ -21,6 +21,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -37,6 +38,7 @@ import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.GlobalConstants.TestMetricTypes;
 import com.baeldung.common.TestMetricsExtension;
 import com.baeldung.common.Utils;
+import com.baeldung.common.YAMLProperties;
 import com.baeldung.common.vo.AnchorLinksTestDataVO;
 import com.baeldung.common.vo.CourseBuyLinksVO.PurchaseLink;
 import com.baeldung.common.vo.EventTrackingVO;
@@ -80,10 +82,7 @@ public class CommonUITest extends BaseUISeleniumTest {
     private List<String> pageStausCheckUrlFileNames;
     
     @Value("${verify.write-for-baeldung.footer.link}")
-    private boolean verifyWriteForBaeldungFooterLink;
-    
-    @Value("${time.to.wait.for.popup}")
-    private int timeToWaitForPopup;
+    private boolean verifyWriteForBaeldungFooterLink;       
 
     @Autowired
     ObjectMapper objectMapper;
@@ -530,7 +529,11 @@ public class CommonUITest extends BaseUISeleniumTest {
     @ParameterizedTest(name = " {displayName} - on {0}")
     @MethodSource("com.baeldung.utility.TestUtils#popupTestDataProvider")
     @Tag(GlobalConstants.TAG_DAILY)
-    public final void givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage(String url) {
+    public final void givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage(String url, TestInfo testInfo) {
+        
+        Map<String,Object> testProperties = YAMLProperties.testProperties.get(TestUtils.getMehodName(testInfo.getTestMethod()));
+        Integer timeToWaitForPopup = (Integer) testProperties.get("time.to.wait.for.popup");
+        
         String fullUrl = page.getBaseURL() + url;
         logger.info("Processing " + fullUrl);
         logger.info("Sleep time configured as:" + timeToWaitForPopup);

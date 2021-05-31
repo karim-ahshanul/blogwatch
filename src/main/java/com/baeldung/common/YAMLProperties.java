@@ -13,10 +13,18 @@ public class YAMLProperties {
     public static Map<String, List<String>> exceptionsForEmptyReadmeTest = fetchYMLPropertiesMap("ignore-list.yaml");
     public static Map<String, List<String>> exceptionsForTestHittingAllUrls = fetchYMLPropertiesMap("exceptions-for-tests-hitting-all-urls.yaml");
     public static Map<String, List<String>> multiSiteTargetUrls = fetchYMLPropertiesMap("multi-site-tests-target-urls.yaml");
+    public static Map<String, Map<String,Object>> testProperties = fetchYMLPropertiesNestedMap("TestProperties.yaml");
     public static Map<String, String> redirectsTestData = fetchYMLProperties("redirects.yaml");
 
     public static Map<String, List<String>> fetchYMLPropertiesMap(String fileName) {
         Map<String, List<String>> output = new HashMap<>();
+        InputStream fileStream = YAMLProperties.class.getClassLoader().getResourceAsStream(fileName);
+        output = yaml.load(fileStream);
+        return output;
+    }
+
+    private static Map<String, Map<String, Object>> fetchYMLPropertiesNestedMap(String fileName) {
+        Map<String, Map<String,Object>> output = new HashMap<>();
         InputStream fileStream = YAMLProperties.class.getClassLoader().getResourceAsStream(fileName);
         output = yaml.load(fileStream);
         return output;
