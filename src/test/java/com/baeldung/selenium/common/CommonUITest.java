@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -18,8 +21,11 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.stream.Stream;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.InvalidRemoteException;
+import org.eclipse.jgit.api.errors.TransportException;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Tag;
@@ -554,15 +560,18 @@ public class CommonUITest extends BaseUISeleniumTest {
 
     @Test
     @Tag("jgit")
-    public final void givenAnArtifactId_theListAllChildModules() {
-        try {
-            Git.cloneRepository()                    
-                    .setURI("https://github.com/eugenp/tutorials.git")
-                    .setDirectory(new File("/var/lib/jenkins/tutorials-source-code"))
-                    .call();
-        } catch (GitAPIException e) {
-            e.printStackTrace();
-        }
+    public final void givenAnArtifactId_thenListAllChildModules() throws IOException, GitAPIException {
+
+        String directoryPath = "/var/lib/jenkins/tutorials-source-code";
+        Path path = Paths.get(directoryPath);
+        FileUtils.deleteDirectory(path.toFile());
+        Files.createDirectory(path);
+        Git.cloneRepository()
+                .setURI("https://github.com/eugenp/tutorials.git")
+                .setDirectory(path.toFile())
+                .call();
+        System.out.println("finished");
+
     }
 
 }
