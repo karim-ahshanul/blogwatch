@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -17,6 +18,8 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.stream.Stream;
 
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Tag;
@@ -547,6 +550,19 @@ public class CommonUITest extends BaseUISeleniumTest {
 
         page.findElentWithHref("privacy-policy")
                 .ifPresent(element -> element.click());
+    }
+
+    @Test
+    @Tag("jgit")
+    public final void givenAnArtifactId_theListAllChildModules() {
+        try {
+            Git.cloneRepository()                    
+                    .setURI("https://github.com/eugenp/tutorials.git")
+                    .setDirectory(new File("/var/lib/jenkins/tutorials-source-code"))
+                    .call();
+        } catch (GitAPIException e) {
+            e.printStackTrace();
+        }
     }
 
 }
