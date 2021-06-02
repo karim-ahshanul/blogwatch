@@ -12,8 +12,7 @@ public class YAMLProperties {
     private static Yaml yaml = new Yaml();
     public static Map<String, List<String>> exceptionsForEmptyReadmeTest = fetchYMLPropertiesMap("ignore-list.yaml");
     public static Map<String, List<String>> exceptionsForTestHittingAllUrls = fetchYMLPropertiesMap("exceptions-for-tests-hitting-all-urls.yaml");
-    public static Map<String, List<String>> multiSiteTargetUrls = fetchYMLPropertiesMap("multi-site-tests-target-urls.yaml");
-    public static Map<String, Map<String,Object>> testProperties = fetchYMLPropertiesNestedMap("test-properties.yaml");
+    public static Map<String, List<String>> multiSiteTargetUrls = fetchYMLPropertiesMap("multi-site-tests-target-urls.yaml");    
     public static Map<String, String> redirectsTestData = fetchYMLProperties("redirects.yaml");
 
     public static Map<String, List<String>> fetchYMLPropertiesMap(String fileName) {

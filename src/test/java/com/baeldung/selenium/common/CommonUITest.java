@@ -91,7 +91,10 @@ public class CommonUITest extends BaseUISeleniumTest {
     private List<String> pageStausCheckUrlFileNames;
     
     @Value("${verify.write-for-baeldung.footer.link}")
-    private boolean verifyWriteForBaeldungFooterLink;       
+    private boolean verifyWriteForBaeldungFooterLink;     
+    
+    @Value("${givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage.time-to-wait-for-popup}")
+    private int timeToWaitForPopup;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -538,10 +541,7 @@ public class CommonUITest extends BaseUISeleniumTest {
     @ParameterizedTest(name = " {displayName} - on {0}")
     @MethodSource("com.baeldung.utility.TestUtils#popupTestDataProvider")
     @Tag(GlobalConstants.TAG_DAILY)
-    public final void givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage(String url, TestInfo testInfo) {
-        
-        Map<String,Object> testProperties = YAMLProperties.testProperties.get(TestUtils.getMehodName(testInfo.getTestMethod()));
-        Integer timeToWaitForPopup = (Integer) testProperties.get("time.to.wait.for.popup");
+    public final void givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage(String url, TestInfo testInfo) {      
         
         String fullUrl = page.getBaseURL() + url;
         logger.info("Processing " + fullUrl);
