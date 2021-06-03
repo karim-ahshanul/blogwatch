@@ -84,13 +84,13 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Value("${givenAListOfUrls_whenAUrlLoads_thenItReturns200OK.mode-for-200OK-test}")
     private String modeFor200OKTest;
 
-    @Value("${rss.feed.compare.days}")
+    @Value("${givenTheBaeldungRSSFeed_whenAnalysingFeed_thenItIsUptoDate.rss-feed-compare-days}")
     private int rssFeedShouldNotbeOlderThanDays;
 
     @Value("#{'${givenAListOfUrls_whenAUrlLoads_thenItReturns200OK.site-status-check-url-file-names:course-pages.txt}'.split(',')}")
     private List<String> pageStausCheckUrlFileNames;
     
-    @Value("${verify.write-for-baeldung.footer.link}")
+    @Value("${givenURLsWithFooterLinks_whenAnaysingFooterLinks_thenAnchorTextAndAnchorLinksExist.verify-write-for-baeldung-footer-link}")
     private boolean verifyWriteForBaeldungFooterLink;     
     
     @Value("${givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage.time-to-wait-for-popup}")
