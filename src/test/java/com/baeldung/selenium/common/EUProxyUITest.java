@@ -18,16 +18,16 @@ import com.baeldung.common.TestMetricsExtension;
 @ExtendWith(TestMetricsExtension.class)
 public class EUProxyUITest extends BaseUISeleniumTest {
 
-    @Value("${proxy.host}")
+    @Value("${proxy.host:proxyhost}")
     private String proxyHost;
 
-    @Value("${proxy.server.port}")
+    @Value("${proxy.server.port:port}")
     private String proxyServerPort;
 
-    @Value("${proxy.username}")
+    @Value("${proxy.username:proxyUser}")
     private String proxyUsername;
 
-    @Value("${proxy.password}")
+    @Value("${proxy.password:proxypassword}")
     private String proxyPasswod;
 
     int retryCount = 0;

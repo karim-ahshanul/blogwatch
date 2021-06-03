@@ -29,10 +29,10 @@ public class OptInPopupUITest extends BaseUISeleniumTest {
     @Autowired
     private OptInPageDriver optInPageDriver;
 
-    @Value("${team.optin.urls}")
+    @Value("${givenAPageWithOptins_whenThePopupsAreOpened_thenTheOptInsPopupsWorkFine.team-optin-urls}")
     private String[] optInUrls;
 
-    @Value("${team.optin.test.retry}")
+    @Value("${givenAPageWithOptins_whenThePopupsAreOpened_thenTheOptInsPopupsWorkFine.team-optin-test-retry}")
     private int retry;
 
     int retryCount = 0;

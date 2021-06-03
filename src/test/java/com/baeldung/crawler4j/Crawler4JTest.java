@@ -20,7 +20,7 @@ import com.google.common.collect.Multimap;
 
 public class Crawler4JTest extends BaseCrawler4JTest {
 
-    @Value("${file.for.javaConstructs.test}")
+    @Value("${givenAllTheArticles_whenAnArticleLoads_thenJavaClassesAndMethodsCanBeFoundOnGitHub.file-for-javaConstructs-test}")
     private String fileForJavaConstructsTest;
 
     @Tag(GlobalConstants.TAG_GITHUB_RELATED)

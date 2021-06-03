@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SpringMicroservicesGuidePage extends BlogBaseDriver {
+    
+    private final String springMicroserviceGuildeUrl = "/spring-microservices-guide/";
 
     public void clickAccessTheGuideButton() { 
         try {
@@ -23,10 +25,9 @@ public class SpringMicroservicesGuidePage extends BlogBaseDriver {
         return this.getWebDriver().findElements(By.xpath("//*[@id='tve_editor']//img"));
     }
 
-    @Override
-    @Value("${site.guide.spring.microservices}")
+    @Override    
     protected void setUrl(String pageURL) {
-        this.url = this.getBaseURL() + pageURL;
+        this.url = this.getBaseURL() + springMicroserviceGuildeUrl;
     }
 
 }

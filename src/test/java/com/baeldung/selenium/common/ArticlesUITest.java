@@ -27,7 +27,7 @@ import com.google.common.collect.Multimap;
 
 public class ArticlesUITest extends BaseUISeleniumTest {
 
-    @Value("#{'${site.excluded.authors}'.split(',')}")
+    @Value("#{'${givenAllArticles_whenAnArticleLoads_thenTheAuthorIsNotFromTheExcludedList.site-excluded-authors}'.split(',')}")
     private List<String> excludedListOfAuthors;
 
     @Value("${single-url-to-run-all-tests}")

@@ -69,25 +69,25 @@ import io.restassured.response.Response;
 @ExtendWith(TestMetricsExtension.class)
 public class CommonUITest extends BaseUISeleniumTest {
 
-    @Value("${limit-for.readme-having-articles}")
+    @Value("${GivenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles.limit-for-readme-having-articles}")
     private int limitForReadmeHavingArticles;
 
-    @Value("${limit-for.spring-realted.readme-having-articles}")
+    @Value("${GivenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles.limit-for-spring-realted-readme-having-articles}")
     private int limitForSpringRelatedReadmeHavingArticles;
 
-    @Value("${time-out.for.200OK-test}")
+    @Value("${givenAListOfUrls_whenAUrlLoads_thenItReturns200OK.time-out-for-200OK-test}")
     private int timeOutFor200OKTest;
 
-    @Value("${retries.for.200OK-test}")
+    @Value("${givenAListOfUrls_whenAUrlLoads_thenItReturns200OK.retries-for-200OK-test}")
     private int retriesFor200OKTest;
     
-    @Value("${mode.for.200OK-test}")
+    @Value("${givenAListOfUrls_whenAUrlLoads_thenItReturns200OK.mode-for-200OK-test}")
     private String modeFor200OKTest;
 
     @Value("${rss.feed.compare.days}")
     private int rssFeedShouldNotbeOlderThanDays;
 
-    @Value("#{'${site.status.check.url.file.names:course-pages.txt}'.split(',')}")
+    @Value("#{'${givenAListOfUrls_whenAUrlLoads_thenItReturns200OK.site-status-check-url-file-names:course-pages.txt}'.split(',')}")
     private List<String> pageStausCheckUrlFileNames;
     
     @Value("${verify.write-for-baeldung.footer.link}")

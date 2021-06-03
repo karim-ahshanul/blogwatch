@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TutorialsRepoCrawlerController extends BaseCrawlController {
 
-    @Value("#{'${repo.tutorials}'.split(',')}")
+    @Value("#{'${TutorialsRepoCrawlerController.repo-tutorials}'.split(',')}")
     private List<String> urls;    
 
     public List<Object> getDiscoveredURLs() {
