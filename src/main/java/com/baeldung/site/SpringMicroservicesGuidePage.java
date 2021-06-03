@@ -26,6 +26,7 @@ public class SpringMicroservicesGuidePage extends BlogBaseDriver {
     }
 
     @Override    
+    @Value("${spring.microservices.page.url}")
     protected void setUrl(String pageURL) {
         this.url = this.getBaseURL() + springMicroserviceGuildeUrl;
     }
