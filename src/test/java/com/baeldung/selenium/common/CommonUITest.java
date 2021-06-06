@@ -55,6 +55,7 @@ import com.baeldung.common.vo.FooterLinksDataVO;
 import com.baeldung.common.vo.FooterLinksDataVO.FooterLinkCategory;
 import com.baeldung.common.vo.LinkVO;
 import com.baeldung.crawler4j.crawler.CrawlerForFindingReadmeURLs;
+import com.baeldung.filevisitor.TutorialsParentModuleFinderFileVisitor;
 import com.baeldung.utility.TestUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -562,16 +563,28 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Tag("jgit")
     public final void givenAnArtifactId_thenListAllChildModules() throws IOException, GitAPIException {
 
-        String directoryPath = "/var/lib/jenkins/tutorials-source-code";
-        Path path = Paths.get(directoryPath);
-        FileUtils.deleteDirectory(path.toFile());
-        Files.createDirectory(path);
-        Git.cloneRepository()
-                .setURI("https://github.com/eugenp/tutorials.git")
-                .setDirectory(path.toFile())
-                .call();
+        String repoDirectory = "/var/lib/jenkins/tutorials-source-code";
+        String dotGitDirectory = "/var/lib/jenkins/tutorials-source-code/.git/";
+        Path repoDirectoryPath = Paths.get(repoDirectory);
+        Path dotGitDirectoryPath = Paths.get(dotGitDirectory);
+        /*
+         * FileUtils.deleteDirectory(repoDirectoryPath.toFile());
+         * Files.createDirectory(repoDirectoryPath);
+         * 
+         * logger.info("Initiating tutorials repo"); Git.cloneRepository()
+         * .setURI("https://github.com/eugenp/tutorials.git")
+         * .setDirectory(repoDirectoryPath.toFile()) .call();
+         * 
+         * logger.info("tutorials repository cloned");
+         * FileUtils.deleteDirectory(dotGitDirectoryPath.toFile());
+         * logger.info(".git folder deleted");
+         */
+        
+        TutorialsParentModuleFinderFileVisitor TutorialsParentModuleFinderFileVisitor = new TutorialsParentModuleFinderFileVisitor("akka-http");
+        Files.walkFileTree(repoDirectoryPath, TutorialsParentModuleFinderFileVisitor);
         System.out.println("finished");
-
+        
+        
     }
 
 }
