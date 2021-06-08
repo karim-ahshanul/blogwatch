@@ -584,7 +584,7 @@ public class CommonUITest extends BaseUISeleniumTest {
             FileUtils.deleteDirectory(repoDirectoryPath.toFile());
             Files.createDirectory(repoDirectoryPath);
 
-            logger.info(magentaColordMessage("downloading tutorials repo. This may a take few miunutes"));
+            logger.info(magentaColordMessage("Downloading tutorials repo. This may take a few miunutes"));
             Git.cloneRepository().setURI(GlobalConstants.tutorialsRepoGitUrl).setDirectory(repoDirectoryPath.toFile()).call();
 
             logger.info(magentaColordMessage("tutorials repository cloned"));
@@ -595,7 +595,7 @@ public class CommonUITest extends BaseUISeleniumTest {
         Files.walkFileTree(repoDirectoryPath, tutorialsParentModuleFinderFileVisitor);
         Utils.logChildModulesResults(tutorialsParentModuleFinderFileVisitor);
 
-        System.out.println(ConsoleColors.blueColordMessage("finished"));
+        System.out.println(ConsoleColors.magentaColordMessage("finished"));
     }
 
 }

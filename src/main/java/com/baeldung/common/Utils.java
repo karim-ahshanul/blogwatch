@@ -771,7 +771,7 @@ public class Utils {
         
         tutorialsParentModuleFinderFileVisitor.getChildModules().forEach(modulePath -> {
             String gitUrl = StringUtils.removeEnd(StringUtils.removeStart(modulePath, GlobalConstants.repoLocalPath), "pom.xml");
-            System.out.println(magentaColordMessage("https://github.com/eugenp/tutorials/tree/master" + gitUrl));
+            System.out.println("https://github.com/eugenp/tutorials/tree/master" + gitUrl);
         });
     }
 }
