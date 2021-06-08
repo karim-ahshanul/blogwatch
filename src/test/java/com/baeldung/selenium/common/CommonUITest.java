@@ -584,7 +584,7 @@ public class CommonUITest extends BaseUISeleniumTest {
             FileUtils.deleteDirectory(repoDirectoryPath.toFile());
             Files.createDirectory(repoDirectoryPath);
 
-            logger.info(magentaColordMessage("Downloading tutorials repo. This may take a few miunutes"));
+            logger.info(magentaColordMessage("Downloading tutorials repo. This may take a few minutes"));
             Git.cloneRepository().setURI(GlobalConstants.tutorialsRepoGitUrl).setDirectory(repoDirectoryPath.toFile()).call();
 
             logger.info(magentaColordMessage("tutorials repository cloned"));
