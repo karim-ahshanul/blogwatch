@@ -1,5 +1,7 @@
 package com.baeldung.common;
 
+import static com.baeldung.common.ConsoleColors.colordSummaryMessage;
+import static com.baeldung.common.ConsoleColors.magentaColordMessage;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
@@ -765,11 +767,11 @@ public class Utils {
 
     public static void logChildModulesResults(TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor) {
               
-        logger.info(ConsoleColors.colordSummaryMessage("Please find below child modules for: {}"), tutorialsParentModuleFinderFileVisitor.getArtificateId());
+        logger.info(colordSummaryMessage("Please find below child modules for: {}"), tutorialsParentModuleFinderFileVisitor.getArtificateId());
         
         tutorialsParentModuleFinderFileVisitor.getChildModules().forEach(modulePath -> {
             String gitUrl = StringUtils.removeEnd(StringUtils.removeStart(modulePath, GlobalConstants.repoLocalPath), "pom.xml");
-            System.out.println(ConsoleColors.magentaColordMessage("https://github.com/eugenp/tutorials/tree/master" + gitUrl));
+            System.out.println(magentaColordMessage("https://github.com/eugenp/tutorials/tree/master" + gitUrl));
         });
     }
 }

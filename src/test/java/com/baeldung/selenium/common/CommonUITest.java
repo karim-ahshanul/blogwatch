@@ -1,5 +1,6 @@
 package com.baeldung.selenium.common;
 
+import static com.baeldung.common.ConsoleColors.magentaColordMessage;
 import static com.baeldung.common.GlobalConstants.TestMetricTypes.FAILED;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -577,12 +578,12 @@ public class CommonUITest extends BaseUISeleniumTest {
             FileUtils.deleteDirectory(repoDirectoryPath.toFile());
             Files.createDirectory(repoDirectoryPath);
 
-            logger.info("Initiating tutorials repo");
+            logger.info(magentaColordMessage("downloading tutorials repo. This may a take few miunutes"));
             Git.cloneRepository().setURI(GlobalConstants.tutorialsRepoGitUrl).setDirectory(repoDirectoryPath.toFile()).call();
 
-            logger.info("tutorials repository cloned");
+            logger.info(magentaColordMessage("tutorials repository cloned"));
             FileUtils.deleteDirectory(dotGitDirectoryPath.toFile());
-            logger.info(".git folder deleted");
+            logger.info(magentaColordMessage(".git folder deleted"));
         }
         TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor = new TutorialsParentModuleFinderFileVisitor(parentArtifactId);
         Files.walkFileTree(repoDirectoryPath, tutorialsParentModuleFinderFileVisitor);
