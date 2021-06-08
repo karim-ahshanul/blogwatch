@@ -310,9 +310,11 @@ public class CommonUITest extends BaseUISeleniumTest {
                 }
 
                 String reamdmeParentURL = Utils.getTheParentOfReadme(readmeURL);
-                urlsInReadmeFile.forEach(link -> {
-                    page.setUrl(link.getLink());
-                    page.loadUrlWithThrottling(); // loads an article in the browser
+                urlsInReadmeFile.forEach(link -> {                    
+                    String staging8Url = Utils.changeLiveUrlWithStaging8(link.getLink());
+                    
+                    page.setUrl(staging8Url);
+                    page.loadUrl(); // loads an article in the browser
                     if (!page.getWebDriver().getPageSource().toLowerCase().contains(reamdmeParentURL.toLowerCase())) {
                         badURLs.put(readmeURL, link);
                     }

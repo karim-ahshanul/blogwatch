@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 import com.baeldung.common.Utils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,6 +26,8 @@ import com.baeldung.jsoup.config.JSoupMainConfig;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = JSoupMainConfig.class)
 class ArticleNonMatchingDependencyVersionExtractorTest {
+    protected Logger logger = LoggerFactory.getLogger(getClass()); 
+    
     private final ModuleArticleUrlsExtractor moduleArticleUrlsExtractor;
     private final ArticleNonMatchingDependencyVersionExtractor articleNonMatchingDependencyVersionExtractor;
     private final String searchedModules;
@@ -54,7 +58,15 @@ class ArticleNonMatchingDependencyVersionExtractorTest {
           .stream()
           .collect(Collectors.toMap(
             Function.identity(),
-            articleUrl -> articleNonMatchingDependencyVersionExtractor.extractNonMatchingDependencyVersions(searchedDependencyVersion, articleUrl)
+            articleUrl -> {
+                try {
+                    return articleNonMatchingDependencyVersionExtractor.extractNonMatchingDependencyVersions(searchedDependencyVersion, new URL (Utils.changeLiveUrlWithStaging8(articleUrl.toString())));
+                } catch (MalformedURLException e) {
+                    logger.info("Error while converting live url to staging8. url: {}", articleUrl.toString());
+                    e.printStackTrace();
+                    return null;                    
+                }
+            }
           )).entrySet()
           .stream()
           .filter(entry -> !entry.getValue().isEmpty())

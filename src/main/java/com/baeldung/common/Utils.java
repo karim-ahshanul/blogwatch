@@ -1,7 +1,6 @@
 package com.baeldung.common;
 
 import static com.baeldung.common.ConsoleColors.colordSummaryMessage;
-import static com.baeldung.common.ConsoleColors.magentaColordMessage;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
@@ -774,4 +773,19 @@ public class Utils {
             System.out.println("https://github.com/eugenp/tutorials/tree/master" + gitUrl);
         });
     }
+
+    public static String changeLiveUrlWithStaging8(String liveUrl) {
+        String staging8Url = null;
+        if (liveUrl.startsWith("https")) {
+            staging8Url = liveUrl.replace(GlobalConstants.BAELDUNG_HOME_PAGE_URL, GlobalConstants.STAGEING8_HOME_URL);
+        }else if (liveUrl.startsWith("http")) {
+            staging8Url = liveUrl.replace(GlobalConstants.BAELDUNG_HOME_PAGE_URL_WITH_HTTP, GlobalConstants.STAGEING8_HOME_URL);
+        }
+        else {
+            staging8Url = liveUrl.replace(GlobalConstants.BAELDUNG_HOME_PAGE_URL_WIThOUT_THE_PROTOCOL, GlobalConstants.STAGEING8_HOME_URL);
+        }
+        
+        return staging8Url;
+    }
+     
 }

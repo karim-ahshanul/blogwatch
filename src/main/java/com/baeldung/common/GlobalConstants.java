@@ -219,6 +219,10 @@ public class GlobalConstants {
     // for givenAnArtifactId_thenListAllChildModules
     public static final String repoLocalPath = "/var/lib/jenkins/tutorials-source-code";
     public static final String tutorialsRepoGitUrl="https://github.com/eugenp/tutorials.git";
+    
+    //for givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch
+    public static final String STAGEING8_HOME_URL="http://staging8.baeldung.com";
+    
 
     // test names for
     public static final String givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv = "givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv";
