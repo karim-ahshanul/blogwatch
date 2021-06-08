@@ -22,6 +22,7 @@ import java.util.logging.Level;
 import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.hamcrest.MatcherAssert;
@@ -566,6 +567,11 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Test
     @Tag("jgit")
     public final void givenAnArtifactId_thenListAllChildModules() throws IOException, GitAPIException {
+        
+        if(StringUtils.isBlank(parentArtifactId)) {
+            logger.info(magentaColordMessage("Parent Artifact ID not provided. The build will be aborted now. "));
+            fail("Parent Artificat ID is required");
+        }
 
         String repoDirectory = GlobalConstants.repoLocalPath;
         String dotGitDirectory = repoDirectory + "/.git/";
