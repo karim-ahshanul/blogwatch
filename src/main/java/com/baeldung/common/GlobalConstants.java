@@ -212,6 +212,13 @@ public class GlobalConstants {
     // 200OK test modes
     public static final String MODE_STRICT="STRICT";
     public static final String MODE_RELAXED="RELAXED";
+    
+    public static final String YES="yes";
+    public static final String NO="no";
+    
+    // for givenAnArtifactId_thenListAllChildModules
+    public static final String repoLocalPath = "/var/lib/jenkins/tutorials-source-code";
+    public static final String tutorialsRepoGitUrl="https://github.com/eugenp/tutorials.git";
 
     // test names for
     public static final String givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv = "givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv";

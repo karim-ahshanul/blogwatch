@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -96,6 +95,9 @@ public class CommonUITest extends BaseUISeleniumTest {
     
     @Value("${givenAnArtifactId_thenListAllChildModules.parent-artifact-id}")
     private String parentArtifactId;
+    
+    @Value("${givenAnArtifactId_thenListAllChildModules.redownload-repo}")
+    private String redownloadTutorialsRepo;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -563,30 +565,29 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Tag("jgit")
     public final void givenAnArtifactId_thenListAllChildModules() throws IOException, GitAPIException {
 
-        String repoDirectory = "/var/lib/jenkins/tutorials-source-code";
-        String dotGitDirectory = "/var/lib/jenkins/tutorials-source-code/.git/";
+        String repoDirectory = GlobalConstants.repoLocalPath;
+        String dotGitDirectory = repoDirectory + "/.git/";
         Path repoDirectoryPath = Paths.get(repoDirectory);
         Path dotGitDirectoryPath = Paths.get(dotGitDirectory);
-        
-        /* FileUtils.deleteDirectory(repoDirectoryPath.toFile());
-         Files.createDirectory(repoDirectoryPath);
-         
-         logger.info("Initiating tutorials repo"); Git.cloneRepository()
-         .setURI("https://github.com/eugenp/tutorials.git")
-         .setDirectory(repoDirectoryPath.toFile()) .call();
-         
-         logger.info("tutorials repository cloned");
-         FileUtils.deleteDirectory(dotGitDirectoryPath.toFile());
-         logger.info(".git folder deleted");
-        */
-        
+        if (!repoDirectoryPath.toFile().exists()) {
+            redownloadTutorialsRepo = GlobalConstants.NO;
+        }
+        if (GlobalConstants.YES.equalsIgnoreCase(redownloadTutorialsRepo)) {
+            FileUtils.deleteDirectory(repoDirectoryPath.toFile());
+            Files.createDirectory(repoDirectoryPath);
+
+            logger.info("Initiating tutorials repo");
+            Git.cloneRepository().setURI(GlobalConstants.tutorialsRepoGitUrl).setDirectory(repoDirectoryPath.toFile()).call();
+
+            logger.info("tutorials repository cloned");
+            FileUtils.deleteDirectory(dotGitDirectoryPath.toFile());
+            logger.info(".git folder deleted");
+        }
         TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor = new TutorialsParentModuleFinderFileVisitor(parentArtifactId);
         Files.walkFileTree(repoDirectoryPath, tutorialsParentModuleFinderFileVisitor);
         Utils.logChildModulesResults(tutorialsParentModuleFinderFileVisitor);
-       
+
         System.out.println("finished");
-        
-        
     }
 
 }

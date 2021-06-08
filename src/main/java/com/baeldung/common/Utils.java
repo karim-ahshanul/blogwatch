@@ -765,8 +765,11 @@ public class Utils {
 
     public static void logChildModulesResults(TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor) {
         logger.info("-------------------------------------------------------------------");
-        logger.info("Please find below child modules for:{}",tutorialsParentModuleFinderFileVisitor.getArtificateId());
+        logger.info("Please find below child modules for:{}", tutorialsParentModuleFinderFileVisitor.getArtificateId());
         logger.info("-------------------------------------------------------------------");
-        tutorialsParentModuleFinderFileVisitor.getChildModules().forEach(module -> logger.info(module));        
-    }   
+        tutorialsParentModuleFinderFileVisitor.getChildModules().forEach(modulePath -> {
+            String gitUrl = StringUtils.removeEnd(StringUtils.removeStart(modulePath, GlobalConstants.repoLocalPath), "pom.xml");
+            System.out.println("https://github.com/eugenp/tutorials/tree/master" + gitUrl);
+        });
+    }
 }
