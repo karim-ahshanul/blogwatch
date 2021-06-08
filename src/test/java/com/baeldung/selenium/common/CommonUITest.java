@@ -40,6 +40,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+import com.baeldung.common.ConsoleColors;
 import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.GlobalConstants.TestMetricTypes;
 import com.baeldung.common.TestMetricsExtension;
@@ -587,7 +588,7 @@ public class CommonUITest extends BaseUISeleniumTest {
         Files.walkFileTree(repoDirectoryPath, tutorialsParentModuleFinderFileVisitor);
         Utils.logChildModulesResults(tutorialsParentModuleFinderFileVisitor);
 
-        System.out.println("finished");
+        System.out.println(ConsoleColors.blueColordMessage("finished"));
     }
 
 }
