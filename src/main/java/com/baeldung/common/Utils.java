@@ -40,6 +40,7 @@ import com.baeldung.common.vo.AnchorLinksTestDataVO;
 import com.baeldung.common.vo.EventTrackingVO;
 import com.baeldung.common.vo.JavaConstruct;
 import com.baeldung.common.vo.LinkVO;
+import com.baeldung.filevisitor.TutorialsParentModuleFinderFileVisitor;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -760,5 +761,12 @@ public class Utils {
 
     public static WebElement findAnchorContainingText(WebDriver webDriver, String textToMatchInTheLink) {
         return webDriver.findElement(By.xpath("//*[contains(@href, '" + textToMatchInTheLink + "')]"));
+    }
+
+    public static void logChildModulesResults(TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor) {
+        logger.info("-------------------------------------------------------------------");
+        logger.info("Please find below child modules for:{}",tutorialsParentModuleFinderFileVisitor.getArtificateId());
+        logger.info("-------------------------------------------------------------------");
+        tutorialsParentModuleFinderFileVisitor.getChildModules().forEach(module -> logger.info(module));        
     }   
 }

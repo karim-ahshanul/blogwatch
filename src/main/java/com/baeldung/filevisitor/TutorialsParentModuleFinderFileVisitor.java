@@ -6,6 +6,8 @@ import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -17,6 +19,8 @@ public class TutorialsParentModuleFinderFileVisitor extends SimpleFileVisitor<Pa
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     private final String artificateId;
+    
+    private List<String> childModules = new ArrayList<>();
 
     public TutorialsParentModuleFinderFileVisitor(String artifactId) {
         this.artificateId = artifactId;
@@ -33,20 +37,30 @@ public class TutorialsParentModuleFinderFileVisitor extends SimpleFileVisitor<Pa
                         .map(parentTags -> parentTags.first())
                         .map(artififactIdTag -> artififactIdTag.text())
                         .orElse("not-found");
-            } catch (IOException e1) {
-                System.out.println("Exception.............");
+            } catch (IOException e1) {                
                 return "not-found";
             }
         };
         File file = path.toFile();
         if (file.isFile() && file.getName()
                 .equalsIgnoreCase("pom.xml")) {
-            logger.info("inspection {}", path);
+            logger.info("inspecting {}", path);
             String parentArtificatId = getParentArtifactId.apply(path);
-            System.out.println("Prenet tag:" + parentArtificatId);
+            if(artificateId.equalsIgnoreCase(parentArtificatId)) {
+                logger.info("Child module found: {}", path.toString());
+                childModules.add(path.toString());
+            }
 
         }
         return FileVisitResult.CONTINUE;
+    }
+
+    public List<String> getChildModules() {
+        return childModules;
+    }
+
+    public String getArtificateId() {
+        return artificateId;
     }
 
 }

@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -24,8 +24,6 @@ import java.util.stream.Stream;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.InvalidRemoteException;
-import org.eclipse.jgit.api.errors.TransportException;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Tag;
@@ -47,7 +45,6 @@ import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.GlobalConstants.TestMetricTypes;
 import com.baeldung.common.TestMetricsExtension;
 import com.baeldung.common.Utils;
-import com.baeldung.common.YAMLProperties;
 import com.baeldung.common.vo.AnchorLinksTestDataVO;
 import com.baeldung.common.vo.CourseBuyLinksVO.PurchaseLink;
 import com.baeldung.common.vo.EventTrackingVO;
@@ -96,6 +93,9 @@ public class CommonUITest extends BaseUISeleniumTest {
     
     @Value("${givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage.time-to-wait-for-popup}")
     private int timeToWaitForPopup;
+    
+    @Value("${givenAnArtifactId_thenListAllChildModules.parent-artifact-id}")
+    private String parentArtifactId;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -567,21 +567,23 @@ public class CommonUITest extends BaseUISeleniumTest {
         String dotGitDirectory = "/var/lib/jenkins/tutorials-source-code/.git/";
         Path repoDirectoryPath = Paths.get(repoDirectory);
         Path dotGitDirectoryPath = Paths.get(dotGitDirectory);
-        /*
-         * FileUtils.deleteDirectory(repoDirectoryPath.toFile());
-         * Files.createDirectory(repoDirectoryPath);
-         * 
-         * logger.info("Initiating tutorials repo"); Git.cloneRepository()
-         * .setURI("https://github.com/eugenp/tutorials.git")
-         * .setDirectory(repoDirectoryPath.toFile()) .call();
-         * 
-         * logger.info("tutorials repository cloned");
-         * FileUtils.deleteDirectory(dotGitDirectoryPath.toFile());
-         * logger.info(".git folder deleted");
-         */
         
-        TutorialsParentModuleFinderFileVisitor TutorialsParentModuleFinderFileVisitor = new TutorialsParentModuleFinderFileVisitor("akka-http");
-        Files.walkFileTree(repoDirectoryPath, TutorialsParentModuleFinderFileVisitor);
+        /* FileUtils.deleteDirectory(repoDirectoryPath.toFile());
+         Files.createDirectory(repoDirectoryPath);
+         
+         logger.info("Initiating tutorials repo"); Git.cloneRepository()
+         .setURI("https://github.com/eugenp/tutorials.git")
+         .setDirectory(repoDirectoryPath.toFile()) .call();
+         
+         logger.info("tutorials repository cloned");
+         FileUtils.deleteDirectory(dotGitDirectoryPath.toFile());
+         logger.info(".git folder deleted");
+        */
+        
+        TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor = new TutorialsParentModuleFinderFileVisitor(parentArtifactId);
+        Files.walkFileTree(repoDirectoryPath, tutorialsParentModuleFinderFileVisitor);
+        Utils.logChildModulesResults(tutorialsParentModuleFinderFileVisitor);
+       
         System.out.println("finished");
         
         
