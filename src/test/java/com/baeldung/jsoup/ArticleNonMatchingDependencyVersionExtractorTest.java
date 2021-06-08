@@ -78,7 +78,7 @@ class ArticleNonMatchingDependencyVersionExtractorTest {
         Utils.printItems(
           "Considered articles",
           articleUrlsInModules,
-          articleUrl -> "- " + articleUrl
+          articleUrl -> "- " + Utils.changeLiveUrlWithStaging8(articleUrl.toString())
         );
 
         Utils.printItems(
