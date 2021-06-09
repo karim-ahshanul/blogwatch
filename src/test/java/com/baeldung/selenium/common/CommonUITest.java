@@ -591,6 +591,8 @@ public class CommonUITest extends BaseUISeleniumTest {
                     redownloadTutorialsRepo = GlobalConstants.YES;
                 }
             } catch (Exception e) {
+                logger.error("Error in git pull: {}",e.getMessage());
+                logger.info(magentaColordMessage("An exception happened in the git pull. Will the full repo now"));
                 redownloadTutorialsRepo = GlobalConstants.YES;
             }
         }
