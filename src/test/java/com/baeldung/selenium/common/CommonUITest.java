@@ -24,6 +24,7 @@ import java.util.stream.Stream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.PullResult;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -569,18 +570,28 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Test
     @Tag("jgit")
     public final void givenAnArtifactId_thenListAllChildModules() throws IOException, GitAPIException {
-        
-        if(StringUtils.isBlank(parentArtifactId)) {
+
+        if (StringUtils.isBlank(parentArtifactId)) {
             logger.info(magentaColordMessage("Parent Artifact ID not provided. The build will be aborted now. "));
             fail("Parent Artificat ID is required");
         }
 
-        String repoDirectory = GlobalConstants.repoLocalPath;
-        String dotGitDirectory = repoDirectory + "/.git/";
+        String repoDirectory = GlobalConstants.repoLocalPath;       
         Path repoDirectoryPath = Paths.get(repoDirectory);
-        Path dotGitDirectoryPath = Paths.get(dotGitDirectory);
+        
+
         if (!repoDirectoryPath.toFile().exists()) {
-            redownloadTutorialsRepo = GlobalConstants.NO;
+            redownloadTutorialsRepo = GlobalConstants.YES;
+        } else if (GlobalConstants.NO.equalsIgnoreCase(redownloadTutorialsRepo)) {
+            Git git = Git.open(repoDirectoryPath.toFile());
+            try {
+            PullResult result = git.pull().setRemote("origin").setRemoteBranchName("master").call();
+            if (!result.isSuccessful()) {
+                redownloadTutorialsRepo = GlobalConstants.YES;
+            }
+            }catch(Exception e) {
+                redownloadTutorialsRepo = GlobalConstants.YES;
+            }
         }
         if (GlobalConstants.YES.equalsIgnoreCase(redownloadTutorialsRepo)) {
             FileUtils.deleteDirectory(repoDirectoryPath.toFile());
@@ -589,9 +600,7 @@ public class CommonUITest extends BaseUISeleniumTest {
             logger.info(magentaColordMessage("Downloading tutorials repo. This may take a few minutes"));
             Git.cloneRepository().setURI(GlobalConstants.tutorialsRepoGitUrl).setDirectory(repoDirectoryPath.toFile()).call();
 
-            logger.info(magentaColordMessage("tutorials repository cloned"));
-            FileUtils.deleteDirectory(dotGitDirectoryPath.toFile());
-            logger.info(magentaColordMessage(".git folder deleted"));
+            logger.info(magentaColordMessage("tutorials repository cloned"));           
         }
         TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor = new TutorialsParentModuleFinderFileVisitor(parentArtifactId);
         Files.walkFileTree(repoDirectoryPath, tutorialsParentModuleFinderFileVisitor);
