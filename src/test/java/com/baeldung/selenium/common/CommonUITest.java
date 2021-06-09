@@ -576,20 +576,20 @@ public class CommonUITest extends BaseUISeleniumTest {
             fail("Parent Artificat ID is required");
         }
 
-        String repoDirectory = GlobalConstants.repoLocalPath;       
+        String repoDirectory = GlobalConstants.repoLocalPath;
         Path repoDirectoryPath = Paths.get(repoDirectory);
-        
 
         if (!repoDirectoryPath.toFile().exists()) {
             redownloadTutorialsRepo = GlobalConstants.YES;
         } else if (GlobalConstants.NO.equalsIgnoreCase(redownloadTutorialsRepo)) {
             Git git = Git.open(repoDirectoryPath.toFile());
             try {
-            PullResult result = git.pull().setRemote("origin").setRemoteBranchName("master").call();
-            if (!result.isSuccessful()) {
-                redownloadTutorialsRepo = GlobalConstants.YES;
-            }
-            }catch(Exception e) {
+                logger.info(magentaColordMessage("Firing Git Pull to downlaod update (if any)"));
+                PullResult result = git.pull().setRemote("origin").setRemoteBranchName("master").call();
+                if (!result.isSuccessful()) {
+                    redownloadTutorialsRepo = GlobalConstants.YES;
+                }
+            } catch (Exception e) {
                 redownloadTutorialsRepo = GlobalConstants.YES;
             }
         }
@@ -600,7 +600,7 @@ public class CommonUITest extends BaseUISeleniumTest {
             logger.info(magentaColordMessage("Downloading tutorials repo. This may take a few minutes"));
             Git.cloneRepository().setURI(GlobalConstants.tutorialsRepoGitUrl).setDirectory(repoDirectoryPath.toFile()).call();
 
-            logger.info(magentaColordMessage("tutorials repository cloned"));           
+            logger.info(magentaColordMessage("tutorials repository cloned"));
         }
         TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor = new TutorialsParentModuleFinderFileVisitor(parentArtifactId);
         Files.walkFileTree(repoDirectoryPath, tutorialsParentModuleFinderFileVisitor);
