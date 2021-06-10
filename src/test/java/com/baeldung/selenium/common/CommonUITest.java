@@ -587,7 +587,8 @@ public class CommonUITest extends BaseUISeleniumTest {
                 logger.info(magentaColordMessage("Firing git pull to downlaod updates (if any)"));
                 PullResult result = git.pull().setRemote("origin").setRemoteBranchName("master").call();
                 if (result.isSuccessful()) {  
-                    logger.info(magentaColordMessage("Git pull finished successfully"));                    
+                    logger.info(magentaColordMessage("Git pull finished successfully"));  
+                    git.clean().setForce(true).setIgnore(false).setCleanDirectories(true).call();                    
                 }
                 else {
                     redownloadTutorialsRepo = GlobalConstants.YES;
