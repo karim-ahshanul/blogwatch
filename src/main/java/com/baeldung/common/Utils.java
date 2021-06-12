@@ -787,5 +787,13 @@ public class Utils {
         
         return staging8Url;
     }
+    
+    public static void sleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            //
+        }
+    }
      
 }

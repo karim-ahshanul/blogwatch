@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.baeldung.common.Utils;
+
 @Component
 public class SpringMicroservicesGuidePage extends BlogBaseDriver {
     
@@ -22,6 +24,7 @@ public class SpringMicroservicesGuidePage extends BlogBaseDriver {
     }
 
     public List<WebElement> findImages() {
+        Utils.sleep(5000);
         return this.getWebDriver().findElements(By.xpath("//*[@id='tve_editor']//img"));
     }
 
