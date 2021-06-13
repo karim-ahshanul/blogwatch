@@ -33,12 +33,15 @@ public class BlogLinksExtractor {
     
     @Value("${full.archive.urls}")
     private String[] fullArchiveUrls;
+    
+    @Value("${base.url}")
+    private String baseUrl;
 
     public void createPagesList() throws JDOMException, IOException {
         // webDriver.get(GlobalConstants.PAGES_SITEMAP_URL);
         // Document document = saxBuilder.build(new ByteArrayInputStream(webDriver.getPageSource().getBytes()));
         HttpURLConnection conn;
-        URL pageURL = new URL(GlobalConstants.PAGES_SITEMAP_URL);
+        URL pageURL = new URL(baseUrl + GlobalConstants.PAGES_SITEMAP_URL);
         conn = (HttpURLConnection) pageURL.openConnection();
         conn.setRequestProperty("User-Agent", "Mozilla 5.0");
 
@@ -52,7 +55,7 @@ public class BlogLinksExtractor {
         // Files.write(allpagesFilePath, "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING);
         urlElements.forEach(urlNode -> {
             try {
-                String url = urlNode.getChild("loc", defaultNamespace).getText().substring(GlobalConstants.BAELDUNG_HOME_PAGE_URL.length());
+                String url = urlNode.getChild("loc", defaultNamespace).getText().substring(baseUrl.length());
                 if (!urlAlreadyAvailable(allpagesFilePath, url)) {
                     logger.info("New Page found->" + url);
                     Files.write(allpagesFilePath, (url + "\n").getBytes(), StandardOpenOption.APPEND);
@@ -75,17 +78,17 @@ public class BlogLinksExtractor {
 
     public void createArticlesList(WebDriver webDriver) {
         for (String archive : fullArchiveUrls) {
-            webDriver.get(archive);
+            webDriver.get(baseUrl + archive);
             List<WebElement> archiveURLElemets = webDriver.findElements(By.xpath("//ul[contains(@class, 'car-list')]//a"));
             File file = new File(Utils.getAbsolutePathToFileInSrc(GlobalConstants.ALL_ARTICLES_FILE_NAME));
             Path allArtilcesFilePath = Paths.get(file.getAbsolutePath());
             // Files.write(allArtilcesFilePath, "".getBytes(), StandardOpenOption.TRUNCATE_EXISTING);
             archiveURLElemets.forEach(anchorTag -> {
                 try {
-                    String url = anchorTag.getAttribute("href").substring(GlobalConstants.BAELDUNG_HOME_PAGE_URL.length());
+                    String url = anchorTag.getAttribute("href").substring(baseUrl.length());
                     if (!urlAlreadyAvailable(allArtilcesFilePath, url) && !isFlaggedArticle(url)) {
                         logger.info("New Article found->" + url);
-                        Files.write(allArtilcesFilePath, (anchorTag.getAttribute("href").substring(GlobalConstants.BAELDUNG_HOME_PAGE_URL.length()) + "\n").getBytes(), StandardOpenOption.APPEND);
+                        Files.write(allArtilcesFilePath, (anchorTag.getAttribute("href").substring(baseUrl.length()) + "\n").getBytes(), StandardOpenOption.APPEND);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

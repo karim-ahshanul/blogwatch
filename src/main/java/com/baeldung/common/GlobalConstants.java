@@ -34,7 +34,7 @@ public class GlobalConstants {
     public static final String NUMBER_ONE = "1";
     public static final String STRING_WITH_SINGLE_SPACE = " ";
 
-    public static final String PAGES_SITEMAP_URL = "https://www.baeldung.com/page.xml";
+    public static final String PAGES_SITEMAP_URL = "/page.xml";
 
     // url files
     public static final String ALL_ARTICLES_FILE_NAME = "all-articles.txt";
