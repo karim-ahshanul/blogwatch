@@ -21,10 +21,7 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.stream.Stream;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.PullResult;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -576,43 +573,16 @@ public class CommonUITest extends BaseUISeleniumTest {
             fail("Parent Artificat ID is required");
         }
 
-        String repoDirectory = GlobalConstants.repoLocalPath;
-        Path repoDirectoryPath = Paths.get(repoDirectory);
+        String repoLocalDirectory = GlobalConstants.tutorialsRepoLocalPath;
+        Path repoDirectoryPath = Paths.get(repoLocalDirectory);
+        Utils.fetchGitRepo(this.redownloadTutorialsRepo, repoDirectoryPath, GlobalConstants.tutorialsRepoGitUrl);
 
-        if (!repoDirectoryPath.toFile().exists()) {
-            redownloadTutorialsRepo = GlobalConstants.YES;
-        } else if (GlobalConstants.NO.equalsIgnoreCase(redownloadTutorialsRepo)) {
-            Git git = Git.open(repoDirectoryPath.toFile());
-            try {
-                logger.info(magentaColordMessage("Firing git pull to downlaod updates (if any)"));
-                PullResult result = git.pull().setRemote("origin").setRemoteBranchName("master").call();
-                if (result.isSuccessful()) {  
-                    logger.info(magentaColordMessage("Git pull finished successfully"));  
-                    git.clean().setForce(true).setIgnore(false).setCleanDirectories(true).call();                    
-                }
-                else {
-                    redownloadTutorialsRepo = GlobalConstants.YES;
-                }
-            } catch (Exception e) {
-                logger.error("Error in git pull: {}",e.getMessage());
-                logger.info(magentaColordMessage("An exception happened in the git pull. Will the full repo now"));
-                redownloadTutorialsRepo = GlobalConstants.YES;
-            }
-        }
-        if (GlobalConstants.YES.equalsIgnoreCase(redownloadTutorialsRepo)) {
-            FileUtils.deleteDirectory(repoDirectoryPath.toFile());
-            Files.createDirectory(repoDirectoryPath);
-
-            logger.info(magentaColordMessage("Downloading tutorials repo. This may take a few minutes"));
-            Git.cloneRepository().setURI(GlobalConstants.tutorialsRepoGitUrl).setDirectory(repoDirectoryPath.toFile()).call();
-
-            logger.info(magentaColordMessage("tutorials repository cloned"));
-        }
         TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor = new TutorialsParentModuleFinderFileVisitor(parentArtifactId);
         Files.walkFileTree(repoDirectoryPath, tutorialsParentModuleFinderFileVisitor);
         Utils.logChildModulesResults(tutorialsParentModuleFinderFileVisitor);
 
         System.out.println(ConsoleColors.magentaColordMessage("finished"));
     }
+    
 
 }

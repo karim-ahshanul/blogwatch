@@ -30,7 +30,7 @@ public class TutorialsParentModuleFinderFileVisitor extends SimpleFileVisitor<Pa
 
     @Override
     public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-        if (dir.toString().equalsIgnoreCase(GlobalConstants.repoLocalPath + "/.git/") || dir.toString().equalsIgnoreCase(GlobalConstants.repoLocalPath + "/.git")) {
+        if (dir.toString().equalsIgnoreCase(GlobalConstants.tutorialsRepoLocalPath + "/.git/") || dir.toString().equalsIgnoreCase(GlobalConstants.tutorialsRepoLocalPath + "/.git")) {
             return FileVisitResult.SKIP_SUBTREE;
         }
         return super.preVisitDirectory(dir, attrs);

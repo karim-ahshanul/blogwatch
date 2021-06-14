@@ -1,6 +1,7 @@
 package com.baeldung.common;
 
 import static com.baeldung.common.ConsoleColors.colordSummaryMessage;
+import static com.baeldung.common.ConsoleColors.magentaColordMessage;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,8 +26,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.PullResult;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.InvalidRemoteException;
+import org.eclipse.jgit.api.errors.TransportException;
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -769,7 +777,7 @@ public class Utils {
         logger.info(colordSummaryMessage("Please find below child modules for: {}"), tutorialsParentModuleFinderFileVisitor.getArtificateId());
         
         tutorialsParentModuleFinderFileVisitor.getChildModules().forEach(modulePath -> {
-            String gitUrl = StringUtils.removeEnd(StringUtils.removeStart(modulePath, GlobalConstants.repoLocalPath), "pom.xml");
+            String gitUrl = StringUtils.removeEnd(StringUtils.removeStart(modulePath, GlobalConstants.tutorialsRepoLocalPath), "pom.xml");
             System.out.println("https://github.com/eugenp/tutorials/tree/master" + gitUrl);
         });
     }
@@ -794,6 +802,39 @@ public class Utils {
         } catch (InterruptedException e) {
             //
         }
+    }
+
+    public static void fetchGitRepo(String redownloadTutorialsRepo, Path repoDirectoryPath, String repoGitUrl) throws IOException, InvalidRemoteException, TransportException, GitAPIException {
+        if (!repoDirectoryPath.toFile().exists()) {
+            redownloadTutorialsRepo = GlobalConstants.YES;
+        } else if (GlobalConstants.NO.equalsIgnoreCase(redownloadTutorialsRepo)) {
+            Git git = Git.open(repoDirectoryPath.toFile());
+            try {
+                logger.info(magentaColordMessage("Firing git pull to downlaod updates (if any)"));
+                PullResult result = git.pull().setRemote("origin").setRemoteBranchName("master").call();
+                if (result.isSuccessful()) {  
+                    logger.info(magentaColordMessage("Git pull finished successfully"));  
+                    git.clean().setForce(true).setIgnore(false).setCleanDirectories(true).call();                    
+                }
+                else {
+                    redownloadTutorialsRepo = GlobalConstants.YES;
+                }
+            } catch (Exception e) {
+                logger.error("Error in git pull: {}",e.getMessage());
+                logger.info(magentaColordMessage("An exception happened in the git pull. Will the full repo now"));
+                redownloadTutorialsRepo = GlobalConstants.YES;
+            }
+        }
+        if (GlobalConstants.YES.equalsIgnoreCase(redownloadTutorialsRepo)) {
+            FileUtils.deleteDirectory(repoDirectoryPath.toFile());
+            Files.createDirectory(repoDirectoryPath);
+
+            logger.info(magentaColordMessage("Downloading tutorials repo. This may take a few minutes"));
+            Git.cloneRepository().setURI(repoGitUrl).setDirectory(repoDirectoryPath.toFile()).call();
+
+            logger.info(magentaColordMessage("tutorials repository cloned"));
+        }
+        
     }
      
 }
