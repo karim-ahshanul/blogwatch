@@ -133,7 +133,7 @@ public class CommonUITest extends BaseUISeleniumTest {
 
         try (Stream<String> alURls = Utils.fetchFilesAsList(pageStausCheckUrlFileNames)) {
             alURls.forEach(URL -> {
-                TestUtils.sleep(400);
+                //TestUtils.sleep(400);
                 String fullURL = page.getBaseURL() + URL;
                 logger.info("Verifying 200OK on: {}", fullURL);
 
