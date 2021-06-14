@@ -5,7 +5,6 @@
 /java-weekly-207
 /spring-apache-file-upload
 /hibernate-spatial
-/os-data-into-elastic-stack
 /hibernate-search
 /java-hashset
 /spring-cloud-heroku
@@ -40,7 +39,6 @@
 /java-copy-file
 /java-weekly-204
 /java-time-zones
-/spring-5-enabledIf
 /creational-design-patterns
 /spring-cloud-cli
 /spring-abstract-routing-data-source
@@ -556,7 +554,6 @@
 /java-collection-min-max
 /java-web-weekly-165
 /struts-2-intro
-/jenkins-pipeline-with-marathon-mesos
 /spring-webutils-servletrequestutils
 /spring-mvc-excel-files
 /apache-bval
@@ -1370,7 +1367,6 @@
 /java-fail-safe-vs-fail-fast-iterator
 /java-executor-wait-for-threads
 /java-initialization
-/jenkins-and-jmeter
 /java-cipher-class
 /jmeter
 /java-variable-handles
@@ -1383,7 +1379,6 @@
 /java-orientdb
 /flyway-callbacks
 /hibernate-interceptor
-/jenkins-pipelines
 /gradle-fat-jar
 /java-binary-tree
 /java-influxdb
@@ -1398,7 +1393,6 @@
 /cockroachdb-java
 /java-treemap-vs-hashmap
 /java-string-joiner
-/jenkins-job-schedule
 /hibernate-5-multitenancy
 /java-thread-local-random
 /hibernate-5-spring
@@ -1629,7 +1623,6 @@
 /apache-ignite-spring-data
 /java-singleton-double-checked-locking
 /easymock-argument-matchers
-/kubernetes
 /java-measure-elapsed-time
 /maven-ant-task
 /spring-cache-custom-keygenerator
@@ -2075,7 +2068,6 @@
 /java-streams-find-list-items
 /java-combine-collections
 /spring-boot-crud-thymeleaf
-/java-indexOf-find-string-occurrences
 /java-merging-properties
 /lombok-builder-custom-setter
 /java-arrays-guide
@@ -2154,7 +2146,6 @@
 /spring-data-cassandra-reactive
 /java-array-to-string
 /java-join-primitive-array
-/travis-ci-build-pipeline
 /spring-reactive-sequence-logging
 /hibernate-entitymanager
 /java-stream-filter-lambda
@@ -2190,7 +2181,6 @@
 /intellij-debugging-tricks
 /java-packages
 /java-11-string-api
-/spinnaker
 /java-calculate-factorial
 /java-palindrome-substrings
 /spring-data-jpa-pagination-sorting
@@ -2378,7 +2368,6 @@
 /spring-boot-angular-web
 /gson-list
 /eclipse-error-web-xml-missing
-/kubernetes-helm
 /spock-stub-mock-spy
 /lombok-builder-singular
 /jpa-transaction-required-exception
@@ -2523,7 +2512,6 @@
 /crawler4j
 /springjunit4classrunner-parameterized
 /java-collectors-tomap
-/docker-compose
 /spring-boot-context-runner
 /java-error-catch
 /mongodb-geospatial-support
@@ -2681,7 +2669,6 @@
 /java-xor-operator
 /linux/generating-ssh-keys-in-linux
 /java-mutex
-/mesos-kubernetes-comparison
 /linux/file-append-lines
 /freemarker-operations
 /spark-mlib-machine-learning
@@ -2878,7 +2865,6 @@
 /java-aws-s3-reactive
 /spring-security-authenticationmanagerresolver
 /java-wrapping-vs-rethrowing-exceptions
-/podman-intro
 /java-merge-sorted-arrays
 /java-print-binary-tree-diagram
 /java-weekly-312
@@ -2900,7 +2886,6 @@
 /java-prim-algorithm
 /java-weekly-310
 /java-fibonacci
-/netflix-genie-intro
 /quarkus-extension-java
 /spring-url-encoded-form-data
 /java-circular-linked-list
@@ -2919,7 +2904,6 @@
 /java-rejectedexecutionhandler
 /java-illegal-start-of-expression
 /job/java-engineer-with-spring-security-experience-remote-part-time/
-/jenkins-run-gatling-tests
 /cucumber-data-tables
 /akka-play-websockets
 /java-common-concurrency-pitfalls
@@ -2965,7 +2949,6 @@
 /java-weekly-316
 /java-big-queue
 /java-preview-features
-/devops-overview
 /java-asynchronous-programming
 /java-generating-random-numbers-in-range
 /java-generating-barcodes-qr-codes
@@ -2979,7 +2962,6 @@
 /java-weekly-317
 /gradle-6-features
 /java-open-liberty
-/openshift-health-checks
 /java-weekly-319
 /spring-cloud-gateway-routing-predicate-factories
 /java-slack-plugin
@@ -2996,7 +2978,6 @@
 /java-socketexception
 /spring-mvc-cache-headers
 /spring-framework-design-patterns
-/jenkins-slack-integration
 /spring-boot-bean-definition-override-exception
 /java-mongodb-aggregations
 /java-headless-mode
@@ -3042,7 +3023,6 @@
 /java-cache2k
 /java-jcabi-aspects
 /zuul-filter-modifying-response-body
-/docker-images-vs-containers
 /jvm-crash-shell
 /java-weekly-321
 /java-arrays-deepequals
@@ -3285,7 +3265,6 @@
 /java-cast-int-to-enum
 /java-weekly-335
 /feign-timeout
-/jenkins-inject-git-secrets
 /spring-bucket4j
 /spring-security-auth0
 /kafka-mockconsumer

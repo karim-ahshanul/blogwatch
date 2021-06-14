@@ -31,7 +31,7 @@
 /spring-tutorial
 /about
 /thank-you-jw
-/baeldung-company-info
+/company-info
 /contact
 /thank-you
 /java-spring-training
@@ -83,3 +83,4 @@
 /coaching-call/
 /learn-spring-data-jpa-faq
 /learn-spring-data-jpa-for-teams
+
