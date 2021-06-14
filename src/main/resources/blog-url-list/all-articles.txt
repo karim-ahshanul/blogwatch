@@ -4634,3 +4634,8 @@
 /cs/process-vs-thread
 /cs/virtual-memory-why
 /cs/chipset
+/java-path-vs-file
+/jpa-tools-overview
+/java-regex-non-capturing-groups
+/linux/bash-substring
+/scala/cats-effects-intro
