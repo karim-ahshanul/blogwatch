@@ -98,7 +98,7 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Value("${givenAnArtifactId_thenListAllChildModules.parent-artifact-id}")
     private String parentArtifactId;
     
-    @Value("${givenAnArtifactId_thenListAllChildModules.redownload-repo}")
+    @Value("${redownload-repo}")
     private String redownloadTutorialsRepo;
 
     @Autowired
@@ -565,8 +565,7 @@ public class CommonUITest extends BaseUISeleniumTest {
                 .ifPresent(element -> element.click());
     }
 
-    @Test
-    @Tag("jgit")
+    @Test    
     public final void givenAnArtifactId_thenListAllChildModules() throws IOException, GitAPIException {
 
         if (StringUtils.isBlank(parentArtifactId)) {
