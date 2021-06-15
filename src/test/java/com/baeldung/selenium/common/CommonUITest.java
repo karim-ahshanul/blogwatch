@@ -52,6 +52,7 @@ import com.baeldung.common.vo.FooterLinksDataVO;
 import com.baeldung.common.vo.FooterLinksDataVO.FooterLinkCategory;
 import com.baeldung.common.vo.LinkVO;
 import com.baeldung.crawler4j.crawler.CrawlerForFindingReadmeURLs;
+import com.baeldung.filevisitor.ModuleAlignmentValidatorFileVisitor;
 import com.baeldung.filevisitor.TutorialsParentModuleFinderFileVisitor;
 import com.baeldung.utility.TestUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -573,6 +574,7 @@ public class CommonUITest extends BaseUISeleniumTest {
             fail("Parent Artificat ID is required");
         }
 
+        //fetch tutorials repo
         String repoLocalDirectory = GlobalConstants.tutorialsRepoLocalPath;
         Path repoDirectoryPath = Paths.get(repoLocalDirectory);
         Utils.fetchGitRepo(this.redownloadTutorialsRepo, repoDirectoryPath, GlobalConstants.tutorialsRepoGitUrl);
@@ -581,7 +583,28 @@ public class CommonUITest extends BaseUISeleniumTest {
         Files.walkFileTree(repoDirectoryPath, tutorialsParentModuleFinderFileVisitor);
         Utils.logChildModulesResults(tutorialsParentModuleFinderFileVisitor);
 
-        System.out.println(ConsoleColors.magentaColordMessage("finished"));
+        logger.info(ConsoleColors.magentaColordMessage("finished"));
+    }
+    
+
+    @Test    
+    public final void givenTutorialsRepo_whenAllModulesAnalysed_thenFolderNameAndArtifiactIdAndModuleNameMatch() throws IOException, GitAPIException {
+        //fetch tutorials repo
+        String repoLocalDirectory = GlobalConstants.tutorialsRepoLocalPath;
+        Path repoDirectoryPath = Paths.get(repoLocalDirectory);
+        Utils.fetchGitRepo(this.redownloadTutorialsRepo, repoDirectoryPath, GlobalConstants.tutorialsRepoGitUrl);               
+        
+        ModuleAlignmentValidatorFileVisitor moduleAlignmentValidatorFileVisitor = new ModuleAlignmentValidatorFileVisitor();
+        Files.walkFileTree(repoDirectoryPath, moduleAlignmentValidatorFileVisitor);
+        
+        Utils.logUnAlignedModulesResults(moduleAlignmentValidatorFileVisitor);
+        Utils.logUnparsableModulesResults(moduleAlignmentValidatorFileVisitor);
+        if (moduleAlignmentValidatorFileVisitor.getInvalidModules().size() > 0) {
+            recordMetrics(moduleAlignmentValidatorFileVisitor.getInvalidModules().size(), FAILED);
+            fail("Unaligned modules found. Please refer to the console log for details");
+        }                
+        
+        logger.info(ConsoleColors.magentaColordMessage("finished"));
     }
     
 

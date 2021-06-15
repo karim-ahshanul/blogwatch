@@ -516,7 +516,7 @@ public class ArticlesUITest extends BaseUISeleniumTest {
     }
 
     protected boolean shouldSkipUrl(String testName) {
-        if (!testingSingleURL && Utils.excludePage(page.getUrl(), YAMLProperties.exceptionsForTestHittingAllUrls.get(testName), true)) {
+        if (!testingSingleURL && Utils.excludePage(page.getUrl(), YAMLProperties.exceptionsForTests.get(testName), true)) {
             logger.info("Skipping {} for test: {}", page.getUrl(), testName);
             return true;
         }

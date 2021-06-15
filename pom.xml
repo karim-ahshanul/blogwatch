@@ -171,6 +171,12 @@
 			<version>5.11.1.202105131744-r</version>
 		</dependency>
 
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
         <!-- test scoped -->
 
         <dependency>

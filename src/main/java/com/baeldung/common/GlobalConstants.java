@@ -260,4 +260,5 @@ public class GlobalConstants {
     public static final String givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode = "givenAGoogleAnalyticsEnabledPageOnTheDraftSite_whenAnalysingThePageSource_thenItHasTrackingCode";
     public static final String givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs = "givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs";
     public static final String givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage = "givenAPage_whenThePageLoads_thenNoPopupAppearsOnThePage";
+    public static final String givenTutorialsRepo_whenAllModulesAnalysed_thenFolderNameAndArtifiactIdAndModuleNameMatch = "givenTutorialsRepo_whenAllModulesAnalysed_thenFolderNameAndArtifiactIdAndModuleNameMatch";
 }

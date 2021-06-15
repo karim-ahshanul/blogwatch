@@ -49,6 +49,7 @@ import com.baeldung.common.vo.AnchorLinksTestDataVO;
 import com.baeldung.common.vo.EventTrackingVO;
 import com.baeldung.common.vo.JavaConstruct;
 import com.baeldung.common.vo.LinkVO;
+import com.baeldung.filevisitor.ModuleAlignmentValidatorFileVisitor;
 import com.baeldung.filevisitor.TutorialsParentModuleFinderFileVisitor;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -835,6 +836,27 @@ public class Utils {
             logger.info(magentaColordMessage("tutorials repository cloned"));
         }
         
+    }
+    
+    public static void logUnAlignedModulesResults(ModuleAlignmentValidatorFileVisitor moduleAlignmentValidatorFileVisitor) {
+        
+        logger.info(colordSummaryMessage("Please find below unalighed Moudles"));
+        
+        moduleAlignmentValidatorFileVisitor.getInvalidModules().forEach(modulePath -> {
+            String gitUrl = StringUtils.removeEnd(StringUtils.removeStart(modulePath, GlobalConstants.tutorialsRepoLocalPath), "pom.xml");
+            System.out.println("https://github.com/eugenp/tutorials/tree/master" + gitUrl);
+        });
+    }
+    
+    public static void logUnparsableModulesResults(ModuleAlignmentValidatorFileVisitor moduleAlignmentValidatorFileVisitor) {
+        if(moduleAlignmentValidatorFileVisitor.getUnparsableModule().size() >0 ) {
+            logger.info(colordSummaryMessage("The auotmation coundn't parse folloiwng modues. Please report these to devOps-dev"));
+        }
+        
+        moduleAlignmentValidatorFileVisitor.getUnparsableModule().forEach(modulePath -> {
+            String gitUrl = StringUtils.removeEnd(StringUtils.removeStart(modulePath, GlobalConstants.tutorialsRepoLocalPath), "pom.xml");
+            System.out.println("https://github.com/eugenp/tutorials/tree/master" + gitUrl);
+        });
     }
      
 }

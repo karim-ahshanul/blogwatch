@@ -11,7 +11,7 @@ public class YAMLProperties {
 
     private static Yaml yaml = new Yaml();
     public static Map<String, List<String>> exceptionsForEmptyReadmeTest = fetchYMLPropertiesMap("ignore-list.yaml");
-    public static Map<String, List<String>> exceptionsForTestHittingAllUrls = fetchYMLPropertiesMap("exceptions-for-tests-hitting-all-urls.yaml");
+    public static Map<String, List<String>> exceptionsForTests = fetchYMLPropertiesMap("exceptions-for-tests.yaml");
     public static Map<String, List<String>> multiSiteTargetUrls = fetchYMLPropertiesMap("multi-site-tests-target-urls.yaml");    
     public static Map<String, String> redirectsTestData = fetchYMLProperties("redirects.yaml");
 
