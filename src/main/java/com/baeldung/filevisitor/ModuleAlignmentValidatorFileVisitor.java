@@ -56,7 +56,7 @@ public class ModuleAlignmentValidatorFileVisitor extends SimpleFileVisitor<Path>
                 String artiFactId = pomModel.getArtifactId();
                 String moduleName = pomModel.getName();
                 String directoryName = path.getParent().getFileName().toString();
-                logger.info("artificatId:{} namd:{} directory:{}", artiFactId, moduleName, directoryName);
+                logger.info("artificatId:{} name:{} directory:{}", artiFactId, moduleName, directoryName);
                 if (!artiFactId.equals(directoryName)) {
                     invalidModules.add(path.toString());
                 } else if (StringUtils.isNotBlank(moduleName) && !artiFactId.equals(moduleName)) {
