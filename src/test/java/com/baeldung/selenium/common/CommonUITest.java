@@ -45,6 +45,7 @@ import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.GlobalConstants.TestMetricTypes;
 import com.baeldung.common.TestMetricsExtension;
 import com.baeldung.common.Utils;
+import com.baeldung.common.YAMLProperties;
 import com.baeldung.common.vo.AnchorLinksTestDataVO;
 import com.baeldung.common.vo.CourseBuyLinksVO.PurchaseLink;
 import com.baeldung.common.vo.EventTrackingVO;
@@ -281,23 +282,27 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Test
     @Tag(GlobalConstants.TAG_GITHUB_RELATED)
     @Tag(GlobalConstants.TAG_SKIP_METRICS)
-    public final void givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch() throws IOException {
+    public final void givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch(TestInfo testInfo) throws IOException {
+        
+        List<String> testExceptions= YAMLProperties.exceptionsForTests.get(TestUtils.getMehodName(testInfo.getTestMethod()));
 
         tutorialsRepoCrawlerController.startCrawlingWithAFreshController(CrawlerForFindingReadmeURLs.class, Runtime.getRuntime().availableProcessors());
 
         List<String> readmeURLs = Utils.getDiscoveredLinks(tutorialsRepoCrawlerController.getDiscoveredURLs());
+        
         Multimap<String, LinkVO> badURLs = ArrayListMultimap.create();
-
+        
         Map<String, Integer> articleCountByReadme = new HashMap<>();
 
         readmeURLs.forEach(readmeURL -> {
             try {
+                
                 page.setUrl(readmeURL);
 
                 page.loadUrl(); // loads README in browser
 
                 List<LinkVO> urlsInReadmeFile = page.getLinksToTheBaeldungSite(); // get all the articles linked in this README
-
+                
                 // for documenting no of links per README
                 if (readmeURL.toLowerCase().contains("spring")) {
                     if (urlsInReadmeFile.size() > limitForSpringRelatedReadmeHavingArticles) {
@@ -307,7 +312,11 @@ public class CommonUITest extends BaseUISeleniumTest {
                 } else if (urlsInReadmeFile.size() > limitForReadmeHavingArticles) {
                     articleCountByReadme.put(readmeURL, urlsInReadmeFile.size());
                 }
-
+                
+                if(testExceptions.contains(readmeURL)) {
+                    return;
+                }
+                
                 String reamdmeParentURL = Utils.getTheParentOfReadme(readmeURL);
                 urlsInReadmeFile.forEach(link -> {                    
                     String staging8Url = Utils.changeLiveUrlWithStaging8(link.getLink());
@@ -325,8 +334,7 @@ public class CommonUITest extends BaseUISeleniumTest {
 
         if (badURLs.size() > 0 || articleCountByReadme.size() > 0) {
             recordMetrics(badURLs.size(), TestMetricTypes.FAILED);
-            recordMetrics(articleCountByReadme.size(), TestMetricTypes.FAILED);
-            getMetrics(TestMetricTypes.FAILED);
+            recordMetrics(articleCountByReadme.size(), TestMetricTypes.FAILED);           
             failTestWithLoggingTotalNoOfFailures("\nwe found issues with following READMEs" + Utils.getErrorMessageForInvalidLinksInReadmeFiles(badURLs)
                     + Utils.compileReadmeCountResults(articleCountByReadme, GlobalConstants.GivenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles));
 

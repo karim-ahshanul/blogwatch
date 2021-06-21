@@ -189,6 +189,8 @@ givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs:
 
 givenTutorialsRepo_whenAllModulesAnalysed_thenFolderNameAndArtifiactIdAndModuleNameMatch:
  - /spring-cloud/spring-cloud-zuul-eureka-integration/bin
+givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch:
+ - https://github.com/eugenp/tutorials/blob/master/README.md
  
 
 
