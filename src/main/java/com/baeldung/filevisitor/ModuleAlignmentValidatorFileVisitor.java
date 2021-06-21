@@ -26,6 +26,8 @@ public class ModuleAlignmentValidatorFileVisitor extends SimpleFileVisitor<Path>
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
+    List<String> testExceptions = YAMLProperties.exceptionsForTests.get(GlobalConstants.givenTutorialsRepo_whenAllModulesAnalysed_thenFolderNameAndArtifiactIdAndModuleNameMatch);
+
     private List<String> invalidModules = new ArrayList<>();
     private List<String> unparsableModule = new ArrayList<>();
 
@@ -44,7 +46,7 @@ public class ModuleAlignmentValidatorFileVisitor extends SimpleFileVisitor<Path>
             return FileVisitResult.CONTINUE;
         }
 
-        if (YAMLProperties.exceptionsForTests.get(GlobalConstants.givenTutorialsRepo_whenAllModulesAnalysed_thenFolderNameAndArtifiactIdAndModuleNameMatch).contains(removeRepoLocalPath(path.getParent().toString()))) {
+        if (testExceptions.contains(removeRepoLocalPath(path.getParent().toString()))) {
             return FileVisitResult.CONTINUE;
         }
         File file = path.toFile();
