@@ -146,6 +146,23 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
   - /spring-tls-setup
   - /spring-not-eligible-for-auto-proxying
   - /jooq-count-query
+  - /install-maven-on-windows-linux-mac
+  - /cs/semantic-versioning
+  - /job/java-dev
+  - /java-weekly-381
+  - /java-weekly-380
+  - /linux/find-delete-files-directories
+  - /linux/grep-filtered-files
+  - /cs/cryptographic-algorithm-complexity
+  - /linux/display-columns-from-file
+  - /java-string-to-bigdecimal
+  - /rest-http-put-vs-post
+  - /linux/copy-directory-to-existing-directory
+  - /linux/background-process-get-exit-code
+  - /linux/concatenate-strings-to-build-path
+  - /linux/tcpdump-capture-ssl-handshake
+  - /linux/create-file-of-given-size
+  - /linux/status-codes
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
   - /spring-reloading-properties/
