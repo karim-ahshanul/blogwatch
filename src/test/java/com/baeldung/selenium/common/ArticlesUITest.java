@@ -42,6 +42,8 @@ public class ArticlesUITest extends BaseUISeleniumTest {
     private ListIterator<String> allArticlesList;
     Multimap<String, String> badURLs = ArrayListMultimap.create();
     Multimap<Integer, String> resultsForGitHubHttpStatusTest = ArrayListMultimap.create();
+    
+    List<String> level2ExceptionsForJavaDocTest= YAMLProperties.exceptionsForTestsLevel2.get(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs);
 
     boolean loadNextUrl = true;
     boolean allTestsFlag = false;
@@ -419,7 +421,7 @@ public class ArticlesUITest extends BaseUISeleniumTest {
                 continue;
             }
 
-            List<WebElement> webElementsLinkingToOldJavaDocs = page.findElementsLinkingToOldJavaDocs(Double.valueOf(minJavDocsAcceptedVersion));
+            List<WebElement> webElementsLinkingToOldJavaDocs = page.findElementsLinkingToOldJavaDocs(Double.valueOf(minJavDocsAcceptedVersion), level2ExceptionsForJavaDocTest);
 
             if (webElementsLinkingToOldJavaDocs.size() > 0) {
                 recordMetrics(1, TestMetricTypes.FAILED);

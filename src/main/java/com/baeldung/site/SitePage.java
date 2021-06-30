@@ -662,18 +662,20 @@ public class SitePage extends BlogBaseDriver {
         }
     }
 
-    public List<WebElement> findElementsLinkingToOldJavaDocs(Double minJavDocsAcceptedVersion) {
+    public List<WebElement> findElementsLinkingToOldJavaDocs(Double minJavDocsAcceptedVersion, List<String> testExceptions) {
         List<WebElement> elements = this.getWebDriver()
                 .findElements(By.xpath("//a[contains(@href,'docs.oracle.com/javase/')]"));
 
         Pattern p = Pattern.compile(".*docs.oracle.com\\/javase\\/(.*)\\/docs/.*");
-        return elements.stream()
+        return elements.stream()                
                 .filter(element -> {
-                    return Optional.of(p.matcher(element.getAttribute("href")))
+                    String url = element.getAttribute("href");
+                    return (Optional.of(p.matcher(url))
                             .map(matcher -> matcher.find() ? getJavaVersion(matcher.group(1))
                                     .compareTo(minJavDocsAcceptedVersion) < 0 : false)
-                            .orElse(false);
-                })
+                            .orElse(false))
+                            && !Utils.excludePage(url, testExceptions, true);
+                })               
                 .collect(toList());
     }
 
