@@ -704,6 +704,7 @@ public class Utils {
     }
 
     public static File getJsonResourceFile(String fileName) {
+        logger.info(magentaColordMessage("Looking for {} at {}"), fileName, Utils.class.getClassLoader().getResource(fileName).getPath());
         return new File(Utils.class.getClassLoader().getResource(fileName).getPath());
     }
 
