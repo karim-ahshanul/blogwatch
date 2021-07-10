@@ -614,5 +614,19 @@ public class CommonUITest extends BaseUISeleniumTest {
         logger.info(ConsoleColors.magentaColordMessage("finished"));
     }
     
+    @ParameterizedTest(name = "verify ad tag {1}  on {0}")
+    @MethodSource("com.baeldung.utility.TestUtils#adsTagsTestDataProvider")
+    public final void givenAPageWithAds_whenThePageLoads_thenAdsTagsAreAvailableOnThePage(String url, String tagId) {
+
+        page.setUrl(page.getBaseURL() + url);
+
+        page.loadUrl();
+
+        logger.info(ConsoleColors.magentaColordMessage("looking for ad tag:{} on {}"), tagId, page.getBaseURL() + url);
+
+        assertTrue(page.findDivWithId(tagId), String.format("Countn't find tagId:%s on %s", tagId, url));
+
+    }
+    
 
 }

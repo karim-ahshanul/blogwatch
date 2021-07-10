@@ -692,4 +692,12 @@ public class SitePage extends BlogBaseDriver {
             return Optional.empty();
         }
     }
+    
+    public boolean findDivWithId(String divId) {
+        try {
+            return this.getWebDriver().findElement(By.id(divId)).isEnabled();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
 }
