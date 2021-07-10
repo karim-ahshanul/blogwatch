@@ -240,7 +240,7 @@ public class TestUtils {
     
     public static Stream<Arguments> adsTagsTestDataProvider() throws JsonParseException, JsonMappingException, IOException {
 
-        List<AdTagsDataVO> adTagsDataVO = ObjectMapper.readValue(Utils.getJsonResourceFile("./ads-test-datea.json"), new TypeReference<List<AdTagsDataVO>>() {
+        List<AdTagsDataVO> adTagsDataVO = ObjectMapper.readValue(Utils.getJsonResourceFile("./ads-test-data.json"), new TypeReference<List<AdTagsDataVO>>() {
         });
 
         return adTagsDataVO.stream().flatMap(testSet -> testSet.getAdTags().stream().map(entry -> Arguments.of(testSet.getUrl(), entry)));
