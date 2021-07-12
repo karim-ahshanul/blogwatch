@@ -622,7 +622,7 @@ public class CommonUITest extends BaseUISeleniumTest {
 
         page.loadUrl();
 
-        logger.info(magentaColordMessage("looking for ad tag:{} on {}"), tagId, page.getBaseURL() + url);
+        logger.info(magentaColordMessage("looking for ad tag:{} on {} "), tagId, page.getBaseURL() + url);
 
         assertTrue(page.findDivWithId(tagId), String.format("Countn't find tagId:%s on %s", tagId, url));
 
