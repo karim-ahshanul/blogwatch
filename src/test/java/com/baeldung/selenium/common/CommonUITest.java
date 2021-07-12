@@ -617,14 +617,14 @@ public class CommonUITest extends BaseUISeleniumTest {
     @ParameterizedTest(name = "verify ad tag {1}  on {0}")
     @MethodSource("com.baeldung.utility.TestUtils#adsTagsTestDataProvider")
     public final void givenAPageWithAds_whenThePageLoads_thenAdsTagsAreAvailableOnThePage(String url, String tagId) {
-
+        String fullUrl = page.getBaseURL() + url;
         page.setUrl(page.getBaseURL() + url);
 
         page.loadUrl();
 
-        logger.info(magentaColordMessage("looking for ad tag:{} on {} "), tagId, page.getBaseURL() + url);
+        logger.info(magentaColordMessage("looking for ad tag:{} on {} "), tagId, page.getBaseURL() + fullUrl);
 
-        assertTrue(page.findDivWithId(tagId), String.format("Countn't find tagId:%s on %s", tagId, url));
+        assertTrue(page.findDivWithId(tagId), String.format("Countn't find tagId:%s on %s", tagId, fullUrl));
 
     }
     
