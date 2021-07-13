@@ -700,4 +700,12 @@ public class SitePage extends BlogBaseDriver {
             return false;
         }
     }
+    
+    public boolean findScriptWithText(String text) {
+        try {
+            return this.getWebDriver().findElement(By.xpath("//script[contains(text(), '"+text+"')]")).isEnabled();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
 }

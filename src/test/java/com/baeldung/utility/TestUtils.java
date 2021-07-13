@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.Utils;
 import com.baeldung.common.YAMLProperties;
-import com.baeldung.common.vo.AdTagsDataVO;
+import com.baeldung.common.vo.AdSlotsVO;
 import com.baeldung.common.vo.CourseBuyLinksVO;
 import com.baeldung.common.vo.FooterLinksDataVO;
 import com.baeldung.site.SitePage;
@@ -238,12 +238,12 @@ public class TestUtils {
         
     }  
     
-    public static Stream<Arguments> adsTagsTestDataProvider() throws JsonParseException, JsonMappingException, IOException {
+    public static Stream<Arguments> adsSlotsTestDataProvider() throws JsonParseException, JsonMappingException, IOException {
 
-        List<AdTagsDataVO> adTagsDataVO = ObjectMapper.readValue(Utils.getJsonResourceFile("./ads-test-data.json"), new TypeReference<List<AdTagsDataVO>>() {
+        List<AdSlotsVO> adSlotsVO = ObjectMapper.readValue(Utils.getJsonResourceFile("./ads-test-data.json"), new TypeReference<List<AdSlotsVO>>() {
         });
 
-        return adTagsDataVO.stream().flatMap(testSet -> testSet.getAdTags().stream().map(entry -> Arguments.of(testSet.getUrl(), entry)));
+        return adSlotsVO.stream().map(entry -> Arguments.of(entry.getUrl(), entry.getSlotIds()));
 
     }
 }

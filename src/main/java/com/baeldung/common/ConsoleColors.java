@@ -76,16 +76,54 @@ public class ConsoleColors {
 
     //
     private static final String BLUE_BACKGROUND_AND_BOLD_WHITE = "\033[1;37;104m"; // WHITE
+    
+    private static final String GREEN_BOLD_UNDERLINED = "\033[1;4;32m"; // GREEN
+    private static final String YELLOW_BOLD_UNDERLINED = "\033[1;4;33m"; // YELLOW
 
     public static String magentaColordMessage(String message) {
-        return MAGENTA + message + RESET;
+            return MAGENTA + message + RESET;
     }
 
     public static String blueColordMessage(String message) {
-        return BLUE + message + RESET;
+            return BLUE + message + RESET;
     }
 
-    public static String colordSummaryMessage(String message) {
-        return BLUE_BACKGROUND_AND_BOLD_WHITE + message + RESET;
+    public static String colordHeading(String message) {
+            return BLUE_BACKGROUND_AND_BOLD_WHITE + message + RESET;
+    }
+    
+    public static String redBoldMessage(String message) {
+            return RED_BOLD + message + RESET;
+    }
+    
+    public static String greenBoldMessage(String message) {
+            return GREEN_BOLD + message + RESET;
+    }
+    
+    public static String greenUnderlined(String message) {
+            return GREEN_UNDERLINED + message + RESET;
+    }
+    
+    public static String greenBoledUnderlined(String message) {
+            return GREEN_BOLD_UNDERLINED + message + RESET;
+    }
+    
+    public static String greenMessage(String message) {
+            return GREEN + message + RESET;
+    }
+    
+    public static String yellowMessage(String message) {
+            return YELLOW + message + RESET;
+    }
+    
+    public static String yellowBoldMessage(String message) {
+            return YELLOW_BOLD + message + RESET;
+    }
+    public static String yellowBoldUnderlinedMessage(String message) {
+            return YELLOW_BOLD_UNDERLINED + message + RESET;
+    }
+    
+    public static String cyanMessage(String message) {
+            return CYAN + message + RESET;
     }
 }

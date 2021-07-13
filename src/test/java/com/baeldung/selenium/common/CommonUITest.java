@@ -1,7 +1,8 @@
 package com.baeldung.selenium.common;
 
-import static com.baeldung.common.ConsoleColors.magentaColordMessage;
+import static com.baeldung.common.ConsoleColors.*;
 import static com.baeldung.common.GlobalConstants.TestMetricTypes.FAILED;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
@@ -614,17 +617,22 @@ public class CommonUITest extends BaseUISeleniumTest {
         logger.info(ConsoleColors.magentaColordMessage("finished"));
     }
     
-    @ParameterizedTest(name = "verify ad tag {1}  on {0}")
-    @MethodSource("com.baeldung.utility.TestUtils#adsTagsTestDataProvider")
-    public final void givenAPageWithAds_whenThePageLoads_thenAdsTagsAreAvailableOnThePage(String url, String tagId) {
+    @ParameterizedTest(name = "verify ad-slots  on {0}")
+    @MethodSource("com.baeldung.utility.TestUtils#adsSlotsTestDataProvider")
+    public final void givenAPageWithAds_whenThePageLoads_thenAdSlotsAreAvailableOnThePage(String url, List<String> slotIds) {
         String fullUrl = page.getBaseURL() + url;
+        
+        logger.info(greenBoldMessage("Loading:{}  "), fullUrl);
         page.setUrl(page.getBaseURL() + url);
-
         page.loadUrl();
+        List<Executable> tests = new ArrayList<>();
+        
+        for(String slotId: slotIds) {
+            logger.info(magentaColordMessage("looking for ad-slot:{} on {} "), slotId, fullUrl);
+            tests.add(() -> assertTrue(page.findScriptWithText(slotId), String.format("Countn't find tagId:%s on %s", slotId, fullUrl)));
+        }
 
-        logger.info(magentaColordMessage("looking for ad tag:{} on {} "), tagId, page.getBaseURL() + fullUrl);
-
-        assertTrue(page.findDivWithId(tagId), String.format("Countn't find tagId:%s on %s", tagId, fullUrl));
+        assertAll(tests.stream());
 
     }
     

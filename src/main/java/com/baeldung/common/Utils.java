@@ -1,6 +1,6 @@
 package com.baeldung.common;
 
-import static com.baeldung.common.ConsoleColors.colordSummaryMessage;
+import static com.baeldung.common.ConsoleColors.colordHeading;
 import static com.baeldung.common.ConsoleColors.magentaColordMessage;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -776,7 +776,7 @@ public class Utils {
 
     public static void logChildModulesResults(TutorialsParentModuleFinderFileVisitor tutorialsParentModuleFinderFileVisitor) {
               
-        logger.info(colordSummaryMessage("Please find below child modules for: {}"), tutorialsParentModuleFinderFileVisitor.getArtificateId());
+        logger.info(colordHeading("Please find below child modules for: {}"), tutorialsParentModuleFinderFileVisitor.getArtificateId());
         
         tutorialsParentModuleFinderFileVisitor.getChildModules().forEach(modulePath -> {
             String gitUrl = StringUtils.removeEnd(StringUtils.removeStart(modulePath, GlobalConstants.tutorialsRepoLocalPath), "pom.xml");
@@ -841,7 +841,7 @@ public class Utils {
     
     public static void logUnAlignedModulesResults(ModuleAlignmentValidatorFileVisitor moduleAlignmentValidatorFileVisitor) {
         
-        logger.info(colordSummaryMessage("Please find below unalighed Moudles"));
+        logger.info(colordHeading("Please find below unalighed Moudles"));
         
         moduleAlignmentValidatorFileVisitor.getInvalidModules().forEach(modulePath -> {
             String gitUrl = StringUtils.removeEnd(StringUtils.removeStart(modulePath, GlobalConstants.tutorialsRepoLocalPath), "pom.xml");
@@ -851,7 +851,7 @@ public class Utils {
     
     public static void logUnparsableModulesResults(ModuleAlignmentValidatorFileVisitor moduleAlignmentValidatorFileVisitor) {
         if(moduleAlignmentValidatorFileVisitor.getUnparsableModule().size() >0 ) {
-            logger.info(colordSummaryMessage("The auotmation coundn't parse folloiwng modues. Please report these to devOps-dev"));
+            logger.info(colordHeading("The auotmation coundn't parse folloiwng modues. Please report these to devOps-dev"));
         }
         
         moduleAlignmentValidatorFileVisitor.getUnparsableModule().forEach(modulePath -> {

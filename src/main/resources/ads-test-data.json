@@ -1,7 +1,11 @@
 [
   {
     "url":"/java-8-streams",
-    "adTags": [
+    "slotIds": [
+        "baeldung_right_rail_1",
+        "baeldung_right_rail_2",
+        "baeldung_right_rail_3",
+        "baeldung_right_rail_4",
     	"baeldung_leaderboard_atf",
 		"baeldung_leaderboard_mid_1",
 		"baeldung_leaderboard_mid_2",
@@ -12,14 +16,109 @@
 		"baeldung_incontent_4",
 		"baeldung_incontent_5",
 		"baeldung_incontent_6",
-		"baeldung_incontent_7"
+		"baeldung_incontent_7",
+		"baeldung_incontent_8"
     ]
    },
    {
-    "url":"/cs/os-deadlock", 
-    "adTags": [
-    	"baeldung_leaderboard_mid_1",
-    	"baeldung_right_rail_2"
+    "url":"/java-optional",
+    "slotIds": [
+    	"baeldung_right_rail_1",
+        "baeldung_right_rail_2",
+        "baeldung_right_rail_3",
+        "baeldung_right_rail_4",
+    	"baeldung_leaderboard_atf",
+		"baeldung_leaderboard_mid_1",
+		"baeldung_leaderboard_mid_2",
+		"baeldung_leaderboard_mid_3",
+		"baeldung_incontent_1",
+		"baeldung_incontent_2",
+		"baeldung_incontent_3",
+		"baeldung_incontent_4",
+		"baeldung_incontent_5",
+		"baeldung_incontent_6",
+		"baeldung_incontent_7",
+		"baeldung_incontent_8",
+		"baeldung_incontent_9",
+		"baeldung_incontent_10",
+		"baeldung_incontent_11"
     ]
-   }
+   },
+   {
+    "url":"/scala/scala-intro", 
+    "slotIds": [
+    	"baeldung_right_rail_1",
+        "baeldung_right_rail_2",
+    	"baeldung_leaderboard_atf",
+		"baeldung_leaderboard_mid_1",
+		"baeldung_leaderboard_mid_2",
+		"baeldung_leaderboard_mid_3",
+		"baeldung_incontent_1",
+		"baeldung_incontent_2",
+		"baeldung_incontent_3",
+		"baeldung_incontent_4",
+		"baeldung_incontent_5",
+		"baeldung_incontent_6",
+		"baeldung_incontent_7",
+		"baeldung_incontent_8",
+		"baeldung_incontent_9",
+		"baeldung_incontent_10",
+		"baeldung_incontent_11"
+    ]
+   },
+   {
+    "url":"/cs/big-data-vs-data-mining", 
+    "slotIds": [
+    	"baeldung_right_rail_1",
+        "baeldung_right_rail_2",
+    	"baeldung_leaderboard_atf",
+		"baeldung_leaderboard_mid_1",
+		"baeldung_leaderboard_mid_2",
+		"baeldung_leaderboard_mid_3",
+		"baeldung_incontent_1",
+		"baeldung_incontent_2",
+		"baeldung_incontent_3",
+		"baeldung_incontent_4",
+		"baeldung_incontent_5",
+		"baeldung_incontent_6"
+    ]
+   },
+   {
+    "url":"/linux/awk-guide", 
+    "slotIds": [
+    	"baeldung_right_rail_1",
+        "baeldung_right_rail_2",
+    	"baeldung_leaderboard_atf",
+		"baeldung_leaderboard_mid_1",
+		"baeldung_leaderboard_mid_2",
+		"baeldung_leaderboard_mid_3",
+		"baeldung_incontent_1",
+		"baeldung_incontent_2",
+		"baeldung_incontent_3",
+		"baeldung_incontent_4",
+		"baeldung_incontent_5",
+		"baeldung_incontent_6",
+		"baeldung_incontent_7",
+		"baeldung_incontent_8"
+    ]
+   },
+   {
+    "url":"/kotlin/intro", 
+    "slotIds": [
+    	"baeldung_right_rail_1",
+        "baeldung_right_rail_2",
+    	"baeldung_leaderboard_atf",
+		"baeldung_leaderboard_mid_1",
+		"baeldung_leaderboard_mid_2",
+		"baeldung_leaderboard_mid_3",
+		"baeldung_incontent_1",
+		"baeldung_incontent_2",
+		"baeldung_incontent_3",
+		"baeldung_incontent_4",
+		"baeldung_incontent_5",
+		"baeldung_incontent_6",
+		"baeldung_incontent_7",
+		"baeldung_incontent_8"
+    ]
+   }   
 ]
