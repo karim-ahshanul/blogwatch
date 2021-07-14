@@ -163,6 +163,11 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
   - /linux/tcpdump-capture-ssl-handshake
   - /linux/create-file-of-given-size
   - /linux/status-codes
+  - /job/java-engineer-with-spring-security-experience-remote-part-time/
+  - /kotlin/jpa
+  - /linux/remove-last-character-from-line
+  - /cassandra-astra-rest-dashboard-updates
+  - /linux/bash-count-lines-in-file
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
   - /spring-reloading-properties/
