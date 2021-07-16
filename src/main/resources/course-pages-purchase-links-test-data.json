@@ -3,66 +3,298 @@
     "courseUrl": "/rest-with-spring-course",
     "purchaseLinks": [
       {
-        "anchorText": "Get access for $299 →",
-        "anchorLink": "https://courses.baeldung.com/purchase?product_id=784056",
-        "redirectedTo": "https://sso.teachable.com/secure/22136/checkout/784056/rest-with-spring-the-master-class"
+        "linkId": "rws-master-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=784056",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/784056/rest-with-spring-the-master-class"
       },
       {
-        "anchorText": "Get access for $399 →",
-        "anchorLink": "https://courses.baeldung.com/purchase?product_id=784057",
-        "redirectedTo": "https://sso.teachable.com/secure/22136/checkout/784057/rest-with-spring-the-certification-class"
+        "linkId": "rws-cert-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=784057",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/784057/rest-with-spring-the-certification-class"
       },
       {
-        "anchorText": "Get Access → $299",
-        "anchorLink": "https://courses.baeldung.com/purchase?product_id=784056",
-        "redirectedTo": "https://sso.teachable.com/secure/22136/checkout/784056/rest-with-spring-the-master-class"
+        "linkId": "rws-master-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=784056",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/784056/rest-with-spring-the-master-class"
       },
       {
-        "anchorText": "Get Access → $399",
-        "anchorLink": "https://courses.baeldung.com/purchase?product_id=784057",
-        "redirectedTo": "https://sso.teachable.com/secure/22136/checkout/784057/rest-with-spring-the-certification-class"
+        "linkId": "rws-cert-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=784057",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/784057/rest-with-spring-the-certification-class"
       },
       {
-        "anchorText": "Get Access → $599",
-        "anchorLink": "https://courses.baeldung.com/purchase?product_id=784058",
-        "redirectedTo": "https://sso.teachable.com/secure/22136/checkout/784058/rest-with-spring-live-class"
-      }
+        "linkId": "rws-coach-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=784058",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/784058/rest-with-spring-live-class"
+      }      
     ]
   },
   {
     "courseUrl": "/rest-with-spring-for-teams",
-    "purchaseLinks": []
+    "purchaseLinks": [{
+        "linkId": "rwsteam-master-tb",
+        "link": "https://gumroad.com/l/rws-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/rws-team"
+      },
+      {
+        "linkId": "rwsteam-cert-tb",
+        "link": "https://gumroad.com/l/rws-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/rws-team"
+      },
+      {
+        "linkId": "rwsteam-coach-tb",
+        "link": "https://gumroad.com/l/rws-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/rws-team"
+      }
+    ]
   },
   {
     "courseUrl": "/learn-spring-course",
-    "purchaseLinks": []
+    "purchaseLinks": [{
+        "linkId": "ls-master-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2797176",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2797176/ls-master-class"
+      },
+      {
+        "linkId": "ls-cert-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2797280",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2797280/ls-certification-class"
+      },
+      {
+        "linkId": "ls-master-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2797176",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2797176/ls-master-class"
+      },
+      {
+        "linkId": "ls-cert-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2797280",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2797280/ls-certification-class"
+      },
+      {
+        "linkId": "ls-coach-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2829679",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2829679/ls-coaching-class"
+      }
+    ]
   },
   {
     "courseUrl": "/learn-spring-for-teams",
-    "purchaseLinks": []
+    "purchaseLinks": [
+    {
+        "linkId": "lsteam-master-tb",
+        "link": "https://gumroad.com/l/ls-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/ls-team"
+    },
+    {
+        "linkId": "lsteam-cert-tb",
+        "link": "https://gumroad.com/l/ls-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/ls-team"
+    },
+    {
+        "linkId": "lsteam-coach-tb",
+        "link": "https://gumroad.com/l/ls-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/ls-team"
+    }
+   ]
   },
   {
     "courseUrl": "/learn-spring-security-course",
-    "purchaseLinks": []
+    "purchaseLinks": [
+    {
+        "linkId": "lss-master-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=1547671",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/1547671/learn-spring-security-the-master-class"
+    },
+    {
+        "linkId": "lss-cert-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=1547673",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/1547673/learn-spring-security-the-certification-class"
+    },
+    {
+        "linkId": "lss-master-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=1547671",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/1547671/learn-spring-security-the-master-class"
+    },
+    {
+        "linkId": "lss-cert-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=1547673",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/1547673/learn-spring-security-the-certification-class"
+    },
+    {
+        "linkId": "lss-coach-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=1547675",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/1547675/learn-spring-security-live-class"
+    }
+   ]
   },
   {
     "courseUrl": "/learn-spring-security-for-teams",
-    "purchaseLinks": []
+    "purchaseLinks": [
+    {
+        "linkId": "lssteam-master-tb",
+        "link": "https://gumroad.com/l/lss-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/lss-team"
+    },
+    {
+        "linkId": "lssteam-cert-tb",
+        "link": "https://gumroad.com/l/lss-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/lss-team"
+    },
+    {
+        "linkId": "lssteam-coach-tb",
+        "link": "https://gumroad.com/l/lss-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/lss-team"
+    }
+   ]
   },
   {
     "courseUrl": "/learn-spring-security-oauth-course",
-    "purchaseLinks": []
+    "purchaseLinks": [
+   	 {
+        "linkId": "lsso-master-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854564",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854564/learn-spring-security-oauth-the-master-class"
+    },
+    {
+        "linkId": "lsso-cert-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854565",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854565/learn-spring-security-oauth-the-certification-class"
+    },
+    {
+        "linkId": "lsso-master-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854564",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854564/learn-spring-security-oauth-the-master-class"
+    },
+    {
+        "linkId": "lsso-cert-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854565",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854565/learn-spring-security-oauth-the-certification-class"
+    },
+    {
+        "linkId": "lsso-coach-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854566",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854566/learn-spring-security-oauth-the-coaching-class"
+    } 
+   ]
   },
   {
     "courseUrl": "/learn-spring-security-oauth-for-teams",
-    "purchaseLinks": []
+    "purchaseLinks": [
+    {
+        "linkId": "lssoteam-master-tb",
+        "link": "https://gumroad.com/l/lsso-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/lsso-team"
+    },
+    {
+        "linkId": "lssoteam-cert-tb",
+        "link": "https://gumroad.com/l/lsso-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/lsso-team"
+    },
+    {
+        "linkId": "lssoteam-coach-tb",
+        "link": "https://gumroad.com/l/lsso-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/lsso-team"
+    }
+   ]
   },
   {
     "courseUrl": "/learn-spring-security-core-course",
-    "purchaseLinks": []
+    "purchaseLinks": [
+    {
+        "linkId": "lssc-master-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854541",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854541/learn-spring-security-core-the-master-class"
+    },
+    {
+        "linkId": "lssc-cert-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854542",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854542/learn-spring-security-core-the-certification-class"
+    },
+    {
+        "linkId": "lssc-master-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854541",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854541/learn-spring-security-core-the-master-class"
+    },
+    {
+        "linkId": "lssc-cert-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854542",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854542/learn-spring-security-core-the-certification-class"
+    },
+    {
+        "linkId": "lssc-coach-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2854544",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2854544/learn-spring-security-core-coaching-class"
+    }
+   ]
   },
   {
     "courseUrl": "/learn-spring-security-core-for-teams",
-    "purchaseLinks": []
+    "purchaseLinks": [
+    {
+        "linkId": "lsscteam-master-tb",
+        "link": "https://gumroad.com/l/lssc-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/lssc-team"
+    },
+    {
+        "linkId": "lsscteam-cert-tb",
+        "link": "https://gumroad.com/l/lssc-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/lssc-team"
+    },
+    {
+        "linkId": "lsscteam-coach-tb",
+        "link": "https://gumroad.com/l/lssc-team",
+        "redirectsTo": "https://eugen.gumroad.com/l/lssc-team"
+    }
+   ]
+  },
+  {
+    "courseUrl": "/learn-spring-data-jpa-course",
+    "purchaseLinks": [
+    {
+        "linkId": "lsd-master-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2964663",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2964663/learn-spring-data-jpa-master-class"
+    },
+    {
+        "linkId": "lsd-cert-sb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2964664",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2964664/learn-spring-data-jpa-certification-class"
+    },
+    {
+        "linkId": "lsd-master-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2964663",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2964663/learn-spring-data-jpa-master-class"
+    },
+    {
+        "linkId": "lsd-cert-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2964664",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2964664/learn-spring-data-jpa-certification-class"
+    },
+    {
+        "linkId": "lsd-coach-tb",
+        "link": "https://courses.baeldung.com/purchase?product_id=2964665",
+        "redirectsTo": "https://sso.teachable.com/secure/22136/checkout/2964665/learn-spring-data-jpa-coaching-class"
+    }
+   ]
+  },
+  {
+    "courseUrl": "/learn-spring-data-jpa-for-teams",
+    "purchaseLinks": [
+    {
+        "linkId": "lsdteam-master-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-data-jpa-team",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-data-jpa-team"
+    },
+    {
+        "linkId": "lsdteam-cert-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-data-jpa-team",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-data-jpa-team"
+    },
+    {
+        "linkId": "lsdteam-coach-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-data-jpa-team",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-data-jpa-team"
+    }    
+   ]
   }
 ]

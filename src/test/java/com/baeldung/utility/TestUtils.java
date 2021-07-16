@@ -26,7 +26,7 @@ import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.Utils;
 import com.baeldung.common.YAMLProperties;
 import com.baeldung.common.vo.AdSlotsVO;
-import com.baeldung.common.vo.CourseBuyLinksVO;
+import com.baeldung.common.vo.CoursePurchaseLinksVO;
 import com.baeldung.common.vo.FooterLinksDataVO;
 import com.baeldung.site.SitePage;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -208,10 +208,10 @@ public class TestUtils {
 
     public static Stream<Arguments> pagesPurchaseLinksTestDataProvider() throws JsonParseException, JsonMappingException, IOException {
 
-        List<CourseBuyLinksVO> courseBuyLinksVOs = ObjectMapper.readValue(Utils.getJsonResourceFile("./course-pages-purchase-links-test-data.json"), new TypeReference<List<CourseBuyLinksVO>>() {
+        List<CoursePurchaseLinksVO> coursePurchaseLinksVOs = ObjectMapper.readValue(Utils.getJsonResourceFile("./course-pages-purchase-links-test-data.json"), new TypeReference<List<CoursePurchaseLinksVO>>() {
         });
 
-        return courseBuyLinksVOs.stream().map(entry -> Arguments.of(entry.getCourseUrl(), entry.getPurchaseLinks()));
+        return coursePurchaseLinksVOs.stream().map(entry -> Arguments.of(entry.getCourseUrl(), entry.getPurchaseLinks()));
 
     }
 
@@ -220,9 +220,19 @@ public class TestUtils {
             return RestAssured.given().config(restAssuredConfig).get(link).getHeader("Location").toLowerCase().contains(exprectRedirectTo);
         } catch (Exception e) {
             logger.error("Error while verifying redirect. Error Message: {}", e.getMessage());
-        }
-
-        return true;
+            return false;
+        }       
+    }
+    
+    public static boolean veirfyRedirect(RestAssuredConfig restAssuredConfig, String link, String exprectRedirectTo, SitePage page) {
+        try {
+            page.setUrl(link);
+            page.loadUrl();
+            return page.getWebDriver().getCurrentUrl().toLowerCase().contains(exprectRedirectTo);
+        } catch (Exception e) {
+            logger.error("Error while verifying redirect. Error Message: {}", e.getMessage());
+            return false;
+        }       
     }
 
     public static Stream<Arguments> gaCodeTestDataProviderForDraftSite() {

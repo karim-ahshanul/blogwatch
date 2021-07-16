@@ -50,7 +50,7 @@ import com.baeldung.common.TestMetricsExtension;
 import com.baeldung.common.Utils;
 import com.baeldung.common.YAMLProperties;
 import com.baeldung.common.vo.AnchorLinksTestDataVO;
-import com.baeldung.common.vo.CourseBuyLinksVO.PurchaseLink;
+import com.baeldung.common.vo.CoursePurchaseLinksVO.PurchaseLink;
 import com.baeldung.common.vo.EventTrackingVO;
 import com.baeldung.common.vo.FooterLinksDataVO;
 import com.baeldung.common.vo.FooterLinksDataVO.FooterLinkCategory;
@@ -107,6 +107,8 @@ public class CommonUITest extends BaseUISeleniumTest {
 
     @Autowired
     ObjectMapper objectMapper;
+    
+    RestAssuredConfig restAssuredConfig = TestUtils.getRestAssuredCustomConfig(5000);
 
     @Test
     @Tag(GlobalConstants.TAG_DAILY)
@@ -535,25 +537,26 @@ public class CommonUITest extends BaseUISeleniumTest {
     }
 
     @ParameterizedTest(name = " {displayName} - verify purchase links on {0}")
-    @MethodSource("com.baeldung.utility.TestUtils#pagesPurchaseLinksTestDataProvider()")
-    // @Tag(GlobalConstants.TAG_SITE_SMOKE_TEST)
-    // @Tag(GlobalConstants.TAG_DAILY)
-    public final void givenOnTheCoursePage_whenAnaysingThePage_thenThePurchaseLinksAreSetupCorrectly(String courseUrl, List<PurchaseLink> purchaseLinks) throws JsonProcessingException, IOException {
+    @MethodSource("com.baeldung.utility.TestUtils#pagesPurchaseLinksTestDataProvider()")    
+    @Tag(GlobalConstants.TAG_DAILY)
+    public final void givenOnTheCoursePage_whenAnaysingThePage_thenThePurchaseLinksAreSetupCorrectly(String courseUrl, List<PurchaseLink> purchaseLinks) {
 
         String fullURL = page.getBaseURL() + courseUrl;
 
         page.setUrl(fullURL);
-
-        page.loadUrl();
-
-        RestAssuredConfig restAssuredConfig = TestUtils.getRestAssuredCustomConfig(5000);
-
+        page.loadUrl();       
+        
+        List<Executable> testLikIds = new ArrayList<>();
+        List<Executable> testLikRedirects = new ArrayList<>();
+        
         for (PurchaseLink link : purchaseLinks) {
-
-            assertTrue(page.anchorAndAnchorLinkAvailable(link), String.format("Countn't find Purchse link with anchor Text:%s and anchor Link: %s, on %s", link.getAnchorText(), link.getAnchorLink(), fullURL));
-            assertTrue(TestUtils.veirfyRedirect(restAssuredConfig, link.getAnchorLink(), link.getRedirectedTo()), link.getAnchorText() + " (" + link.getAnchorLink() + ") on " + fullURL + " doesn't redirec to " + link.getRedirectedTo());
+            logger.info(magentaColordMessage("veryfing that link:{} exists and redirects to {} "), link.getLink(), link.getRedirectsTo());
+            testLikIds.add(() -> assertTrue(page.anchorAndAnchorLinkAvailable(link), String.format("Countn't find Purchse link with id:%s and Link: %s, on %s", link.getLinkId(), link.getLink(), fullURL)));            
+            testLikRedirects.add(() -> assertTrue(TestUtils.veirfyRedirect(restAssuredConfig, link.getLink(), link.getRedirectsTo(), page), link.getLinkId() + " (" + link.getLink() + ") on " + fullURL + " doesn't redirec to " + link.getRedirectsTo()));
+            
         }
-
+        assertAll(testLikIds.stream());
+        assertAll(testLikRedirects.stream());
     }
     
     @ParameterizedTest(name = " {displayName} - on {0}")

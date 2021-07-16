@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 
 import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.Utils;
-import com.baeldung.common.vo.CourseBuyLinksVO.PurchaseLink;
+import com.baeldung.common.vo.CoursePurchaseLinksVO.PurchaseLink;
 import com.baeldung.common.vo.FooterLinksDataVO;
 import com.baeldung.common.vo.LinkVO;
 import com.baeldung.site.strategy.ITitleAnalyzerStrategy;
@@ -641,17 +641,8 @@ public class SitePage extends BlogBaseDriver {
     }
 
     public boolean anchorAndAnchorLinkAvailable(PurchaseLink link) {
-
-        List<WebElement> elements = null;
-
-        elements = this.getWebDriver().findElements(By.xpath("//a[contains(@href,'" + link.getAnchorLink() + "')]"));
-
-        for (WebElement element : elements) {
-            if (link.getAnchorText().equalsIgnoreCase(element.getText()))
-                return true;
-        }
-        return false;
-
+        WebElement element = this.getWebDriver().findElement(By.id(link.getLinkId()));
+        return element.getAttribute("href").contains(link.getLink());        
     }
 
     public String getDisplayNameOfLoggedInUser() {
