@@ -78,7 +78,7 @@ public class headlessBrowserConfig extends browserConfig {
         logger.info("headlessBrowserName-->" + this.headlessBrowserName);
 
         if (GlobalConstants.HEADLESS_BROWSER_HTMLUNIT.equalsIgnoreCase(this.headlessBrowserName)) {
-            ProxyConfig proxyConfig = new ProxyConfig(proxyHost, Integer.valueOf(proxyServerPort));
+            ProxyConfig proxyConfig = new ProxyConfig(proxyHost, Integer.valueOf(proxyServerPort),null);            
             webDriver = new HtmlUnitDriver(BrowserVersion.getDefault(), true) {
                 @Override
                 protected WebClient newWebClient(BrowserVersion version) {
