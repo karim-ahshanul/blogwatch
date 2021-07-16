@@ -640,7 +640,7 @@ public class SitePage extends BlogBaseDriver {
         return false;
     }
 
-    public boolean anchorAndAnchorLinkAvailable(PurchaseLink link) {
+    public boolean linkIdAndLinkAvailable(PurchaseLink link) {
         WebElement element = this.getWebDriver().findElement(By.id(link.getLinkId()));
         return element.getAttribute("href").contains(link.getLink());        
     }

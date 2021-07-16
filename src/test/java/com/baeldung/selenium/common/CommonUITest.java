@@ -551,7 +551,7 @@ public class CommonUITest extends BaseUISeleniumTest {
         
         for (PurchaseLink link : purchaseLinks) {
             logger.info(magentaColordMessage("veryfing that link:{} exists and redirects to {} "), link.getLink(), link.getRedirectsTo());
-            testLikIds.add(() -> assertTrue(page.anchorAndAnchorLinkAvailable(link), String.format("Countn't find Purchse link with id:%s and Link: %s, on %s", link.getLinkId(), link.getLink(), fullURL)));            
+            testLikIds.add(() -> assertTrue(page.linkIdAndLinkAvailable(link), String.format("Countn't find Purchse link with id:%s and Link: %s, on %s", link.getLinkId(), link.getLink(), fullURL)));            
             testLikRedirects.add(() -> assertTrue(TestUtils.veirfyRedirect(restAssuredConfig, link.getLink(), link.getRedirectsTo(), page), link.getLinkId() + " (" + link.getLink() + ") on " + fullURL + " doesn't redirec to " + link.getRedirectsTo()));
             
         }
