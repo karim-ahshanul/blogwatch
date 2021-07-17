@@ -6,13 +6,13 @@
  /algorithm-quicksort: https://www.baeldung.com/cs/algorithm-quicksort
  /securing-a-restful-web-service-with-spring-security: /rest-api-spring-oauth2-angular
  /coaching-call: https://www.baeldung.com/coaching-faq
- /idiomatic-functional-programming-in-java: https://www.baeldung.com/webinar
+ /idiomatic-functional-programming-in-java: /webinar
  /cqrs-and-event-sourcing-implementation-with-spring-and-spring-boot-workshop: https://gumroad.com/l/cqrs-event-sourcing-workshop
- /cqrs-and-event-sourcing-with-spring: https://www.baeldung.com/webinar
+ /cqrs-and-event-sourcing-with-spring: /webinar
  /advanced-api-security-workshop: https://gumroad.com/l/advanced-api-security-workshop
- /api-security-with-spring-webinar: https://www.baeldung.com/webinar
- /the-basics-of-rest-with-spring-webinar: https://www.baeldung.com/webinar
- /api-discoverability-with-spring-and-spring-hateoas: https://www.baeldung.com/webinar
+ /api-security-with-spring-webinar: /webinar
+ /the-basics-of-rest-with-spring-webinar: /webinar
+ /api-discoverability-with-spring-and-spring-hateoas: /webinar
  /api-discoverability-with-spring-and-spring-hateoas-workshop: https://gumroad.com/l/api-discoverability-workshop  
  /spring-data-jpa-fetchmode:  https://www.baeldung.com/hibernate-fetchmode
  /r2dbc-operations: https://www.baeldung.com/r2dbc
@@ -65,5 +65,5 @@
  /2011/12/22/the-persistence-layer-with-spring-data-jpa/: https://www.baeldung.com/the-persistence-layer-with-spring-and-jpa
  /2011/12/08/simplifying-the-data-access-layer-with-spring-and-java-generics: https://www.baeldung.com/simplifying-the-data-access-layer-with-spring-and-java-generics/
  /spring-redirect: http://www.baeldung.com/spring-redirect-and-forward
- /cqrs-and-event-sourcing-webinar/: https://www.baeldung.com/webinar-cqrs-and-event-sourcing-with-spring
+ /cqrs-and-event-sourcing-webinar/: /webinar
  http://www.baeldung.com/wp-content/uploads/2018/07/lss-course-mockup-New-1.jpg: https://www.baeldung.com/wp-content/uploads/2018/07/lss-course-mockup-New-1.jpg
