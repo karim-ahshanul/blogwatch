@@ -12,7 +12,7 @@ public interface ITitleAnalyzerStrategy {
 
     static List<ITitleAnalyzerStrategy> titleAnalyzerStrategies = Arrays.asList(new ITitleAnalyzerStrategy[] { articlesConjunctionsShortPrepositionsAnalyserStrategy(), javaMethodNameAnalyserStrategy(), simpleTitleAnalyserStrategy() });
     static String regexForShortPrepositions = "a|an|and|as|at|but|by|en|for|in|nor|of|on|or|per|the|vs.?|via|out";
-    static String regexForExceptions = "with|to|from|up|into|v.?|REST|if";
+    static String regexForExceptions = "with|to|from|up|into|v.?|REST|if|using";
 
     static ITitleAnalyzerStrategy articlesConjunctionsShortPrepositionsAnalyserStrategy() {
         return (title, tokens, emphasizedAndItalicTokens) -> {
