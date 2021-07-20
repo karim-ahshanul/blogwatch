@@ -116,8 +116,8 @@ public class Utils {
     }
 
     public static ListIterator<String> fetchAllArtilcesAsListIterator() throws IOException {
-        //File file = new File(Utils.class.getClassLoader().getResource(GlobalConstants.BLOG_URL_LIST_RESOUCE_FOLDER_PATH + GlobalConstants.ALL_ARTICLES_FILE_NAME).getPath());
-        File file = new File(Utils.class.getClassLoader().getResource(GlobalConstants.BLOG_URL_LIST_RESOUCE_FOLDER_PATH + "articles-test-file-temporary.txt").getPath());
+        File file = new File(Utils.class.getClassLoader().getResource(GlobalConstants.BLOG_URL_LIST_RESOUCE_FOLDER_PATH + GlobalConstants.ALL_ARTICLES_FILE_NAME).getPath());
+        //File file = new File(Utils.class.getClassLoader().getResource(GlobalConstants.BLOG_URL_LIST_RESOUCE_FOLDER_PATH + "articles-test-file-temporary.txt").getPath());
         return Files.readAllLines(Paths.get(file.getAbsolutePath())).listIterator();
     }
 
