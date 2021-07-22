@@ -353,7 +353,7 @@ public class CommonUITest extends BaseUISeleniumTest {
 
         page.loadUrl();
 
-        assertTrue(page.geoIPProviderAPILoaded(), "geoIP API provider is not working");
+        assertTrue(page.geoIPProviderAPILoaded(), "geoIP API provider is not working. VAT Calc Notice message not populated in the geovat-info div");
     }
 
     @Test
