@@ -2073,7 +2073,6 @@
 /java-arrays-guide
 /microservices-oracle-helidon
 /java-jsonarray-get-value-by-key
-/scala-intro
 /java-csv-file-array
 /gson-json-to-map
 /spring-data-mongodb-zoneddatetime
@@ -2903,7 +2902,7 @@
 /java-basic-calculator
 /java-rejectedexecutionhandler
 /java-illegal-start-of-expression
-/job/java-engineer-with-spring-security-experience-remote-part-time/
+/job/java-engineer-with-spring-security-experience-remote-part-time
 /cucumber-data-tables
 /akka-play-websockets
 /java-common-concurrency-pitfalls
@@ -4435,7 +4434,6 @@
 /spring-thymeleaf-error-messages
 /spring-bean-names
 /java-enumeration-to-stream
-/job/java-dev
 /ops/docker/expose-vs-publish
 /java-weekly-381
 /ops/istio-service-mesh
@@ -4679,7 +4677,6 @@
 /kotlin/check-empty-string
 /kotlin/array-to-list
 /kotlin/name-of-currently-executing-function
-/scala/dotty-compiler
 /cs/binary-tree-number-of-nodes-level
 /cs/understanding-gradient-descent
 /cs/code-smells

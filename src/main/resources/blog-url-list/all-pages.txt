@@ -1,9 +1,4 @@
-/webinar-cqrs-thank-you
-/webinar-api-security-thank-you
-/webinar-rest-with-spring-thank-you
-/webinar-api-discoverability-thank-you
 /
-/webinar-cqrs-and-event-sourcing-with-spring
 /webinar-the-basics-of-rest-with-spring
 /webinar
 /learn-spring-security-course
@@ -22,7 +17,6 @@
 /new-java-9
 /consulting
 /consulting-short
-/webinar-api-security-with-spring
 /almost-done
 /java-web-weekly
 /affiliates
@@ -45,7 +39,6 @@
 /http-client-ebook
 /do-json-with-jackson-ebook
 /oauth-deep-dive
-/api-discoverability-webinar
 /learn-spring-security-for-teams
 /rws-why
 /thanks-course-call
