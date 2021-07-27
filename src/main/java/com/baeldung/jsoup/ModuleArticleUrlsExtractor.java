@@ -50,7 +50,7 @@ public class ModuleArticleUrlsExtractor {
         try {
             return Jsoup.parse(url, TIMEOUT);
         } catch (IOException e) {
-            logger.error(ConsoleColors.redBoldMessage("Error while parsing README for:{}"), url);
+            logger.error(ConsoleColors.redBoldMessage("Error while parsing README for:{} "), url);
             throw new IllegalStateException("A problem occurred while parsing HTML document at URL " + url, e);
         }
     }

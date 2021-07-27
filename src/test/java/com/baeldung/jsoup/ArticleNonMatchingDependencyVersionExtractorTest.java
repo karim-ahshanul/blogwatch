@@ -62,7 +62,7 @@ class ArticleNonMatchingDependencyVersionExtractorTest {
                 try {
                     return articleNonMatchingDependencyVersionExtractor.extractNonMatchingDependencyVersions(searchedDependencyVersion, new URL (Utils.changeLiveUrlWithStaging8(articleUrl.toString())));
                 } catch (MalformedURLException e) {
-                    logger.info("Error while converting live url to staging8. url: {}", articleUrl.toString());
+                    logger.info("Error while converting live url to staging8. url: {} ", articleUrl.toString());
                     e.printStackTrace();
                     return null;                    
                 }
