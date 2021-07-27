@@ -1,6 +1,7 @@
 package com.baeldung.jsoup;
 
 import com.baeldung.common.ConsoleColors;
+import com.baeldung.common.Utils;
 import com.google.common.annotations.VisibleForTesting;
 
 import org.jsoup.HttpStatusException;
@@ -28,6 +29,7 @@ public class ModuleArticleUrlsExtractor {
     private static final String LINK_ATTRIBUTE = "href";
     private static final String README_FILE_NAME = "README.md";
     private static final String ARTICLE_LINK_PATTERN = "https?://www\\.baeldung\\.com/.*";
+    
 
     public Set<URL> findArticleUrlsInModules(Collection<URL> moduleUrls) {
         return moduleUrls.stream()
@@ -52,10 +54,11 @@ public class ModuleArticleUrlsExtractor {
     @VisibleForTesting
     Optional<Document> parseDocument(URL url) {
         try {
+            Utils.sleep(1500);
             return Optional.of(Jsoup.parse(url, TIMEOUT));
         }
         catch(HttpStatusException httpStatusException){
-            logger.error(ConsoleColors.redBoldMessage("Error while fetching README for:{} "), url);
+            logger.error(ConsoleColors.redBoldMessage("Error while fetching README :{} "), url);
             if(httpStatusException.getStatusCode() == 404) {               
                 return Optional.empty();
             }
