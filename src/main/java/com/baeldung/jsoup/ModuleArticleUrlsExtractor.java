@@ -1,9 +1,12 @@
 package com.baeldung.jsoup;
 
+import com.baeldung.common.ConsoleColors;
 import com.google.common.annotations.VisibleForTesting;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -16,6 +19,7 @@ import java.util.stream.Stream;
 
 @Component
 public class ModuleArticleUrlsExtractor {
+    protected Logger logger = LoggerFactory.getLogger(getClass());
     private static final int TIMEOUT = 10000;
     private static final String LINK_TAG = "a";
     private static final String LINK_ATTRIBUTE = "href";
@@ -36,6 +40,7 @@ public class ModuleArticleUrlsExtractor {
         try {
             return new URL(readmeFileUrl);
         } catch (MalformedURLException e) {
+            
             throw new IllegalStateException("The README file URL isn't right: " + readmeFileUrl);
         }
     }
@@ -45,6 +50,7 @@ public class ModuleArticleUrlsExtractor {
         try {
             return Jsoup.parse(url, TIMEOUT);
         } catch (IOException e) {
+            logger.error(ConsoleColors.redBoldMessage("Error while parsing README for:{}"), url);
             throw new IllegalStateException("A problem occurred while parsing HTML document at URL " + url, e);
         }
     }
