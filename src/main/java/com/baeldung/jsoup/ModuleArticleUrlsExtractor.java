@@ -59,6 +59,7 @@ public class ModuleArticleUrlsExtractor {
             if(httpStatusException.getStatusCode() == 404) {               
                 return Optional.empty();
             }
+            logger.error(ConsoleColors.redBoldMessage("Throwing exception. Status code retrieved:{} for:{} "),httpStatusException.getStatusCode(), url);
             throw new IllegalStateException("A problem occurred while parsing HTML document at URL " + url, httpStatusException);
         }
         catch (IOException e) {           
