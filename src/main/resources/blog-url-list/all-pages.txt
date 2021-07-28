@@ -1,5 +1,4 @@
 /
-/webinar-the-basics-of-rest-with-spring
 /webinar
 /learn-spring-security-course
 /rest-with-spring-for-teams
@@ -16,7 +15,6 @@
 /java-10-overview
 /new-java-9
 /consulting
-/consulting-short
 /almost-done
 /java-web-weekly
 /affiliates
