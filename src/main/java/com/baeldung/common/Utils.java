@@ -860,5 +860,17 @@ public class Utils {
             System.out.println("https://github.com/eugenp/tutorials/tree/master" + gitUrl);
         });
     }
+    
+   public  static int getIndexOfFirstTokenStartingWithACharacter(String title) {
+        return  Character.isDigit(Character.valueOf(title.charAt(0))) || "Q".equals(String.valueOf(title.charAt(0))) || ">".equals(String.valueOf(title.charAt(0)))? 1 : 0;
+     }
+
+
+    public static boolean isEmpasized(String token, List<String> emphasizedAndItalicTokens) {
+        if (emphasizedAndItalicTokens.contains(token)) {
+            return true;
+        }
+        return emphasizedAndItalicTokens.stream().filter(empasizedToken -> empasizedToken.contains(token)).findFirst().isPresent();
+    }
      
 }

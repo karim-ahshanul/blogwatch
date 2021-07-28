@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.text.WordUtils;
 
+import com.baeldung.common.Utils;
+
 public interface ITitleAnalyzerStrategy {
     boolean isTitleValid(String title, List<String> tokens, List<String> emphasizedAndItalicTokens);
 
@@ -17,7 +19,7 @@ public interface ITitleAnalyzerStrategy {
     static ITitleAnalyzerStrategy articlesConjunctionsShortPrepositionsAnalyserStrategy() {
         return (title, tokens, emphasizedAndItalicTokens) -> {
             String token = null;
-            int firstTokenIndexStartingWithACharacter = Character.isDigit(Character.valueOf(title.charAt(0))) || ">".equals(String.valueOf(title.charAt(0)))? 1 : 0;
+            int firstTokenIndexStartingWithACharacter = Utils.getIndexOfFirstTokenStartingWithACharacter(title);
             String expectedToken = null;
             for (int j = 0; j < tokens.size(); j++) {
                 token = tokens.get(j);
@@ -38,6 +40,7 @@ public interface ITitleAnalyzerStrategy {
             return true;
         };
     }
+    
 
     static ITitleAnalyzerStrategy javaMethodNameAnalyserStrategy() {
         return (title, tokens, emphasizedAndItalicTokens) -> {
@@ -79,7 +82,7 @@ public interface ITitleAnalyzerStrategy {
     static ITitleAnalyzerStrategy simpleTitleAnalyserStrategy() {
         return (title, tokens, emphasizedAndItalicTokens) -> {
             String token = null;
-            int firstTokenIndexStartingWithACharacter = Character.isDigit(Character.valueOf(title.charAt(0))) || ">".equals(String.valueOf(title.charAt(0))) ? 1 : 0;
+            int firstTokenIndexStartingWithACharacter = Utils.getIndexOfFirstTokenStartingWithACharacter(title);
             for (int j = 0; j < tokens.size(); j++) {
                 token = tokens.get(j);
 
@@ -88,7 +91,7 @@ public interface ITitleAnalyzerStrategy {
                     continue;
                 }
 
-                if (Pattern.compile(regexForShortPrepositions, Pattern.CASE_INSENSITIVE).matcher(token).matches() || emphasizedAndItalicTokens.contains(token.trim()) || token.contains("(") || token.contains(".") || token.equals(token.toUpperCase())
+                if (Pattern.compile(regexForShortPrepositions, Pattern.CASE_INSENSITIVE).matcher(token).matches() || Utils.isEmpasized(token.trim(), emphasizedAndItalicTokens) || token.contains("(") || token.contains(".") || token.equals(token.toUpperCase())
                         || token.charAt(0) == '@' || (token.contains("-") && token.toLowerCase().equals(token))) {
                     continue;
                 }
