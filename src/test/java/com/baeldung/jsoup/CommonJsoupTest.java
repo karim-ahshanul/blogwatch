@@ -21,8 +21,7 @@ import com.baeldung.utility.TestUtils;
 public class CommonJsoupTest extends BaseTest{
     
     @ParameterizedTest(name = " {displayName} - on {0}")
-    @MethodSource("com.baeldung.utility.TestUtils#thankYouPagesUrlsProvider")
-    @Tag(GlobalConstants.TAG_DAILY)
+    @MethodSource("com.baeldung.utility.TestUtils#thankYouPagesUrlsProvider")    
     public final void givenAThankYouPage_whenThePageLoads_thenTheItHasTheFacebookCode(String url) throws IOException {      
                 
         logger.info("Processing " + url);
