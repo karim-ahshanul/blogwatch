@@ -223,6 +223,10 @@ public class GlobalConstants {
     //for givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch
     public static final String STAGEING8_HOME_URL="http://staging8.baeldung.com";
     
+    //facebook tracking code
+    public static final String FACEBOOK_TRACKING_MAIN_SCRIPT = "https://connect.facebook.net/en_US/fbevents.js";
+    public static final String FACEBOOK_TRACKING_EVENTS_SCRIPT = "fbq('track', 'Purchase'";
+    
 
     // test names for
     public static final String givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv = "givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv";

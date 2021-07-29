@@ -5,16 +5,20 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
+import java.util.function.BiFunction;
+
 import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpStatus;
+
 import org.junit.jupiter.params.provider.Arguments;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -22,12 +26,16 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.baeldung.common.ConsoleColors;
 import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.Utils;
 import com.baeldung.common.YAMLProperties;
 import com.baeldung.common.vo.AdSlotsVO;
 import com.baeldung.common.vo.CoursePurchaseLinksVO;
 import com.baeldung.common.vo.FooterLinksDataVO;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
 import com.baeldung.site.SitePage;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -256,4 +264,26 @@ public class TestUtils {
         return adSlotsVO.stream().map(entry -> Arguments.of(entry.getUrl(), entry.getSlotIds()));
 
     }
+    
+    public static Stream<Arguments> thankYouPagesUrlsProvider() throws IOException {
+       return Utils.fetchFileAsStream("baeldung-thankyou-pages.txt").map(url -> Arguments.of(url));        
+    }
+    
+    public static BiFunction< Document, String,Boolean> faceBookMainScripttExists = (doc, url) -> {
+        try {               
+            return doc.select("script:containsData("+ GlobalConstants.FACEBOOK_TRACKING_MAIN_SCRIPT+")").size() > 0;           
+        } catch (Exception e) {
+            logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
+            return false;
+        }
+    };
+    
+    public static BiFunction<Document, String,Boolean> faceBookEventsScripttExists = (doc, url) -> {
+        try {            
+            return  doc.select("script:containsData(fbq)").stream().map(Element::toString).filter(t -> t.contains(GlobalConstants.FACEBOOK_TRACKING_EVENTS_SCRIPT)).findFirst().isPresent();                      
+        } catch (Exception e) {            
+            logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
+            return false;
+        }
+    };
 }
