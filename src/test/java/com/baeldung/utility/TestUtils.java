@@ -269,18 +269,18 @@ public class TestUtils {
        return Utils.fetchFileAsStream("baeldung-thankyou-pages.txt").map(url -> Arguments.of(url));        
     }
     
-    public static BiFunction< Document, String,Boolean> faceBookMainScripttExists = (doc, url) -> {
+    public static BiFunction< Document, String,Boolean> faceBookMainEventTrackingScriptExists = (doc, url) -> {
         try {               
-            return doc.select("script:containsData("+ GlobalConstants.FACEBOOK_TRACKING_MAIN_SCRIPT+")").size() > 0;           
+            return doc.select("script:containsData("+ GlobalConstants.FACEBOOK_MAIN_EVENT_TRACKING_SCRIPT+")").size() > 0;           
         } catch (Exception e) {
             logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
             return false;
         }
     };
     
-    public static BiFunction<Document, String,Boolean> faceBookEventsScripttExists = (doc, url) -> {
+    public static BiFunction<Document, String,Boolean> faceBookEventPriceTrackingScriptExists = (doc, url) -> {
         try {            
-            return  doc.select("script:containsData(fbq)").stream().map(Element::toString).filter(t -> t.contains(GlobalConstants.FACEBOOK_TRACKING_EVENTS_SCRIPT)).findFirst().isPresent();                      
+            return  doc.select("script:containsData(fbq)").stream().map(Element::toString).filter(t -> t.contains(GlobalConstants.FACEBOOK_MAIN_EVENT_PRICE_TRACKING_SCRIPT)).findFirst().isPresent();                      
         } catch (Exception e) {            
             logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
             return false;

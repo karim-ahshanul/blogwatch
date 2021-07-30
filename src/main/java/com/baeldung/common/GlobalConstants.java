@@ -224,8 +224,8 @@ public class GlobalConstants {
     public static final String STAGEING8_HOME_URL="http://staging8.baeldung.com";
     
     //facebook tracking code
-    public static final String FACEBOOK_TRACKING_MAIN_SCRIPT = "https://connect.facebook.net/en_US/fbevents.js";
-    public static final String FACEBOOK_TRACKING_EVENTS_SCRIPT = "fbq('track', 'Purchase'";
+    public static final String FACEBOOK_MAIN_EVENT_TRACKING_SCRIPT = "fbq('init', '512471148948613')";
+    public static final String FACEBOOK_MAIN_EVENT_PRICE_TRACKING_SCRIPT = "fbq('track', 'Purchase'";
     
 
     // test names for
