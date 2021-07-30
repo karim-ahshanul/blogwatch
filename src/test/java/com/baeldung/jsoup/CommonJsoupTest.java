@@ -26,7 +26,7 @@ public class CommonJsoupTest extends BaseTest{
         logger.info("Processing " + url);
         Document doc = Jsoup.connect(url).get();       
         assertAll(() -> assertTrue(TestUtils.faceBookMainEventTrackingScriptExists.apply(doc, url), String.format("Facebook main tracking code not found on %s", url)),
-                  () -> assertTrue(TestUtils.faceBookEventPriceTrackingScriptExists.apply(doc, url), String.format("Facebook event pricing tracking code not found on %s", url)));
+                  () -> assertTrue(TestUtils.faceBookEventPriceTrackingScriptExists.apply(doc, url), String.format("Facebook event price tracking code not found on %s", url)));
        
     }
 
