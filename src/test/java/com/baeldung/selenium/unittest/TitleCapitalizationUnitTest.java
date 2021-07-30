@@ -47,7 +47,7 @@ public class TitleCapitalizationUnitTest {
     @Test
     void givenATitleHavingLowerCaseShortPrepositionAtTheEnd_WhenTitleAnalysed_thenItIsNotValid() {
         String title = "@CrossOrigin on";
-        List<String> tokens = Utils.titleTokenizer(title);
+        List<String> tokens = Utils.titleTokenizer(title, tokenExceptions);
         List<String> emTokens = new ArrayList<>();
 
         assertFalse(ITitleAnalyzerStrategy.articlesConjunctionsShortPrepositionsAnalyserStrategy().isTitleValid(title, tokens, emTokens));
