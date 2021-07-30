@@ -44,6 +44,7 @@ public class ArticlesUITest extends BaseUISeleniumTest {
     Multimap<Integer, String> resultsForGitHubHttpStatusTest = ArrayListMultimap.create();
     
     List<String> level2ExceptionsForJavaDocTest= YAMLProperties.exceptionsForTestsLevel2.get(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs);
+    List<String> level2ExceptionsForTitleCapitalizationTest= YAMLProperties.exceptionsForTestsLevel2.get(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization);
 
     boolean loadNextUrl = true;
     boolean allTestsFlag = false;
@@ -321,12 +322,12 @@ public class ArticlesUITest extends BaseUISeleniumTest {
 
         do {
 
-            if (shouldSkipUrl(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization)) {
+            /*if (shouldSkipUrl(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization)) {
                 continue;
-            }
+            }*/
 
             try {
-                List<String> invalidTitles = page.findInvalidTitles();
+                List<String> invalidTitles = page.findInvalidTitles(level2ExceptionsForTitleCapitalizationTest);
                 if (invalidTitles.size() > 0) {
                     recordMetrics(invalidTitles.size(), TestMetricTypes.FAILED);
                     badURLs.put(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization, Utils.formatResultsForCapatalizationTest(page.getUrl(), invalidTitles));

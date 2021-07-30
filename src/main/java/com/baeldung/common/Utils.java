@@ -13,11 +13,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
-import java.util.StringTokenizer;
+
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.regex.Matcher;
@@ -616,7 +616,7 @@ public class Utils {
         return resultBuilder.toString();
     }
 
-    public static List<String> titleTokenizer(String title) {
+    public static List<String> titleTokenizer(String title, List<String> tokenExceptions) {
         List<String> tokens = new ArrayList<>();
         if (StringUtils.isBlank(title)) {
             return tokens;
@@ -630,7 +630,10 @@ public class Utils {
                     delimiter = GlobalConstants.RIGHT_PARENTHESIS;
                 }
                 if (title.substring(tokenStartIndex).indexOf(delimiter) == -1) {
-                    tokens.add(title.substring(tokenStartIndex));
+                    token = title.substring(tokenStartIndex);
+                    if(!tokenExceptions.contains(token)) {
+                        tokens.add(title.substring(tokenStartIndex));
+                    }
                     break;
                 }
             }
@@ -638,7 +641,9 @@ public class Utils {
             token = title.substring(tokenStartIndex, tokenStartIndex + title.substring(tokenStartIndex).indexOf(delimiter) + delimiter.length());
             tokenStartIndex = tokenStartIndex + token.length();
             if (StringUtils.isNotBlank(token)) {
-                tokens.add(token.trim());
+                if(!tokenExceptions.contains(token.trim())) {
+                    tokens.add(token.trim());
+                }
             }
             if (tokenStartIndex >= title.length()) {
                 break;
@@ -651,14 +656,14 @@ public class Utils {
 
     }
 
-    private static String findNextDelimiter(String title) {
-        List<Object> tokens = Collections.list(new StringTokenizer(title, GlobalConstants.SPACE_DELIMITER));
-        if (CollectionUtils.isEmpty(tokens)) {
+    private static String findNextDelimiter(String title) {       
+        int indexOfFirstSpace = title.indexOf(GlobalConstants.SPACE_DELIMITER);
+        if (indexOfFirstSpace == -1) {
             return GlobalConstants.SPACE_DELIMITER;
         }
-        String firstTokenWithTheSpaceDelimiter = tokens.get(0).toString();
+        String firstTokenWithTheSpaceDelimiter = title.substring(0,indexOfFirstSpace);
         return firstTokenWithTheSpaceDelimiter.contains(GlobalConstants.LEFT_PARENTHESIS) && !firstTokenWithTheSpaceDelimiter.contains("()") ? GlobalConstants.RIGHT_PARENTHESIS_FOLLOWED_BY_SPACE : " ";
-    }
+    }       
 
     public static String generateXPathExcludeClauseForImages(ImmutableList<String> domainToExclude) {
         StringBuilder excludeCluse = new StringBuilder();
