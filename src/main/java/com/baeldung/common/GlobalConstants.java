@@ -82,6 +82,8 @@ public class GlobalConstants {
     public static final String TAG_SITE_SMOKE_TEST = "site-smoke-test";
 
     public static final String TAG_SKIP_METRICS = "skip-metrics";
+    
+    public static final String THANKYOU_PAGES_EVENT_TRACKING = "thank-you-pages-event-tracking";
 
     /**
      * Tests using this tag can be executed using on Demand genkins job.
@@ -223,11 +225,15 @@ public class GlobalConstants {
     //for givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch
     public static final String STAGEING8_HOME_URL="http://staging8.baeldung.com";
     
-    //facebook tracking code
+    //facebook tracking code on thank-you pages
     public static final String FACEBOOK_MAIN_EVENT_TRACKING_SCRIPT = "fbq('init', '512471148948613')";
-    public static final String FACEBOOK_MAIN_EVENT_PRICE_TRACKING_SCRIPT = "fbq('track', 'Purchase'";
+    public static final String FACEBOOK_EVENT_PRICE_TRACKING_SCRIPT = "fbq('track', 'Purchase'";
     
 
+    //drip tracking on thank-you pages
+    public static final String DRIP_MAIN_EVENT_TRACKING_SCRIPT = "tag.getdrip.com/9539554.js";
+    public static final String DRIP_EVENT_PRICE_TRACKING_SCRIPT = "window._dcq.push([\"track\"";
+    
     // test names for
     public static final String givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv = "givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv";
     public static final String givenAllTheURLs_whenURLLoads_thenImagesPointToCorrectEnv = "givenAllTheURLs_whenURLLoads_thenImagesPointToCorrectEnv";
