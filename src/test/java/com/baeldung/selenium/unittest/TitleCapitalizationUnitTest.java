@@ -13,11 +13,11 @@ import com.baeldung.common.Utils;
 import com.baeldung.site.strategy.ITitleAnalyzerStrategy;
 
 public class TitleCapitalizationUnitTest {
-
+    List<String> tokenExceptions = Arrays.asList("jooQ");
     @Test
     void givenATitleHavingItalicAndUpperCaseJavaMethodName_WhenTitleAnalysed_thenItIsNotValid() {
         String title = "4.1. The Let() Method";
-        List<String> tokens = Utils.titleTokenizer(title);
+        List<String> tokens = Utils.titleTokenizer(title, tokenExceptions);
         List<String> emTokens = Arrays.asList(new String[] { "Let()" });
 
         assertFalse(ITitleAnalyzerStrategy.javaMethodNameAnalyserStrategy().isTitleValid(title, tokens, emTokens));
@@ -27,7 +27,7 @@ public class TitleCapitalizationUnitTest {
     @Test
     void givenATitleHavingUpperCaseJavaMethodName_WhenTitleAnalysed_thenItIsNotValid() {
         String title = "4.1. The Let() Method";
-        List<String> tokens = Utils.titleTokenizer(title);
+        List<String> tokens = Utils.titleTokenizer(title, tokenExceptions);
         List<String> emTokens = new ArrayList<>();
 
         assertFalse(ITitleAnalyzerStrategy.javaMethodNameAnalyserStrategy().isTitleValid(title, tokens, emTokens));
@@ -37,7 +37,7 @@ public class TitleCapitalizationUnitTest {
     @Test
     void givenATitleHavingJavaMethodName_WhenTitleAnalysed_thenItIsValid() {
         String title = "4.1. The let() Method";
-        List<String> tokens = Utils.titleTokenizer(title);
+        List<String> tokens = Utils.titleTokenizer(title, tokenExceptions);
         List<String> emTokens = new ArrayList<>();
 
         assertTrue(ITitleAnalyzerStrategy.javaMethodNameAnalyserStrategy().isTitleValid(title, tokens, emTokens));
