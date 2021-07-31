@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.text.WordUtils;
 
+import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.Utils;
 
 public interface ITitleAnalyzerStrategy {
@@ -46,8 +47,9 @@ public interface ITitleAnalyzerStrategy {
         return (title, tokens, emphasizedAndItalicTokens) -> {
 
             for (String token : tokens) {
-                if (token.contains("(")) {
-                    if (token.toUpperCase().equals(token)) {
+                if (token.contains("(") ) {
+                    //we aren't handling methods with parameters
+                    if (token.toUpperCase().equals(token) || token.charAt(0) == '(' || token.contains(GlobalConstants.SPACE_DELIMITER)) {
                         continue;
                     }
                     if (token.contains(".")) {

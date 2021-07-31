@@ -2,4 +2,3 @@ givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs:
  - https://docs.oracle.com/javase/8/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html
 givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
  - jOOQ
- - O(n)

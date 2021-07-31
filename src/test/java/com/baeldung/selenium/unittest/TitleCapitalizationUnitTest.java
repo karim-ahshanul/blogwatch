@@ -13,7 +13,7 @@ import com.baeldung.common.Utils;
 import com.baeldung.site.strategy.ITitleAnalyzerStrategy;
 
 public class TitleCapitalizationUnitTest {
-    List<String> tokenExceptions = Arrays.asList("jooQ");
+    List<String> tokenExceptions = Arrays.asList("jOOQ");
     @Test
     void givenATitleHavingItalicAndUpperCaseJavaMethodName_WhenTitleAnalysed_thenItIsNotValid() {
         String title = "4.1. The Let() Method";

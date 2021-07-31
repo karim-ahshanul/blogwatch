@@ -322,9 +322,9 @@ public class ArticlesUITest extends BaseUISeleniumTest {
 
         do {
 
-            /*if (shouldSkipUrl(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization)) {
+            if (shouldSkipUrl(GlobalConstants.givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization)) {
                 continue;
-            }*/
+            }
 
             try {
                 List<String> invalidTitles = page.findInvalidTitles(level2ExceptionsForTitleCapitalizationTest);

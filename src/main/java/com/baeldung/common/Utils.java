@@ -631,8 +631,8 @@ public class Utils {
                 }
                 if (title.substring(tokenStartIndex).indexOf(delimiter) == -1) {
                     token = title.substring(tokenStartIndex);
-                    if(!tokenExceptions.contains(token)) {
-                        tokens.add(title.substring(tokenStartIndex));
+                    if(!tokenExceptions.contains(token)) {                        
+                        tokens.add(title.substring(tokenStartIndex).trim());
                     }
                     break;
                 }
