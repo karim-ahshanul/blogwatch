@@ -16,7 +16,6 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
  - macOS
  - JUnit
  - RESTful
- - HashMap
  - IntelliJ
  - awk
  - cURL
@@ -24,4 +23,10 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
  - grep
  - GraphQL
  - MongoDB
+ - gRPC
+ - jBPM
+ - MLlib
+ - DevOps
+ - XPath
+ 
  
