@@ -2,3 +2,24 @@ givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs:
  - https://docs.oracle.com/javase/8/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html
 givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
  - jOOQ
+ - IDEs
+ - O(n)
+ - O(n^2)
+ - O(log n)
+ - O(n log n)
+ - O(n!)
+ - O(kn)
+ - O(np)
+ - c3p0
+ - APIs
+ - HttpClient
+ - macOS
+ - JUnit
+ - RESTful
+ - HashMap
+ - IntelliJ
+ - awk
+ - cURL
+ - sed
+ - GraphQL
+ 
