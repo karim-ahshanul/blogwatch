@@ -51,6 +51,7 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleDoesNotCotainWrongQuotations:
   - /thymeleaf-list/
   - /spring-security-taglibs/
 givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
+  - /spring-security-registration-captcha
 
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
