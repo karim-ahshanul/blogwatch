@@ -28,5 +28,13 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
  - MLlib
  - DevOps
  - XPath
- 
+ - d3web
+ - jclouds
+ - jmap
+ - jcmd
+ - O(log(n))
+ - jOOX
+ - dom4j
+ - T(n)
+ - exp4j
  
