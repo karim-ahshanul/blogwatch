@@ -616,7 +616,7 @@ public class Utils {
         return resultBuilder.toString();
     }
 
-    public static List<String> titleTokenizer(String title, List<String> tokenExceptions) {
+    public static List<String> titleTokenizer(String title) {
         List<String> tokens = new ArrayList<>();
         if (StringUtils.isBlank(title)) {
             return tokens;
@@ -630,20 +630,16 @@ public class Utils {
                     delimiter = GlobalConstants.RIGHT_PARENTHESIS;
                 }
                 if (title.substring(tokenStartIndex).indexOf(delimiter) == -1) {
-                    token = title.substring(tokenStartIndex);
-                    if(!tokenExceptions.contains(token)) {                        
-                        tokens.add(title.substring(tokenStartIndex).trim());
-                    }
+                    token = title.substring(tokenStartIndex);                                           
+                    tokens.add(title.substring(tokenStartIndex).trim());                    
                     break;
                 }
             }
 
             token = title.substring(tokenStartIndex, tokenStartIndex + title.substring(tokenStartIndex).indexOf(delimiter) + delimiter.length());
             tokenStartIndex = tokenStartIndex + token.length();
-            if (StringUtils.isNotBlank(token)) {
-                if(!tokenExceptions.contains(token.trim())) {
-                    tokens.add(token.trim());
-                }
+            if (StringUtils.isNotBlank(token)) {               
+               tokens.add(token.trim());
             }
             if (tokenStartIndex >= title.length()) {
                 break;

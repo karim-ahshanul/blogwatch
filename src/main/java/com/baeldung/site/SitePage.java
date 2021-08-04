@@ -533,14 +533,14 @@ public class SitePage extends BlogBaseDriver {
         List<WebElement> webElements = this.getWebDriver().findElements(By.xpath("(//section//h2[not(ancestor::section[contains(@class,'further-reading-posts')] )]) | (//section//h3[not(ancestor::div[contains(@class,'after-post-widgets')] )])"));
         webElements.parallelStream().forEach(webElement -> {
             String title = webElement.getText();
-            List<String> tokens = Utils.titleTokenizer(title, tokenExceptions);
+            List<String> tokens = Utils.titleTokenizer(title);
             List<String> emphasizedAndItalicTagValues = Utils.getEMAndItalicTagValues(webElement.getAttribute("innerHTML"));
 
             for (ITitleAnalyzerStrategy s : ITitleAnalyzerStrategy.titleAnalyzerStrategies) {
                 if (CollectionUtils.isEmpty(tokens)) {
                     break;
                 }
-                if (!s.isTitleValid(title, tokens, emphasizedAndItalicTagValues)) {
+                if (!s.isTitleValid(title, tokens, emphasizedAndItalicTagValues, tokenExceptions)) {
                     invalidTitles.add(title);
                     break;
                 }

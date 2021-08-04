@@ -6,25 +6,32 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.apache.commons.text.WordUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import com.baeldung.common.ConsoleColors;
 import com.baeldung.common.GlobalConstants;
 import com.baeldung.common.Utils;
 
 public interface ITitleAnalyzerStrategy {
-    boolean isTitleValid(String title, List<String> tokens, List<String> emphasizedAndItalicTokens);
+    Logger logger = LoggerFactory.getLogger(ITitleAnalyzerStrategy.class);
+    boolean isTitleValid(String title, List<String> tokens, List<String> emphasizedAndItalicTokens, List<String> tokenExceptions);
 
     static List<ITitleAnalyzerStrategy> titleAnalyzerStrategies = Arrays.asList(new ITitleAnalyzerStrategy[] { articlesConjunctionsShortPrepositionsAnalyserStrategy(), javaMethodNameAnalyserStrategy(), simpleTitleAnalyserStrategy() });
     static String regexForShortPrepositions = "a|an|and|as|at|but|by|en|for|in|nor|of|on|or|per|the|vs.?|via|out";
     static String regexForExceptions = "with|to|from|up|into|v.?|REST|if|using";
 
     static ITitleAnalyzerStrategy articlesConjunctionsShortPrepositionsAnalyserStrategy() {
-        return (title, tokens, emphasizedAndItalicTokens) -> {
+        return (title, tokens, emphasizedAndItalicTokens, tokenExceptions) -> {
             String token = null;
             int firstTokenIndexStartingWithACharacter = Utils.getIndexOfFirstTokenStartingWithACharacter(title);
             String expectedToken = null;
             for (int j = 0; j < tokens.size(); j++) {
                 token = tokens.get(j);
                 if (emphasizedAndItalicTokens.contains(token.trim())) {
+                    continue;
+                }
+                if(tokenExceptions.contains(token)) {
                     continue;
                 }
                 if (Pattern.compile(regexForShortPrepositions, Pattern.CASE_INSENSITIVE).matcher(token.trim()).matches()) {
@@ -34,6 +41,7 @@ public interface ITitleAnalyzerStrategy {
                         expectedToken = token.toLowerCase();
                     }
                     if (!expectedToken.equals(token)) {
+                        logFailure(title, expectedToken, token);
                         return false;
                     }
                 }
@@ -43,8 +51,13 @@ public interface ITitleAnalyzerStrategy {
     }
     
 
+    static void logFailure(String title, String expectedToken, String token) {
+        logger.debug(ConsoleColors.magentaColordMessage("expectedToken: {}, but found: {}, title: {}"), expectedToken, token, title );        
+    }
+
+
     static ITitleAnalyzerStrategy javaMethodNameAnalyserStrategy() {
-        return (title, tokens, emphasizedAndItalicTokens) -> {
+        return (title, tokens, emphasizedAndItalicTokens, tokenExceptions) -> {
 
             for (String token : tokens) {
                 if (token.contains("(") ) {
@@ -52,26 +65,34 @@ public interface ITitleAnalyzerStrategy {
                     if (token.toUpperCase().equals(token) || token.charAt(0) == '(' || token.contains(GlobalConstants.SPACE_DELIMITER)) {
                         continue;
                     }
+                    if(tokenExceptions.contains(token)) {
+                        continue;
+                    }
                     if (token.contains(".")) {
-                        String expetedToken = WordUtils.capitalize(Arrays.asList(token.split("\\.")).stream().map(WordUtils::uncapitalize).collect(Collectors.joining(".")));
-                        if (!expetedToken.equals(token)) {
+                        String expectedToken = WordUtils.capitalize(Arrays.asList(token.split("\\.")).stream().map(WordUtils::uncapitalize).collect(Collectors.joining(".")));
+                        if (!expectedToken.equals(token)) {
+                            logFailure(title, expectedToken, token);
                             return false;
                         }
                     }
                     else if (token.contains("#")) {
-                        String expetedToken = WordUtils.capitalize(Arrays.asList(token.split("#")).stream().map(WordUtils::uncapitalize).collect(Collectors.joining("#")));
-                        if (!expetedToken.equals(token)) {
+                        String expectedToken = WordUtils.capitalize(Arrays.asList(token.split("#")).stream().map(WordUtils::uncapitalize).collect(Collectors.joining("#")));
+                        if (!expectedToken.equals(token)) {
+                            logFailure(title, expectedToken, token);
                             return false;
                         }
                     }
                     else if (token.contains("::")) {
-                        String expetedToken = WordUtils.capitalize(Arrays.asList(token.split("::")).stream().map(WordUtils::uncapitalize).collect(Collectors.joining("::")));
-                        if (!expetedToken.equals(token)) {
+                        String expectedToken = WordUtils.capitalize(Arrays.asList(token.split("::")).stream().map(WordUtils::uncapitalize).collect(Collectors.joining("::")));
+                        if (!expectedToken.equals(token)) {
+                            logFailure(title, expectedToken, token);
                             return false;
                         }
                     }                    
                     else {
-                        if (!WordUtils.uncapitalize(token, '$').equals(token)) {
+                        String expectedToken = WordUtils.uncapitalize(token, '$');
+                        if (!expectedToken.equals(token)) {
+                            logFailure(title, expectedToken, token);
                             return false;
                         }
                     }
@@ -82,7 +103,7 @@ public interface ITitleAnalyzerStrategy {
     }
 
     static ITitleAnalyzerStrategy simpleTitleAnalyserStrategy() {
-        return (title, tokens, emphasizedAndItalicTokens) -> {
+        return (title, tokens, emphasizedAndItalicTokens, tokenExceptions) -> {
             String token = null;
             int firstTokenIndexStartingWithACharacter = Utils.getIndexOfFirstTokenStartingWithACharacter(title);
             for (int j = 0; j < tokens.size(); j++) {
@@ -97,8 +118,14 @@ public interface ITitleAnalyzerStrategy {
                         || token.charAt(0) == '@' || (token.contains("-") && token.toLowerCase().equals(token))) {
                     continue;
                 }
-
-                if (!WordUtils.capitalize(token).equals(token)) {
+                
+                if(tokenExceptions.contains(token)) {
+                    continue;
+                }
+                
+                String expectedToken =WordUtils.capitalize(token);
+                if (!expectedToken.equals(token)) {
+                    logFailure(title, expectedToken, token);
                     return false;
                 }
             }
