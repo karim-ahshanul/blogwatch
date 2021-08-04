@@ -28,13 +28,13 @@ public interface ITitleAnalyzerStrategy {
             String expectedToken = null;
             for (int j = 0; j < tokens.size(); j++) {
                 token = tokens.get(j);
-                if (emphasizedAndItalicTokens.contains(token.trim())) {
+                if (emphasizedAndItalicTokens.contains(token)) {
                     continue;
                 }
                 if(tokenExceptions.contains(token)) {
                     continue;
                 }
-                if (Pattern.compile(regexForShortPrepositions, Pattern.CASE_INSENSITIVE).matcher(token.trim()).matches()) {
+                if (Pattern.compile(regexForShortPrepositions, Pattern.CASE_INSENSITIVE).matcher(token).matches()) {
                     if (j == firstTokenIndexStartingWithACharacter || j == tokens.size() - 1) {
                         expectedToken = WordUtils.capitalize(token.toLowerCase());
                     } else {
@@ -114,7 +114,7 @@ public interface ITitleAnalyzerStrategy {
                     continue;
                 }
 
-                if (Pattern.compile(regexForShortPrepositions, Pattern.CASE_INSENSITIVE).matcher(token).matches() || Utils.isEmpasized(token.trim(), emphasizedAndItalicTokens) || token.contains("(") || token.contains(".") || token.equals(token.toUpperCase())
+                if (Pattern.compile(regexForShortPrepositions, Pattern.CASE_INSENSITIVE).matcher(token).matches() || Utils.isEmpasized(Utils.removeSpecialCharacterAtTheEnd(token), emphasizedAndItalicTokens) || token.contains("(") || token.contains(".") || token.equals(token.toUpperCase())
                         || token.charAt(0) == '@' || (token.contains("-") && token.toLowerCase().equals(token))) {
                     continue;
                 }

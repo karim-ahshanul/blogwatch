@@ -868,10 +868,18 @@ public class Utils {
 
 
     public static boolean isEmpasized(String token, List<String> emphasizedAndItalicTokens) {
+        
         if (emphasizedAndItalicTokens.contains(token)) {
             return true;
         }
         return emphasizedAndItalicTokens.stream().filter(empasizedToken -> empasizedToken.contains(token)).findFirst().isPresent();
+    }
+
+    public static String removeSpecialCharacterAtTheEnd(String token) {
+        if(token.endsWith("?")) {
+            return token.substring(0, token.length()-1);
+        }
+        return token;
     }
      
 }
