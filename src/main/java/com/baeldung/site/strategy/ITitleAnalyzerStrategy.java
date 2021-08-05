@@ -107,7 +107,7 @@ public interface ITitleAnalyzerStrategy {
                 token = tokens.get(j);
 
                 // ignore regexForExceptions if not first and last word
-                if (isAtStartOrEndOftheTitle(j, firstTokenIndexStartingWithACharacter, tokens.size()) && Pattern.compile(regexForExceptions, Pattern.CASE_INSENSITIVE).matcher(token).matches()) {
+                if (!isAtStartOrEndOftheTitle(j, firstTokenIndexStartingWithACharacter, tokens.size()) && Pattern.compile(regexForExceptions, Pattern.CASE_INSENSITIVE).matcher(token).matches()) {
                     continue;
                 }
 
