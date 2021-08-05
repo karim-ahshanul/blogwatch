@@ -34,8 +34,11 @@ public interface ITitleAnalyzerStrategy {
                 if(tokenExceptions.contains(token)) {
                     continue;
                 }
+                if(token.equals(token.toUpperCase())) {
+                    continue;
+                }
                 if (Pattern.compile(regexForShortPrepositions, Pattern.CASE_INSENSITIVE).matcher(token).matches()) {
-                    if (j == firstTokenIndexStartingWithACharacter || j == tokens.size() - 1) {
+                    if(isAtStartOrEndOftheTitle(j, firstTokenIndexStartingWithACharacter, tokens.size())) {
                         expectedToken = WordUtils.capitalize(token.toLowerCase());
                     } else {
                         expectedToken = token.toLowerCase();
@@ -48,13 +51,7 @@ public interface ITitleAnalyzerStrategy {
             }
             return true;
         };
-    }
-    
-
-    static void logFailure(String title, String expectedToken, String token) {
-        logger.debug(ConsoleColors.magentaColordMessage("expectedToken: {}, but found: {}, title: {}"), expectedToken, token, title );        
-    }
-
+    }    
 
     static ITitleAnalyzerStrategy javaMethodNameAnalyserStrategy() {
         return (title, tokens, emphasizedAndItalicTokens, tokenExceptions) -> {
@@ -109,8 +106,8 @@ public interface ITitleAnalyzerStrategy {
             for (int j = 0; j < tokens.size(); j++) {
                 token = tokens.get(j);
 
-                // ignore if not first and last word
-                if (j != firstTokenIndexStartingWithACharacter && j != tokens.size() - 1 && Pattern.compile(regexForExceptions, Pattern.CASE_INSENSITIVE).matcher(token).matches()) {
+                // ignore regexForExceptions if not first and last word
+                if (isAtStartOrEndOftheTitle(j, firstTokenIndexStartingWithACharacter, tokens.size()) && Pattern.compile(regexForExceptions, Pattern.CASE_INSENSITIVE).matcher(token).matches()) {
                     continue;
                 }
 
@@ -132,5 +129,15 @@ public interface ITitleAnalyzerStrategy {
 
             return true;
         };
+    }
+    
+    static boolean isAtStartOrEndOftheTitle(int j, int firstTokenIndexStartingWithACharacter, int totalTokenIntheTitle) {
+        if (j == firstTokenIndexStartingWithACharacter || j == totalTokenIntheTitle - 1) {
+            return true;
+        }
+        return false;
+    }
+    static void logFailure(String title, String expectedToken, String token) {
+        logger.debug(ConsoleColors.magentaColordMessage("expectedToken: {}, but found: {}, title: {}"), expectedToken, token, title );        
     }
 }
