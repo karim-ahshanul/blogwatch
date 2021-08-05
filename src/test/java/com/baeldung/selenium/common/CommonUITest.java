@@ -634,7 +634,7 @@ public class CommonUITest extends BaseUISeleniumTest {
             logger.info(magentaColordMessage("looking for ad-slot:{} on {} "), slotId, fullUrl);
             tests.add(() -> assertTrue(page.findScriptWithText(slotId), String.format("Countn't find tagId:%s on %s", slotId, fullUrl)));
         }
-
+        Utils.sleep(5000);
         assertAll(tests.stream());
 
     }
