@@ -52,6 +52,17 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleDoesNotCotainWrongQuotations:
   - /spring-security-taglibs/
 givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
   - /spring-security-registration-captcha
+  - /spring-boot-interview-questions 
+  - /java-ocp-advanced-class-design
+  - /java-application-remote-debugging 
+  - /java-filename-without-extension
+  - /java-system-stubs 
+  - /java-call-private-method 
+  - /linux/grep-filtered-files 
+  - /linux/display-columns-from-file  
+  - /linux/status-codes 
+  - /linux/zip-avoiding-unwanted-directories  
+  - /java-lang-math
 
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
