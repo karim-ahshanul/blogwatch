@@ -571,7 +571,7 @@ public class Utils {
         final List<String> tagValues = new ArrayList<String>();
         final Matcher emMatcher = EM_TAG_REGEX.matcher(str);
         while (emMatcher.find()) {
-            tagValues.add(emMatcher.group(1).trim());
+            tagValues.add(emMatcher.group(1).trim().replace("<sub>", "").replace("</sub>", ""));
         }
         final Matcher italicMatcher = ITALIC_TAG_REGEX.matcher(str);
         while (italicMatcher.find()) {

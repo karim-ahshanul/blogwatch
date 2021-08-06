@@ -28,7 +28,7 @@ public interface ITitleAnalyzerStrategy {
             String expectedToken = null;
             for (int j = 0; j < tokens.size(); j++) {
                 token = tokens.get(j);
-                if (emphasizedAndItalicTokens.contains(token)) {
+                if (emphasizedAndItalicTokens.contains(Utils.removeSpecialCharacterAtTheEnd(token))) {
                     continue;
                 }
                 if(tokenExceptions.contains(token)) {
@@ -62,7 +62,10 @@ public interface ITitleAnalyzerStrategy {
                     if (token.toUpperCase().equals(token) || token.charAt(0) == '(' || token.contains(GlobalConstants.SPACE_DELIMITER)) {
                         continue;
                     }
-                    if(tokenExceptions.contains(token)) {
+                    if(tokenExceptions.contains(Utils.removeSpecialCharacterAtTheEnd(token))) {
+                        continue;
+                    }
+                    if(token.matches(".*<.*>.*")) {
                         continue;
                     }
                     if (token.contains(".")) {
@@ -116,7 +119,7 @@ public interface ITitleAnalyzerStrategy {
                     continue;
                 }
                 
-                if(tokenExceptions.contains(token)) {
+                if(tokenExceptions.contains(Utils.removeSpecialCharacterAtTheEnd(token))) {
                     continue;
                 }
                 
