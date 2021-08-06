@@ -63,6 +63,9 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
   - /linux/status-codes 
   - /linux/zip-avoiding-unwanted-directories  
   - /java-lang-math
+  - /java-string-interview-questions
+  - /jackson-linkedhashmap-cannot-be-cast  
+  - /java-string-to-bigdecimal
 
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
