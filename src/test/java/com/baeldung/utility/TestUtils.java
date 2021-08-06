@@ -291,7 +291,7 @@ public class TestUtils {
         try {               
             return doc.select("script:containsData("+ GlobalConstants.DRIP_MAIN_EVENT_TRACKING_SCRIPT+")").size() > 0;           
         } catch (Exception e) {
-            logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
+            logger.error(ConsoleColors.redBoldMessage("Error parsing the document for {}, error message: {}  "), url, e.getMessage());
             return false;
         }
     };
@@ -300,7 +300,16 @@ public class TestUtils {
         try {            
             return  doc.select("script:containsData(window._dcq)").stream().map(Element::toString).filter(t -> t.contains(GlobalConstants.DRIP_EVENT_PRICE_TRACKING_SCRIPT)).findFirst().isPresent();                      
         } catch (Exception e) {            
-            logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
+            logger.error(ConsoleColors.redBoldMessage("Error parsing the document for {}, error message: {}  "), url, e.getMessage());
+            return false;
+        }
+    };
+    
+    public static BiFunction< Document, String, Boolean> scriptWithAdSlotExists = (doc, slotId) -> {
+        try {               
+            return doc.select("script:containsData("+ slotId +")").size() > 0;           
+        } catch (Exception e) {
+            logger.error(ConsoleColors.redBoldMessage("Error parsing the document, error message: {}  "), e.getMessage());
             return false;
         }
     };

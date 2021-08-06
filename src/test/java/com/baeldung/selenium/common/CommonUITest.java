@@ -618,26 +618,6 @@ public class CommonUITest extends BaseUISeleniumTest {
         }                
         
         logger.info(ConsoleColors.magentaColordMessage("finished"));
-    }
+    }    
     
-    @ParameterizedTest(name = "verify ad-slots  on {0}")
-    @MethodSource("com.baeldung.utility.TestUtils#adsSlotsTestDataProvider")
-    public final void givenAPageWithAds_whenThePageLoads_thenAdSlotsAreAvailableOnThePage(String url, List<String> slotIds) {
-        String fullUrl = page.getBaseURL() + url;
-        
-        logger.info(greenBoldMessage("Loading:{}  "), fullUrl);
-        page.setUrl(page.getBaseURL() + url);
-        page.loadUrl();
-        List<Executable> tests = new ArrayList<>();
-        
-        for(String slotId: slotIds) {
-            logger.info(magentaColordMessage("looking for ad-slot:{} on {} "), slotId, fullUrl);
-            tests.add(() -> assertTrue(page.findScriptWithText(slotId), String.format("Countn't find tagId:%s on %s", slotId, fullUrl)));
-        }
-        Utils.sleep(5000);
-        assertAll(tests.stream());
-
-    }
-    
-
 }
