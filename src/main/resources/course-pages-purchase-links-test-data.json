@@ -32,19 +32,19 @@
   {
     "courseUrl": "/rest-with-spring-for-teams",
     "purchaseLinks": [{
-        "linkId": "rwsteam-master-tb",
-        "link": "https://gumroad.com/l/rws-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/rws-team"
+        "linkId": "rwsteam-small-tb",
+        "link": "https://courses.baeldung.com/p/rest-with-spring-team-license/",
+        "redirectsTo": "https://courses.baeldung.com/p/rest-with-spring-team-license/"
       },
       {
-        "linkId": "rwsteam-cert-tb",
-        "link": "https://gumroad.com/l/rws-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/rws-team"
+        "linkId": "rwsteam-medium-tb",
+        "link": "https://courses.baeldung.com/p/rest-with-spring-team-license/",
+        "redirectsTo": "https://courses.baeldung.com/p/rest-with-spring-team-license/"
       },
       {
-        "linkId": "rwsteam-coach-tb",
-        "link": "https://gumroad.com/l/rws-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/rws-team"
+        "linkId": "rwsteam-large-tb",
+        "link": "https://courses.baeldung.com/p/rest-with-spring-team-license/",
+        "redirectsTo": "https://courses.baeldung.com/p/rest-with-spring-team-license/"
       }
     ]
   },
@@ -81,19 +81,19 @@
     "courseUrl": "/learn-spring-for-teams",
     "purchaseLinks": [
     {
-        "linkId": "lsteam-master-tb",
-        "link": "https://gumroad.com/l/ls-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/ls-team"
+        "linkId": "lsteam-small-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-team-license",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-team-license"
     },
     {
-        "linkId": "lsteam-cert-tb",
-        "link": "https://gumroad.com/l/ls-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/ls-team"
+        "linkId": "lsteam-medium-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-team-license",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-team-license"
     },
     {
-        "linkId": "lsteam-coach-tb",
-        "link": "https://gumroad.com/l/ls-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/ls-team"
+        "linkId": "lsteam-large-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-team-license",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-team-license"
     }
    ]
   },
@@ -131,19 +131,19 @@
     "courseUrl": "/learn-spring-security-for-teams",
     "purchaseLinks": [
     {
-        "linkId": "lssteam-master-tb",
-        "link": "https://gumroad.com/l/lss-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/lss-team"
+        "linkId": "lssteam-small-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-security-team-license",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-security-team-license"
     },
     {
-        "linkId": "lssteam-cert-tb",
-        "link": "https://gumroad.com/l/lss-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/lss-team"
+        "linkId": "lssteam-medium-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-security-team-license",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-security-team-license"
     },
     {
-        "linkId": "lssteam-coach-tb",
-        "link": "https://gumroad.com/l/lss-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/lss-team"
+        "linkId": "lssteam-large-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-security-team-license",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-security-team-license"
     }
    ]
   },
@@ -181,19 +181,19 @@
     "courseUrl": "/learn-spring-security-oauth-for-teams",
     "purchaseLinks": [
     {
-        "linkId": "lssoteam-master-tb",
-        "link": "https://gumroad.com/l/lsso-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/lsso-team"
+        "linkId": "lssoteam-small-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-security-oauth-team-license/",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-security-oauth-team-license/"
     },
     {
-        "linkId": "lssoteam-cert-tb",
-        "link": "https://gumroad.com/l/lsso-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/lsso-team"
+        "linkId": "lssoteam-medium-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-security-oauth-team-license/",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-security-oauth-team-license/"
     },
     {
-        "linkId": "lssoteam-coach-tb",
-        "link": "https://gumroad.com/l/lsso-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/lsso-team"
+        "linkId": "lssoteam-large-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-security-oauth-team-license/",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-security-oauth-team-license/"
     }
    ]
   },
@@ -231,19 +231,19 @@
     "courseUrl": "/learn-spring-security-core-for-teams",
     "purchaseLinks": [
     {
-        "linkId": "lsscteam-master-tb",
-        "link": "https://gumroad.com/l/lssc-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/lssc-team"
+        "linkId": "lsscteam-small-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-security-core-team-license",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-security-core-team-license"
     },
     {
-        "linkId": "lsscteam-cert-tb",
-        "link": "https://gumroad.com/l/lssc-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/lssc-team"
+        "linkId": "lsscteam-medium-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-security-core-team-license",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-security-core-team-license"
     },
     {
-        "linkId": "lsscteam-coach-tb",
-        "link": "https://gumroad.com/l/lssc-team",
-        "redirectsTo": "https://eugen.gumroad.com/l/lssc-team"
+        "linkId": "lsscteam-large-tb",
+        "link": "https://courses.baeldung.com/p/learn-spring-security-core-team-license",
+        "redirectsTo": "https://courses.baeldung.com/p/learn-spring-security-core-team-license"
     }
    ]
   },
