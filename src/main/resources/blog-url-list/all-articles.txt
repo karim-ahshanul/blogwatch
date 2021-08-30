@@ -4887,7 +4887,6 @@
 /maven-run-single-test
 /java-weekly-399
 /java-compare-files
-/kqldb
 /spring-data-arangodb
 /spring-enablewebsecurity-vs-enableglobalmethodsecurity
 /java-validate-filename
