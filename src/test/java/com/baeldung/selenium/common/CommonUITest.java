@@ -494,21 +494,21 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Tag(GlobalConstants.TAG_SITE_SMOKE_TEST)
     @Tag(GlobalConstants.TAG_DAILY)
     public final void givenURLsWithFooterLinks_whenAnaysingFooterLinks_thenAnchorTextAndAnchorLinksExist(String url, String footerTag, List<FooterLinksDataVO.Link> footerLinks) throws JsonProcessingException, IOException {
-
         page.setUrl(page.getBaseURL() + url);
 
         page.loadUrl();
 
         logger.info("Inspection footer links on {}", page.getBaseURL() + url);
-
+        List<Executable> tests = new ArrayList<>();
         for (FooterLinksDataVO.Link link : footerLinks) {
             if (shouldSkipLink(link.getLinkCategory())) {
                 logger.info("Skipping {}",link.getAnchorLink());
                 continue;
             }
-            assertTrue(page.anchorAndAnchorLinkAvailable(footerTag, link), String.format("Countn't find Anchor Text:%s and Anchor Link: %s, on %s", link.getAnchorText(), link.getAnchorLink(), url));
+            tests.add(()-> assertTrue(page.anchorAndAnchorLinkAvailable(footerTag, link), String.format("Countn't find Anchor Text:%s and Anchor Link: %s, on %s", link.getAnchorText(), link.getAnchorLink(), url)));            
         }
 
+        assertAll(tests.stream());
     }
 
     private boolean shouldSkipLink(FooterLinkCategory linkCategory) {
