@@ -50,16 +50,7 @@ public final class HomePageUITest extends BaseUISeleniumTest {
                 assertTrue(expectedLink.equals(webElement.getAttribute("href").toString()));
             }
         }
-    }
-
-    @Test
-    @Tag(GlobalConstants.TAG_DAILY)
-    @Tag(GlobalConstants.TAG_SITE_SMOKE_TEST)
-    public final void givenOnTheHomePage_whenPageLoads_thenItContainsCategoriesInTheFooterMenu() {
-        homePageDriver.loadUrl();
-
-        assertTrue(homePageDriver.findCategoriesContainerInThePageFooter().isDisplayed());
-    }
+    }    
 
     @Test
     @Tag(GlobalConstants.TAG_DAILY)
