@@ -8,33 +8,17 @@
     "footerTag": "footer",
     "footerLinks": [
       {
-        "anchorText": "Spring",
-        "anchorLink": "/category/spring"
+        "anchorText": "All Courses",
+        "anchorLink": "/all-courses"
       },
       {
-        "anchorText": "REST",
-        "anchorLink": "/category/rest"
+        "anchorText": "All Bulk Courses",
+        "anchorLink": "/all-bulk-courses"
       },
       {
-        "anchorText": "Java",
-        "anchorLink": "/category/java"
-      },
-      {
-        "anchorText": "Security",
-        "anchorLink": "/category/security-2"
-      },
-      {
-        "anchorText": "Persistence",
-        "anchorLink": "/category/persistence"
-      },
-      {
-        "anchorText": "Jackson",
-        "anchorLink": "/category/json/jackson"
-      },
-      {
-        "anchorText": "HTTP Client-Side",
-        "anchorLink": "/category/http"
-      },      
+        "anchorText": "The Courses Platform",
+        "anchorLink": "https://courses.baeldung.com/"
+      },    
       {
         "anchorText": "Java “Back to Basics” Tutorial",
         "anchorLink": "/java-tutorial"
@@ -60,16 +44,12 @@
         "anchorLink": "/security-spring"
       },
       {
+        "anchorText": "Spring Reactive Tutorials",
+        "anchorLink": "/spring-reactive-guide"
+      },
+      {
         "anchorText": "About Baeldung",
         "anchorLink": "/about"
-      },
-      {
-        "anchorText": "The Courses",
-        "anchorLink": "https://courses.baeldung.com"
-      },
-      {
-        "anchorText": "Jobs",
-        "anchorLink": "/tag/active-job"
       },
       {
         "anchorText": "The Full Archive",
@@ -83,6 +63,10 @@
       {
         "anchorText": "Editors",
         "anchorLink": "/editors"
+      },
+      {
+        "anchorText": "Jobs",
+        "anchorLink": "/tag/active-job"
       },
       {
         "anchorText": "Our Partners",
