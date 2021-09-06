@@ -8,88 +8,88 @@
     "footerTag": "footer",
     "footerLinks": [
       {
-        "anchorText": "All Courses",
+        "anchorText": "ALL COURSES",
         "anchorLink": "/all-courses"
       },
       {
-        "anchorText": "All Bulk Courses",
+        "anchorText": "ALL BULK COURSES",
         "anchorLink": "/all-bulk-courses"
       },
       {
-        "anchorText": "The Courses Platform",
+        "anchorText": "THE COURSES PLATFORM",
         "anchorLink": "https://courses.baeldung.com/"
       },    
       {
-        "anchorText": "Java “Back to Basics” Tutorial",
+        "anchorText": "JAVA “BACK TO BASICS” TUTORIAL",
         "anchorLink": "/java-tutorial"
       },
       {
-        "anchorText": "Jackson JSON Tutorial",
+        "anchorText": "JACKSON JSON TUTORIAL",
         "anchorLink": "/jackson"
       },
       {
-        "anchorText": "HttpClient 4 Tutorial",
+        "anchorText": "HTTPCLIENT 4 TUTORIAL",
         "anchorLink": "/httpclient-guide"
       },
       {
-        "anchorText": "REST with Spring Tutorial",
+        "anchorText": "REST WITH SPRING TUTORIAL",
         "anchorLink": "/rest-with-spring-series"
       },
       {
-        "anchorText": "Spring Persistence Tutorial",
+        "anchorText": "SPRING PERSISTENCE TUTORIAL",
         "anchorLink": "/persistence-with-spring-series"
       },
       {
-        "anchorText": "Security with Spring",
+        "anchorText": "SECURITY WITH SPRING",
         "anchorLink": "/security-spring"
       },
       {
-        "anchorText": "Spring Reactive Tutorials",
+        "anchorText": "SPRING REACTIVE TUTORIALS",
         "anchorLink": "/spring-reactive-guide"
       },
       {
-        "anchorText": "About Baeldung",
+        "anchorText": "ABOUT BAELDUNG",
         "anchorLink": "/about"
       },
       {
-        "anchorText": "The Full Archive",
+        "anchorText": "THE FULL ARCHIVE",
         "anchorLink": "/full_archive"
       },
       {
-        "anchorText": "Write for Baeldung",
+        "anchorText": "WRITE FOR BAELDUNG",
         "anchorLink": "/contribution-guidelines",
         "linkCategory": "WRITE_FOR_BAELDUNG"
       },
       {
-        "anchorText": "Editors",
+        "anchorText": "EDITORS",
         "anchorLink": "/editors"
       },
       {
-        "anchorText": "Jobs",
+        "anchorText": "JOBS",
         "anchorLink": "/tag/active-job"
       },
       {
-        "anchorText": "Our Partners",
+        "anchorText": "OUR PARTNERS",
         "anchorLink": "/partners"
       },
       {
-        "anchorText": "Advertise on Baeldung",
+        "anchorText": "ADVERTISE ON BAELDUNG",
         "anchorLink": "/advertise"
       },
       {
-        "anchorText": "Terms of Service",
+        "anchorText": "TERMS OF SERVICE",
         "anchorLink": "/terms-of-service"
       },
       {
-        "anchorText": "Privacy Policy",
+        "anchorText": "PRIVACY POLICY",
         "anchorLink": "/privacy-policy"
       },
       {
-        "anchorText": "Company Info",
+        "anchorText": "COMPANY INFO",
         "anchorLink": "/baeldung-company-info"
       },
       {
-        "anchorText": "Contact",
+        "anchorText": "CONTACT",
         "anchorLink": "/contact"
       }
     ]
