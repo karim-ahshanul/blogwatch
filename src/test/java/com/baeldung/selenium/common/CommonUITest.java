@@ -201,22 +201,22 @@ public class CommonUITest extends BaseUISeleniumTest {
 
     @Test
     @Tag(GlobalConstants.TAG_DAILY)
-    public final void givenTheCategoryPage_whenPageLoads_thenItContainsNoindexRobotsMeta() {
+    public final void givenTheCategoryPage_whenThePageLoads_thenItContainsNoindexRobotsMeta() {
         page.setUrl(page.getBaseURL() + GlobalConstants.CATEGORY_URL);
 
         page.loadUrl();
 
-        assertTrue(page.metaWithRobotsNoindexEists());
+        assertTrue(page.metaWithRobotsNoindexEists(), "Couldn't find noindex robot meta tag on /category/series/");
     }
 
     @Test
     @Tag(GlobalConstants.TAG_DAILY)
-    public final void givenTheTagArticle_whenArticleLoads_thenItContainsNoindexRobotsMeta() {
+    public final void givenTheTagPage_whenThePageLoads_thenItContainsNoindexRobotsMeta() {
         page.setUrl(page.getBaseURL() + GlobalConstants.TAG_ARTICLE_URL);
 
         page.loadUrl();
 
-        assertTrue(page.metaWithRobotsNoindexEists());
+        assertTrue(page.metaWithRobotsNoindexEists(),"Couldn't find noindex robot meta tag on /tag/activiti/");
     }
 
     @Test
