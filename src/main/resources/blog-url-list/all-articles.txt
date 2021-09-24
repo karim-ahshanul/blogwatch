@@ -4147,7 +4147,6 @@
 /linux/linux-interview-questions
 /linux/sed-with-string
 /kotlin/getters-setters
-/kotlin/vs-java
 /kotlin/intro
 /kotlin/when
 /kotlin/null-safety
