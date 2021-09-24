@@ -59,6 +59,9 @@ ignoreMissingReadmeContaining:
   - /aws-lambda/
   - /docker/
   - /version-overriding-plugins/
+  - /maven-copy-files/
+  - /maven-parent-pom-resolution/
+  - /plugin-management/
 ignoreMissingReadmeEndingWith:
   - /first-url/
   - /2ndurl/  
