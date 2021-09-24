@@ -5029,3 +5029,14 @@
 /cs/request-timed-out-vs-destination-host-unreachable
 /cs/knights-shortest-path-chessboard
 /cs/argument-vs-parameter
+/java-grpc-streaming
+/java-16-new-features
+/git-revert-commit
+/java-sound-api-capture-mic
+/linux/curl-request-headers
+/scala/open-classes
+/cs/advanced-cpu-designs
+/cs/largest-balanced-subarray
+/cs/find-subsequence-in-string-occurrences
+/cs/distributed-system-vs-distributed-computing
+/cs/hill-climbing-search-vs-best-first-search
