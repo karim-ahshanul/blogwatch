@@ -68,6 +68,15 @@ givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
   - /java-string-to-bigdecimal
   - /linux/filesystems
   - /cs/k-nearest-neighbors
+  - /configuration-properties-in-spring-boot
+  - /linux/check-if-port-is-open
+  - /linux/raid-intro
+  - /linux/too-many-levels-of-symlinks
+  - /javadoc-version-since
+  - /linux/find-graphics-card-version
+  - /linux/merge-files-line-by-line
+  - /linux/sort-file-in-place
+  - /cs/acf-pacf-plots-arma-modeling
   
 
 givenAllArticles_whenAnalyzingCategories_thenTheArticleDoesNotContainUnnecessaryCategory:
