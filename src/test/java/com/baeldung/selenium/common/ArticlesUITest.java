@@ -36,7 +36,7 @@ public class ArticlesUITest extends BaseUISeleniumTest {
     @Value("${ignore.urls.newer.than.weeks}")
     private int ignoreUrlsNewerThanWeeks;
 
-    @Value("${min.java.docs.accepted.version:9}")
+    @Value("${min.java.docs.accepted.version:11}")
     private String minJavDocsAcceptedVersion;
 
     private ListIterator<String> allArticlesList;
