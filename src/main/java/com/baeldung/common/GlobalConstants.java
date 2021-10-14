@@ -221,6 +221,7 @@ public class GlobalConstants {
     // for givenAnArtifactId_thenListAllChildModules
     public static final String tutorialsRepoLocalPath = "/var/lib/jenkins/tutorials-source-code";
     public static final String tutorialsRepoGitUrl="https://github.com/eugenp/tutorials.git";
+    public static final String tutorialsRepoMasterPath="https://github.com/eugenp/tutorials/tree/master";
     
     //for givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch
     public static final String STAGEING8_HOME_URL="http://staging8.baeldung.com";
@@ -262,7 +263,7 @@ public class GlobalConstants {
     public static final String givenAllArticlesLinkingToGitHubModule_whenAnArticleLoads_thenLinkedGitHubModulesReturns200OK = "givenAllArticlesLinkingToGitHubModule_whenAnArticleLoads_thenLinkedGitHubModulesReturns200OK";
     public static final String givenAllPages_whenAPageLoads_thenItDoesNotContainOverlappingText = "givenAllPages_whenAPageLoads_thenItDoesNotContainOverlappingText";
     public static final String givenAllArticles_whenAnArticleLoads_thenItDoesNotContainOverlappingText = "givenAllArticles_whenAnArticleLoads_thenItDoesNotContainOverlappingText";
-    public static final String GivenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles = "GivenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles";
+    public static final String givenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles = "givenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles";
     public static final String givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch = "givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch";
 
     public static final String givenAGoogleAnalyticsEnabledPage_whenAnalysingThePageSource_thenItHasTrackingCode = "givenAGoogleAnalyticsEnabledPage_whenAnalysingThePageSource_thenItHasTrackingCode";

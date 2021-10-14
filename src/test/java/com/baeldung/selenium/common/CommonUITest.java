@@ -2,6 +2,7 @@ package com.baeldung.selenium.common;
 
 import static com.baeldung.common.ConsoleColors.*;
 import static com.baeldung.common.GlobalConstants.TestMetricTypes.FAILED;
+import static com.baeldung.common.Utils.replaceTutorialLocalPathWithHttpUrl;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -25,6 +26,8 @@ import java.util.stream.Stream;
 
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.InvalidRemoteException;
+import org.eclipse.jgit.api.errors.TransportException;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Tag;
@@ -55,7 +58,6 @@ import com.baeldung.common.vo.EventTrackingVO;
 import com.baeldung.common.vo.FooterLinksDataVO;
 import com.baeldung.common.vo.FooterLinksDataVO.FooterLinkCategory;
 import com.baeldung.common.vo.LinkVO;
-import com.baeldung.crawler4j.crawler.CrawlerForFindingReadmeURLs;
 import com.baeldung.filevisitor.ModuleAlignmentValidatorFileVisitor;
 import com.baeldung.filevisitor.TutorialsParentModuleFinderFileVisitor;
 import com.baeldung.utility.TestUtils;
@@ -287,17 +289,13 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Test
     @Tag(GlobalConstants.TAG_GITHUB_RELATED)
     @Tag(GlobalConstants.TAG_SKIP_METRICS)
-    public final void givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch(TestInfo testInfo) throws IOException {
+    public final void givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch(TestInfo testInfo) throws IOException, InvalidRemoteException, TransportException, GitAPIException {
         
         List<String> testExceptions= YAMLProperties.exceptionsForTests.get(TestUtils.getMehodName(testInfo.getTestMethod()));
 
-        tutorialsRepoCrawlerController.startCrawlingWithAFreshController(CrawlerForFindingReadmeURLs.class, Runtime.getRuntime().availableProcessors());
-
-        List<String> readmeURLs = Utils.getDiscoveredLinks(tutorialsRepoCrawlerController.getDiscoveredURLs());
+        List<String> readmeURLs = Utils.getListOfReadmes(GlobalConstants.tutorialsRepoGitUrl, true);
         
         Multimap<String, LinkVO> badURLs = ArrayListMultimap.create();
-        
-        Map<String, Integer> articleCountByReadme = new HashMap<>();
 
         readmeURLs.forEach(readmeURL -> {
             try {
@@ -306,17 +304,7 @@ public class CommonUITest extends BaseUISeleniumTest {
 
                 page.loadUrl(); // loads README in browser
 
-                List<LinkVO> urlsInReadmeFile = page.getLinksToTheBaeldungSite(); // get all the articles linked in this README
-                
-                // for documenting no of links per README
-                if (readmeURL.toLowerCase().contains("spring")) {
-                    if (urlsInReadmeFile.size() > limitForSpringRelatedReadmeHavingArticles) {
-                        articleCountByReadme.put(readmeURL, urlsInReadmeFile.size());
-                    }
-
-                } else if (urlsInReadmeFile.size() > limitForReadmeHavingArticles) {
-                    articleCountByReadme.put(readmeURL, urlsInReadmeFile.size());
-                }
+                List<LinkVO> urlsInReadmeFile = page.getLinksToTheBaeldungSite(); // get all the articles linked in this README                               
                 
                 if(testExceptions.contains(readmeURL)) {
                     return;
@@ -337,12 +325,39 @@ public class CommonUITest extends BaseUISeleniumTest {
             }
         });
 
-        if (badURLs.size() > 0 || articleCountByReadme.size() > 0) {
-            recordMetrics(badURLs.size(), TestMetricTypes.FAILED);
-            recordMetrics(articleCountByReadme.size(), TestMetricTypes.FAILED);           
-            failTestWithLoggingTotalNoOfFailures("\nwe found issues with following READMEs" + Utils.getErrorMessageForInvalidLinksInReadmeFiles(badURLs)
-                    + Utils.compileReadmeCountResults(articleCountByReadme, GlobalConstants.GivenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles));
+        if (badURLs.size() > 0 ) {
+            recordMetrics(badURLs.size(), TestMetricTypes.FAILED);            
+            failTestWithLoggingTotalNoOfFailures("\nwe found issues with following READMEs" + Utils.getErrorMessageForInvalidLinksInReadmeFiles(badURLs));
+        }
+    }
+    
+    @Test
+    @Tag(GlobalConstants.TAG_TECHNICAL)
+    @Tag(GlobalConstants.TAG_SKIP_METRICS)
+    public final void givenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles(TestInfo testInfo) throws IOException, InvalidRemoteException, TransportException, GitAPIException {
 
+        List<String> readmeURLs = Utils.getListOfReadmes(GlobalConstants.tutorialsRepoGitUrl, false);
+        Map<String, Integer> articleCountByReadme = new HashMap<>();
+
+        readmeURLs.forEach(readmePath -> {
+            try {
+                int baeldungUrlsCount = Utils.getLinksToTheBaeldungSite(readmePath); // get all the articles linked in this README
+
+                // for documenting no of links per README
+                if (readmePath.toLowerCase().contains("spring")) {
+                    if (baeldungUrlsCount > limitForSpringRelatedReadmeHavingArticles) {
+                        articleCountByReadme.put(replaceTutorialLocalPathWithHttpUrl.apply(readmePath), baeldungUrlsCount);
+                    }
+                } else if (baeldungUrlsCount > limitForReadmeHavingArticles) {
+                    articleCountByReadme.put(replaceTutorialLocalPathWithHttpUrl.apply(readmePath), baeldungUrlsCount);
+                }
+            } catch (Exception e) {
+                logger.debug("Error while processing " + readmePath + " \nError message" + e.getMessage());
+            }
+        });
+        if (articleCountByReadme.size() > 0) {
+            recordMetrics(articleCountByReadme.size(), TestMetricTypes.FAILED);
+            failTestWithLoggingTotalNoOfFailures(Utils.compileReadmeCountResults(articleCountByReadme, GlobalConstants.givenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles));
         }
     }
 

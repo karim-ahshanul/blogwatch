@@ -2,6 +2,9 @@ package com.baeldung.common;
 
 import static com.baeldung.common.ConsoleColors.colordHeading;
 import static com.baeldung.common.ConsoleColors.magentaColordMessage;
+import static com.baeldung.common.GlobalConstants.tutorialsRepoLocalPath;
+import static com.baeldung.common.GlobalConstants.tutorialsRepoMasterPath;
+import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
@@ -13,11 +16,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
-
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.regex.Matcher;
@@ -50,6 +51,7 @@ import com.baeldung.common.vo.EventTrackingVO;
 import com.baeldung.common.vo.JavaConstruct;
 import com.baeldung.common.vo.LinkVO;
 import com.baeldung.filevisitor.ModuleAlignmentValidatorFileVisitor;
+import com.baeldung.filevisitor.ReadmeFileVisitor;
 import com.baeldung.filevisitor.TutorialsParentModuleFinderFileVisitor;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -309,7 +311,7 @@ public class Utils {
 
             // @formatter:off
                  
-             resutls = "\n\n------------------------------------------------------------------------------------\n" 
+             resutls = "\n------------------------------------------------------------------------------------\n" 
                             + testName
                             + "\n-------------------------------------------------------------------------------------\n" 
                             + formatResult.toString() 
@@ -881,5 +883,29 @@ public class Utils {
         }
         return token;
     }
-     
+
+    public static List<String> getListOfReadmes(String tutorialsrepogiturl, boolean convertPathToHttpUrl) throws InvalidRemoteException, TransportException, IOException, GitAPIException {
+        String repoLocalDirectory = tutorialsRepoLocalPath;
+        Path repoDirectoryPath = Paths.get(repoLocalDirectory);
+        Utils.fetchGitRepo(GlobalConstants.YES, repoDirectoryPath, tutorialsrepogiturl);        
+
+        ReadmeFileVisitor readmeFileVisitor = new ReadmeFileVisitor();
+        Files.walkFileTree(repoDirectoryPath, readmeFileVisitor);
+
+        return convertPathToHttpUrl == false ? readmeFileVisitor.getReameList() : readmeFileVisitor.getReameList().stream().map(replaceTutorialLocalPathWithHttpUrl).collect(toList());
+    }
+
+    public static Function<String, String> replaceTutorialLocalPathWithHttpUrl = path -> tutorialsRepoMasterPath.concat(StringUtils.removeStart(path, tutorialsRepoLocalPath));
+    
+    public static List<String> getLinksToTheBaeldungSite(Document doc) {
+        Elements baeldungUrls = doc.select("a[href*="+GlobalConstants.BAELDUNG_DOMAIN_NAME+"]");
+        return baeldungUrls.stream().map(e -> e.attr("href")).collect(toList());
+    }
+
+    public static int getLinksToTheBaeldungSite(String readmePath) throws IOException {        
+       return  (int) Files.lines(Paths.get(readmePath))        
+        .filter(line -> line.matches(".*\\(.*baeldung.com.*\\).*"))
+        .count();
+      
+    }
 }
