@@ -2,7 +2,6 @@ package com.baeldung.selenium.common;
 
 import static com.baeldung.common.ConsoleColors.*;
 import static com.baeldung.common.GlobalConstants.TestMetricTypes.FAILED;
-import static com.baeldung.common.Utils.replaceTutorialLocalPathWithHttpUrl;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -56,6 +55,7 @@ import com.baeldung.common.vo.AnchorLinksTestDataVO;
 import com.baeldung.common.vo.CoursePurchaseLinksVO.PurchaseLink;
 import com.baeldung.common.vo.EventTrackingVO;
 import com.baeldung.common.vo.FooterLinksDataVO;
+import com.baeldung.common.vo.GitHubRepoVO;
 import com.baeldung.common.vo.FooterLinksDataVO.FooterLinkCategory;
 import com.baeldung.common.vo.LinkVO;
 import com.baeldung.filevisitor.ModuleAlignmentValidatorFileVisitor;
@@ -293,7 +293,7 @@ public class CommonUITest extends BaseUISeleniumTest {
         
         List<String> testExceptions= YAMLProperties.exceptionsForTests.get(TestUtils.getMehodName(testInfo.getTestMethod()));
 
-        List<String> readmeURLs = Utils.getListOfReadmes(GlobalConstants.tutorialsRepoGitUrl, true);
+        List<String> readmeURLs = Utils.getListOfReadmesFromAllTutorialsRepos(true);
         
         Multimap<String, LinkVO> badURLs = ArrayListMultimap.create();
 
@@ -336,24 +336,26 @@ public class CommonUITest extends BaseUISeleniumTest {
     @Tag(GlobalConstants.TAG_SKIP_METRICS)
     public final void givenAGitHubModuleReadme_whenAnalysingTheReadme_thentheReadmeDoesNotLikTooManyArticles(TestInfo testInfo) throws IOException, InvalidRemoteException, TransportException, GitAPIException {
 
-        List<String> readmeURLs = Utils.getListOfReadmes(GlobalConstants.tutorialsRepoGitUrl, false);
+        Map<GitHubRepoVO, List<String>> reposReadmes = Utils.getRepoWiseListOfReadmesFromAllTutorialsRepos(false);
         Map<String, Integer> articleCountByReadme = new HashMap<>();
 
-        readmeURLs.forEach(readmePath -> {
-            try {
-                int baeldungUrlsCount = Utils.getLinksToTheBaeldungSite(readmePath); // get all the articles linked in this README
+        reposReadmes.forEach((repo, readmesPathList) -> {            
+            readmesPathList.forEach(readmePath -> {
+                try {
+                    int baeldungUrlsCount = Utils.getLinksToTheBaeldungSite(readmePath); // get all the articles linked in this README
 
-                // for documenting no of links per README
-                if (readmePath.toLowerCase().contains("spring")) {
-                    if (baeldungUrlsCount > limitForSpringRelatedReadmeHavingArticles) {
-                        articleCountByReadme.put(replaceTutorialLocalPathWithHttpUrl.apply(readmePath), baeldungUrlsCount);
+                    // for documenting no of links per README
+                    if (readmePath.toLowerCase().contains("spring")) {
+                        if (baeldungUrlsCount > limitForSpringRelatedReadmeHavingArticles) {
+                            articleCountByReadme.put(Utils.replaceTutorialLocalPathWithHttpUrl(repo.getRepoLoalPath(), repo.getRepoMasterHttpPath()).apply(readmePath), baeldungUrlsCount);
+                        }
+                    } else if (baeldungUrlsCount > limitForReadmeHavingArticles) {
+                        articleCountByReadme.put(Utils.replaceTutorialLocalPathWithHttpUrl(repo.getRepoLoalPath(), repo.getRepoMasterHttpPath()).apply(readmePath), baeldungUrlsCount);
                     }
-                } else if (baeldungUrlsCount > limitForReadmeHavingArticles) {
-                    articleCountByReadme.put(replaceTutorialLocalPathWithHttpUrl.apply(readmePath), baeldungUrlsCount);
+                } catch (Exception e) {
+                    logger.debug("Error while processing " + readmePath + " \nError message" + e.getMessage());
                 }
-            } catch (Exception e) {
-                logger.debug("Error while processing " + readmePath + " \nError message" + e.getMessage());
-            }
+            });
         });
         if (articleCountByReadme.size() > 0) {
             recordMetrics(articleCountByReadme.size(), TestMetricTypes.FAILED);

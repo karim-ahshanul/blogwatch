@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import com.baeldung.common.GlobalConstants;
+
 import io.restassured.RestAssured;
 
 public class CommonUnitTest {
@@ -13,7 +15,7 @@ public class CommonUnitTest {
     void givenAReadmeWithLocalSystemPath_whenConvertToHttpURL_itReturn200OK(){
         
         String localSystemPath="/var/lib/jenkins/tutorials-source-code/akka-streams/README.md";
-        String httpUrl = replaceTutorialLocalPathWithHttpUrl.apply(localSystemPath);
+        String httpUrl = replaceTutorialLocalPathWithHttpUrl(GlobalConstants.tutorialsRepoLocalPath, GlobalConstants.tutorialsRepoMasterPath).apply(localSystemPath);
         
         assertTrue(RestAssured.given().get(httpUrl).getStatusCode() == 200);
         

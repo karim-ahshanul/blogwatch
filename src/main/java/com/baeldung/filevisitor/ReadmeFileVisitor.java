@@ -16,13 +16,20 @@ import com.baeldung.common.GlobalConstants;
 
 public class ReadmeFileVisitor extends SimpleFileVisitor<Path> {
 
+    private String repoLocalPath;
+
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     private List<String> reameList = new ArrayList<>();
 
+    public ReadmeFileVisitor(String repoLocalPath) {
+        super();
+        this.repoLocalPath = repoLocalPath;
+    }
+
     @Override
     public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-        if (dir.toString().equalsIgnoreCase(GlobalConstants.tutorialsRepoLocalPath + "/.git/") || dir.toString().equalsIgnoreCase(GlobalConstants.tutorialsRepoLocalPath + "/.git")) {
+        if (dir.toString().equalsIgnoreCase(repoLocalPath + "/.git/") || dir.toString().equalsIgnoreCase(repoLocalPath + "/.git")) {
             return FileVisitResult.SKIP_SUBTREE;
         }
         return super.preVisitDirectory(dir, attrs);

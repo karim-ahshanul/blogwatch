@@ -2,8 +2,7 @@ package com.baeldung.common;
 
 import static com.baeldung.common.ConsoleColors.colordHeading;
 import static com.baeldung.common.ConsoleColors.magentaColordMessage;
-import static com.baeldung.common.GlobalConstants.tutorialsRepoLocalPath;
-import static com.baeldung.common.GlobalConstants.tutorialsRepoMasterPath;
+import static com.baeldung.common.GlobalConstants.tutorialsRepos;
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -16,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -48,6 +48,7 @@ import org.slf4j.LoggerFactory;
 
 import com.baeldung.common.vo.AnchorLinksTestDataVO;
 import com.baeldung.common.vo.EventTrackingVO;
+import com.baeldung.common.vo.GitHubRepoVO;
 import com.baeldung.common.vo.JavaConstruct;
 import com.baeldung.common.vo.LinkVO;
 import com.baeldung.filevisitor.ModuleAlignmentValidatorFileVisitor;
@@ -615,7 +616,7 @@ public class Utils {
             resultBuilder.append("\n");
         });
 
-        return resultBuilder.toString();
+         return resultBuilder.toString();
     }
 
     public static List<String> titleTokenizer(String title) {
@@ -835,7 +836,7 @@ public class Utils {
             FileUtils.deleteDirectory(repoDirectoryPath.toFile());
             Files.createDirectory(repoDirectoryPath);
 
-            logger.info(magentaColordMessage("Downloading tutorials repo. This may take a few minutes"));
+            logger.info(magentaColordMessage("Downloading {}. This may take a few minutes"), repoGitUrl);
             Git.cloneRepository().setURI(repoGitUrl).setDirectory(repoDirectoryPath.toFile()).call();
 
             logger.info(magentaColordMessage("tutorials repository cloned"));
@@ -884,18 +885,31 @@ public class Utils {
         return token;
     }
 
-    public static List<String> getListOfReadmes(String tutorialsrepogiturl, boolean convertPathToHttpUrl) throws InvalidRemoteException, TransportException, IOException, GitAPIException {
-        String repoLocalDirectory = tutorialsRepoLocalPath;
-        Path repoDirectoryPath = Paths.get(repoLocalDirectory);
-        Utils.fetchGitRepo(GlobalConstants.YES, repoDirectoryPath, tutorialsrepogiturl);        
+    public static Map<GitHubRepoVO,List<String>> getRepoWiseListOfReadmesFromAllTutorialsRepos(boolean convertPathToHttpUrl) throws InvalidRemoteException, TransportException, IOException, GitAPIException {
+        List<String> readmeList = null;        
+        Map<GitHubRepoVO, List<String>> readmes = new HashMap<GitHubRepoVO, List<String>>();
+        
+        for(GitHubRepoVO repo: tutorialsRepos) {   
+            readmeList = new ArrayList<>();
+            Path repoLocalPath = Paths.get(repo.getRepoLoalPath());
+            Utils.fetchGitRepo(GlobalConstants.NO, repoLocalPath, repo.getRepoUrl());        
 
-        ReadmeFileVisitor readmeFileVisitor = new ReadmeFileVisitor();
-        Files.walkFileTree(repoDirectoryPath, readmeFileVisitor);
-
-        return convertPathToHttpUrl == false ? readmeFileVisitor.getReameList() : readmeFileVisitor.getReameList().stream().map(replaceTutorialLocalPathWithHttpUrl).collect(toList());
+            ReadmeFileVisitor readmeFileVisitor = new ReadmeFileVisitor(repo.getRepoLoalPath());
+            Files.walkFileTree(repoLocalPath, readmeFileVisitor);
+            if(convertPathToHttpUrl) {
+                readmeList.addAll(readmeFileVisitor.getReameList().stream().map(replaceTutorialLocalPathWithHttpUrl(repo.getRepoLoalPath(), repo.getRepoMasterHttpPath())).collect(toList()));                
+            }else {
+                readmeList.addAll(readmeFileVisitor.getReameList());
+            }
+            readmes.put(repo, readmeList);
+        }
+        return readmes;
     }
-
-    public static Function<String, String> replaceTutorialLocalPathWithHttpUrl = path -> tutorialsRepoMasterPath.concat(StringUtils.removeStart(path, tutorialsRepoLocalPath));
+    
+    
+    public static Function<String, String> replaceTutorialLocalPathWithHttpUrl(String repoLocalPath, String repoHttpPath){
+        return path -> repoHttpPath.concat(StringUtils.removeStart(path, repoLocalPath));        
+    }     
     
     public static List<String> getLinksToTheBaeldungSite(Document doc) {
         Elements baeldungUrls = doc.select("a[href*="+GlobalConstants.BAELDUNG_DOMAIN_NAME+"]");
@@ -907,5 +921,10 @@ public class Utils {
         .filter(line -> line.matches(".*\\(.*baeldung.com.*\\).*"))
         .count();
       
+    }
+
+    public static List<String> getListOfReadmesFromAllTutorialsRepos(boolean convertPathToHttpUrl) throws InvalidRemoteException, TransportException, IOException, GitAPIException {
+        Map<GitHubRepoVO, List<String>> reposReadmes = Utils.getRepoWiseListOfReadmesFromAllTutorialsRepos(convertPathToHttpUrl);
+        return reposReadmes.entrySet().stream().flatMap(entryset -> entryset.getValue().stream()).collect(Collectors.toList());
     }
 }

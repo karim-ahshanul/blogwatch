@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.baeldung.common.vo.GitHubRepoVO;
 import com.google.common.collect.ImmutableList;
 
 public class GlobalConstants {
@@ -222,6 +223,14 @@ public class GlobalConstants {
     public static final String tutorialsRepoLocalPath = "/var/lib/jenkins/tutorials-source-code";
     public static final String tutorialsRepoGitUrl="https://github.com/eugenp/tutorials.git";
     public static final String tutorialsRepoMasterPath="https://github.com/eugenp/tutorials/tree/master";
+    
+    public static final String scalaTutorialsRepoLocalPath = "/var/lib/jenkins/scala-tutorials-source-code";
+    public static final String scalaTutorialsRepoGitUrl="https://github.com/Baeldung/scala-tutorials.git";
+    public static final String scalaTutorialsRepoMasterPath="https://github.com/Baeldung/scala-tutorials/tree/master";
+    
+    public static final ImmutableList<GitHubRepoVO> tutorialsRepos = ImmutableList.of(new GitHubRepoVO("Java-tutorials", tutorialsRepoGitUrl, tutorialsRepoLocalPath, tutorialsRepoMasterPath),
+            new GitHubRepoVO("Scala-tutorials", scalaTutorialsRepoGitUrl, scalaTutorialsRepoLocalPath, scalaTutorialsRepoMasterPath));
+    
     
     //for givenAGitHubModuleReadme_whenAnalysingTheReadme_thenLinksToAndFromGithubMatch
     public static final String STAGEING8_HOME_URL="http://staging8.baeldung.com";
