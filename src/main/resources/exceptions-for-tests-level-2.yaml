@@ -1,5 +1,32 @@
 givenAllArticles_whenAnArticleLoads_thenItDoesNotLinkToOldJavaDocs:
  - https://docs.oracle.com/javase/8/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html
+ - http://docs.oracle.com/javase/7/docs/technotes/tools/share/xjc.html
+ - http://docs.oracle.com/javase/7/docs/technotes/tools/share/schemagen.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/reflection/proxy.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/language/assert.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/language/foreach.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/collections/index.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html
+ - https://docs.oracle.com/javase/7/docs/technotes/guides/apt/GettingStarted.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/jndi/index.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/vm/cms-6.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/xml/jaxp/index.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html
+ - https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jvisualvm.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/security/PolicyGuide.html
+ - https://docs.oracle.com/javase/7/docs/api/javax/xml/ws/Endpoint.html
+ - https://docs.oracle.com/javase/7/docs/technotes/tools/share/wsimport.html
+ - https://docs.oracle.com/javase/7/docs/api/javax/jws/soap/SOAPBinding.Style.html
+ - https://docs.oracle.com/javase/7/docs/api/javax/xml/ws/WebServiceClient.html
+ - https://docs.oracle.com/javase/7/docs/api/javax/xml/ws/WebServiceFeature.html
+ - https://docs.oracle.com/javase/7/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/cms.html
+ - https://docs.oracle.com/javase/8/docs/technotes/guides/security/enhancements-8.html
+ - https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/annotation/package-summary.html
+ - https://docs.oracle.com/javase/1.5.0/docs/tooldocs/windows/javadoc.html
+ 
 givenAllArticles_whenAnArticleLoads_thenTheArticleHasProperTitleCapitalization:
  - jOOQ
  - IDEs
