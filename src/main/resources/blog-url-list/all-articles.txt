@@ -1702,7 +1702,6 @@
 /infinite-loops-java
 /spring-boot-jasypt
 /jni
-/kotlin-overview
 /java-main-method
 /java-10-overview
 /spring-data-key-value
