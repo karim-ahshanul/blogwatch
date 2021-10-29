@@ -12,6 +12,7 @@ givenAllArticles_whenAnArticleLoads_thenItHasSingleShortcodeAtTheEnd:
   - /linux/
   - /cs/
   - /scala/
+  - /codota/
 givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv:
   - /javafx/
   - /java-sms-twilio/    
