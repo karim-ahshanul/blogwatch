@@ -32,8 +32,8 @@ public class CommonJsoupTest extends BaseJsoupTest{
                 
         logger.info("Processing " + url);
         Document doc = Jsoup.connect(url).get();       
-        assertAll(() -> assertTrue(TestUtils.facebookMainEventTrackingScriptExists.apply(doc, url), String.format("Facebook main tracking code not found on %s", url)),
-                  () -> assertTrue(TestUtils.facebookEventPriceTrackingScriptExists.apply(doc, url), String.format("Facebook event price tracking code not found on %s", url)));
+        assertAll(() -> assertTrue(TestUtils.facebookMainEventTrackingScriptExistsOnTKP.apply(doc, url), String.format("Facebook main tracking code not found on %s", url)),
+                  () -> assertTrue(TestUtils.facebookEventConversionTrackingScriptExistsOnTKP.apply(doc, url), String.format("Facebook event price tracking code not found on %s", url)));
        
     }
     
@@ -44,9 +44,21 @@ public class CommonJsoupTest extends BaseJsoupTest{
                 
         logger.info("Processing " + url);
         Document doc = Jsoup.connect(url).get();       
-        assertAll(() -> assertTrue(TestUtils.dripMainEventTrackingScriptExists.apply(doc, url), String.format("Drip main tracking code not found on %s", url)),
-                  () -> assertTrue(TestUtils.dripEventPriceTrackingScriptExists.apply(doc, url), String.format("Drip[ event price tracking code not found on %s", url)));
+        assertAll(() -> assertTrue(TestUtils.dripMainEventTrackingScriptExistsOnTKP.apply(doc, url), String.format("Drip main tracking code not found on %s", url)),
+                  () -> assertTrue(TestUtils.dripEventConversionTrackingScriptExistsOnTKP.apply(doc, url), String.format("Drip[ event price tracking code not found on %s", url)));
        
+    }
+    
+    @ParameterizedTest(name = " {displayName} - on {0}")
+    @MethodSource("com.baeldung.utility.TestUtils#thankYouPagesUrlsProvider")
+    @Tag(GlobalConstants.THANKYOU_PAGES_EVENT_TRACKING)
+    public final void givenAThankYouPage_whenThePageLoads_thenTheItHasTheGoogleEventTrackingCode(String url) throws IOException {
+
+        logger.info("Processing " + url);
+        Document doc = Jsoup.connect(url).get();
+        assertAll(() -> assertTrue(TestUtils.googleMainEventTrackingScriptExistsOnTKP.apply(doc, url), String.format("Google main tracking code not found on %s", url)),
+                () -> assertTrue(TestUtils.googleEventConversionTrackingScriptExistsOnTKP.apply(doc, url), String.format("Goole[ event price tracking code not found on %s", url)));
+
     }
     
     @ParameterizedTest(name = "verify ad-slots  on {0}")

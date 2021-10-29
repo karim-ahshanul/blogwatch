@@ -236,13 +236,16 @@ public class GlobalConstants {
     public static final String STAGEING8_HOME_URL="http://staging8.baeldung.com";
     
     //facebook tracking code on thank-you pages
-    public static final String FACEBOOK_MAIN_EVENT_TRACKING_SCRIPT = "fbq('init', '512471148948613')";
-    public static final String FACEBOOK_EVENT_PRICE_TRACKING_SCRIPT = "fbq('track', 'Purchase'";
+    public static final String FACEBOOK_MAIN_EVENT_TRACKING_SCRIPT_TKP = "fbq('init', '512471148948613')";
+    public static final String FACEBOOK_EVENT_CONVERSION_TRACKING_SCRIPT_TKP = "fbq('track', 'Purchase'";
     
+  //GOOGLE tracking code on thank-you pages
+    public static final String GOOGLE_MAIN_EVENT_TRACKING_SCRIPT_TKP = "ga('create', 'UA-26064837-1', 'auto', {'allowLinker': true});";
+    public static final String GOOGLE_EVENT_CONVERSION_TRACKING_SCRIPT_TKP = "gtag('event', 'conversion', {";
 
     //drip tracking on thank-you pages
-    public static final String DRIP_MAIN_EVENT_TRACKING_SCRIPT = "tag.getdrip.com/9539554.js";
-    public static final String DRIP_EVENT_PRICE_TRACKING_SCRIPT = "window._dcq.push([\"track\"";
+    public static final String DRIP_MAIN_EVENT_TRACKING_SCRIPT_TKP = "tag.getdrip.com/9539554.js";
+    public static final String DRIP_EVENT_CONVERSION_TRACKING_SCRIPT_TKP = "window._dcq.push([\"track\"";
     
     // test names for
     public static final String givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv = "givenAllArticles_whenAnArticleLoads_thenImagesPointToCorrectEnv";

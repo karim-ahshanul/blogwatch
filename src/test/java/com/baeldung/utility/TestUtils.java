@@ -269,47 +269,65 @@ public class TestUtils {
        return Utils.fetchFileAsStream("baeldung-thankyou-pages.txt").map(url -> Arguments.of(url));        
     }
     
-    public static BiFunction< Document, String,Boolean> facebookMainEventTrackingScriptExists = (doc, url) -> {
+    public static BiFunction<Document, String,Boolean> facebookMainEventTrackingScriptExistsOnTKP = (doc, url) -> {
         try {               
-            return doc.select("script:containsData("+ GlobalConstants.FACEBOOK_MAIN_EVENT_TRACKING_SCRIPT+")").size() > 0;           
+            return doc.select("script:containsData("+ GlobalConstants.FACEBOOK_MAIN_EVENT_TRACKING_SCRIPT_TKP+")").size() > 0;           
         } catch (Exception e) {
             logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
             return false;
         }
     };
     
-    public static BiFunction<Document, String,Boolean> facebookEventPriceTrackingScriptExists = (doc, url) -> {
+    public static BiFunction<Document, String,Boolean> facebookEventConversionTrackingScriptExistsOnTKP = (doc, url) -> {
         try {            
-            return  doc.select("script:containsData(fbq)").stream().map(Element::toString).filter(t -> t.contains(GlobalConstants.FACEBOOK_EVENT_PRICE_TRACKING_SCRIPT)).findFirst().isPresent();                      
+            return  doc.select("script:containsData(fbq)").stream().map(Element::toString).filter(t -> t.contains(GlobalConstants.FACEBOOK_EVENT_CONVERSION_TRACKING_SCRIPT_TKP)).findFirst().isPresent();                      
         } catch (Exception e) {            
             logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
             return false;
         }
     };
     
-    public static BiFunction< Document, String,Boolean> dripMainEventTrackingScriptExists = (doc, url) -> {
+    public static BiFunction<Document, String,Boolean> dripMainEventTrackingScriptExistsOnTKP = (doc, url) -> {
         try {               
-            return doc.select("script:containsData("+ GlobalConstants.DRIP_MAIN_EVENT_TRACKING_SCRIPT+")").size() > 0;           
+            return doc.select("script:containsData("+ GlobalConstants.DRIP_MAIN_EVENT_TRACKING_SCRIPT_TKP+")").size() > 0;           
         } catch (Exception e) {
             logger.error(ConsoleColors.redBoldMessage("Error parsing the document for {}, error message: {}  "), url, e.getMessage());
             return false;
         }
     };
     
-    public static BiFunction<Document, String,Boolean> dripEventPriceTrackingScriptExists = (doc, url) -> {
+    public static BiFunction<Document, String,Boolean> dripEventConversionTrackingScriptExistsOnTKP = (doc, url) -> {
         try {            
-            return  doc.select("script:containsData(window._dcq)").stream().map(Element::toString).filter(t -> t.contains(GlobalConstants.DRIP_EVENT_PRICE_TRACKING_SCRIPT)).findFirst().isPresent();                      
+            return  doc.select("script:containsData(window._dcq)").stream().map(Element::toString).filter(t -> t.contains(GlobalConstants.DRIP_EVENT_CONVERSION_TRACKING_SCRIPT_TKP)).findFirst().isPresent();                      
         } catch (Exception e) {            
             logger.error(ConsoleColors.redBoldMessage("Error parsing the document for {}, error message: {}  "), url, e.getMessage());
             return false;
         }
     };
     
-    public static BiFunction< Document, String, Boolean> scriptWithAdSlotExists = (doc, slotId) -> {
+    public static BiFunction<Document, String, Boolean> scriptWithAdSlotExists = (doc, slotId) -> {
         try {               
             return doc.select("script:containsData("+ slotId +")").size() > 0;           
         } catch (Exception e) {
             logger.error(ConsoleColors.redBoldMessage("Error parsing the document, error message: {}  "), e.getMessage());
+            return false;
+        }
+    };
+    
+    public static BiFunction<Document, String, Boolean> googleMainEventTrackingScriptExistsOnTKP = (doc, url) -> {
+        try {
+            return doc.select("script:containsData(" + GlobalConstants.GOOGLE_MAIN_EVENT_TRACKING_SCRIPT_TKP + ")").size() > 0;
+        } catch (Exception e) {
+            logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
+            return false;
+        }
+    };
+
+    public static BiFunction<Document, String, Boolean> googleEventConversionTrackingScriptExistsOnTKP = (doc, url) -> {
+        try {
+            return doc.select("script:containsData(gtag)").stream().map(Element::toString).filter(t -> t.contains(GlobalConstants.GOOGLE_EVENT_CONVERSION_TRACKING_SCRIPT_TKP)).findFirst().isPresent();
+        } catch (Exception e) {
+            logger.error(ConsoleColors.redBoldMessage("Error which connecting to {}, error message: {}  "), url, e.getMessage());
             return false;
         }
     };
